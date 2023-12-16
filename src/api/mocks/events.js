@@ -1,0 +1,47 @@
+export default[
+    {"idAthlete": 1,
+    "athleteName": "Simone Biles",
+    "athleteTeam": "USA",
+    "movement": "Glide swing on the low bar",
+    "movementPicture": "src/assets/movements/entry.png",
+    "nameMovement": "Entry",
+    "seconds": 5,
+    "pontuation": 3.32
+    },
+    {"idAthlete": 1,
+    "athleteName": "Simone Biles",
+    "athleteTeam": "USA",
+    "movement": "Kip ascent on the high bar",
+    "movementPicture": "src/assets/movements/transitionUp.png",
+    "nameMovement": "Transition",
+    "seconds": 15,
+    "pontuation": 3.50
+    },
+    {"idAthlete": 1,
+    "athleteName": "Simone Biles",
+    "athleteTeam": "USA",
+    "movement": "Transition from the high bar to the low",
+    "movementPicture": "src/assets/movements/movement.png",
+    "nameMovement": "Movement",
+    "seconds": 25,
+    "pontuation": 3.24
+    },
+    {"idAthlete": 1,
+    "athleteName": "Simone Biles",
+    "athleteTeam": "USA",
+    "movement": "Full turn on the high bar",
+    "movementPicture": "src/assets/movements/turn.png",
+    "nameMovement": "Turn",
+    "seconds": 35,
+    "pontuation": 3.43
+    },
+    {"idAthlete": 1,
+    "athleteName": "Simone Biles",
+    "athleteTeam": "USA",
+    "movement": "Pirouette in the dismount",
+    "movementPicture": "src/assets/movements/dismount.png",
+    "nameMovement": "Dismount",
+    "seconds": 45,
+    "pontuation": 3.54
+    }
+]

@@ -1,8 +1,11 @@
 import fetchMock from "fetch-mock";
-import athlete from './mocks/mocks'
+import athlete from './mocks/athletes'
+import event from './mocks/events'
+import team from './mocks/teams'
 
-fetchMock.mock('', athlete)
-
+fetchMock.mock('http://localhost:4000/athletes', athlete)
+fetchMock.mock('http://localhost:4000/events', event)
+fetchMock.mock('http://localhost:4000/teams', team)
 
 /**
  * GET utility function
