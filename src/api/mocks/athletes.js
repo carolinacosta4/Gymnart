@@ -153,7 +153,7 @@ export default[
     "lastResult": "7th Beam Tokyo 2020",
     "curiosities": "Flavia Saraiva, a gymnastics prodigy since childhood, gained global acclaim for her standout performances at the 2016 Rio Olympics. Despite her petite frame, she defies expectations, displaying remarkable strength and flexibility in her specialties—the balance beam and floor exercise. Beyond her technical prowess, Flavia's infectious enthusiasm and joyful demeanor have endeared her to fans worldwide, making her a beloved figure in the gymnastics community.",
     "picturePath": "",
-    "thumbnailPath": ""
+    "thumbnailPath": "https://www.cob.org.br/pt/img/noticia/imagem/5750/grande/"
     },
     {"id": 13,
     "name": "Deng Linlin",
