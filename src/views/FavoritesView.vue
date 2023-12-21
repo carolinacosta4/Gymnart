@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="Search">
+    <h1>This is the favorites page</h1>
   </div>
 </template>
 
