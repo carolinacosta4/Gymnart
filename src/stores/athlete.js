@@ -5,16 +5,17 @@ const API_BASE_URL = "http://localhost:4000"
 
 export const useAthleteStore = defineStore('athlete', {
   state: () => ({ 
-    athlete: []
+    athletes: []
    }),
   getters: {
-    getAthlete: (state) => state.athlete,
+    getAthletes: (state) => state.athletes,
+    getAthlete: (state) => (id) => state.athletes.find((athlete) => athlete.id == id)
   },
   actions: {
-    async fetchAthlete() {
+    async fetchAthletes() {
       try {
         const data = await api.get(API_BASE_URL, 'athletes')
-        this.athlete = data
+        this.athletes = data
       } catch (error) {
         throw error
       }

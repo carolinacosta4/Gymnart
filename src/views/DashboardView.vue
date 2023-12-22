@@ -1,22 +1,23 @@
 <template>
-    <h1>Dashboard</h1>
+    <h1 class="red">Dashboard</h1>
     <div id="dashboard">
-        <div v-if="eventsDelayed.length == 0" id="athleteRoutine">
-            <p>NO ATHLETE LIVE</p>
+        <div v-if="eventsDelayed.length == 0" id="noAthleteRoutine">
+          <img src="@/assets/movements/movement.png" style="width: 10em;">
+          <h2 id="noAthlete">NO ATHLETE LIVE :(</h2>
         </div>
         <div v-else id="athleteRoutine">
             <div id="athleteInfo">
                 <img :src="currentAthleteThumbnail" id="thumbnail">
                 <div>
-                    <h2>{{ currentAthleteName }}</h2>
-                    <h2>({{ currentAthleteTeam }})</h2>
-                    <h3>{{ seconds }}s</h3>
+                    <h2 class="red">{{ currentAthleteName }}</h2>
+                    <h2 class="red">({{ currentAthleteTeam }})</h2>
+                    <h3 class="blue fontSize">{{ seconds }}s</h3>
                 </div>
             </div>
             <div id="header">
                 <span></span>
-                <p style="color: #4857A0;" class="light">Seconds</p>
-                <p style="color: #ED2E2F;" class="light">Pontuation</p>
+                <p class="blue light fontSize13">Seconds</p>
+                <p class="red light fontSize13">Pontuation</p>
             </div>
             <div id="live">
                 <div v-for="ev in eventsDelayed" :key="ev.id">
@@ -24,15 +25,15 @@
                     <div class="gridEvents">
                         <img :src="ev.movementPicture" class="movementPicture">
                         <p id="movement">{{ ev.movement }}</p>
-                        <p style="color: #4857A0;" class="seconds">{{ ev.seconds }}</p>
-                        <p style="color: #ED2E2F;" class="pontuation">{{ ev.pontuation }}</p>
+                        <p class="blue seconds fontSize20">{{ ev.seconds }}</p>
+                        <p class="red pontuation fontSize20">{{ ev.pontuation }}</p>
                     </div>
                 </div>
             </div>
             <div id="totalGrid">
                 <span></span>
                 <div id="total">
-                    <p style="color: #ED2E2F;">Total: {{ totalPontuation }}</p>
+                    <p class="red">Total: {{ totalPontuation }}</p>
                 </div>
             </div>
         </div>
@@ -40,20 +41,23 @@
             <div id="top3Teams">
                 <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
                 <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
-                <h2>Top 3 Teams</h2>
-                <div v-for="index in 3" id="top">
-                    <h3>{{ index }}</h3>
-                    <img src="">
-                    <p>United States of America</p>
-                    <p>70</p>
+                <h2 class="blue">Top 3 Teams</h2>
+                <div v-for="(team, index) in sortPontuationTeam" id="top">
+                    <h3 class="blue light fontSize20">{{ index+1 }}</h3>
+                    <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
+                    <p class="red light fontSize16">{{ team.teamName }}</p>
+                    <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
                 </div>
             </div>
             <div id="top5Athletes">
                 <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
                 <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
-                <h2>Top 5 Athletes</h2>
-                <div v-for="index in 5" id="top">
-                    <h3>{{ index }}</h3>
+                <h2 class="red">Top 5 Athletes</h2>
+                <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
+                    <h3 class="light fontSize20">{{ index+1 }}</h3>
+                    <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
+                    <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
+                    <p class="red light fontSize20">{{ athlete.pontuation }}</p>
                 </div>
             </div>
         </div>
@@ -63,12 +67,14 @@
 <script>
 import { useEventStore } from "@/stores/event"
 import { useAthleteStore } from "@/stores/athlete"
+import { useTeamStore } from "@/stores/team"
 
 export default {
     data() {
         return {
             eventsStore: useEventStore(),
             athleteStore: useAthleteStore(),
+            teamStore: useTeamStore(),
             eventsDelayed: [],
             athlete: "",
             athletes: "",
@@ -76,56 +82,96 @@ export default {
             totalPontuation: 0,
             currentAthleteName: "",
             currentAthleteTeam: "",
-            currentAthleteThumbnail: ""
+            currentAthleteThumbnail: "",
+            top5AthletesArray: [],
+            top3TeamsArray: [],
+            currentAthlete: ""
         }
     },
 
     created() {
       try {
-        this.athleteStore.fetchAthlete()
+        this.athleteStore.fetchAthletes()
         this.eventsStore.fetchEvents()
+        this.teamStore.fetchTeams()
 
         let currentAthleteIndex = 0
         let currentEventIndex = 0
+        let interval = ""
 
-        const displayNextEvent = () => {
-          const currentAthlete = this.eventsStore.getEvents[currentAthleteIndex]
-          if (currentAthlete) {
-            const currentEvent = currentAthlete.events[currentEventIndex]
+        const displayEvent = () => {
+          this.currentAthlete = this.eventsStore.getEvents[currentAthleteIndex]
+          if (this.currentAthlete) {
+            let athleteFind = this.athleteStore.getAthlete(this.currentAthlete.idAthlete)
+            const currentEvent = this.currentAthlete.events[currentEventIndex]
             if (currentEvent) {
               this.eventsDelayed.push(currentEvent)
               this.seconds = currentEvent.seconds
               this.totalPontuation += currentEvent.pontuation
               currentEventIndex++
-                this.currentAthleteName = currentAthlete.athleteName
-                this.currentAthleteTeam = currentAthlete.athleteTeam
-                this.currentAthleteThumbnail = currentAthlete.thumbnailPath
+              this.currentAthleteName = athleteFind.name
+              this.currentAthleteTeam = athleteFind.teamAcronym
+              this.currentAthleteThumbnail = athleteFind.thumbnailPath
             } else {
               currentEventIndex = 0;
-              setTimeout(() => {
-                currentAthleteIndex++;
-                this.eventsDelayed = []; 
-                this.totalPontuation = 0; 
-                displayNextEvent(); 
-              }, 1000);
+              this.top3Teams()
+              this.top5Athletes()
+              currentAthleteIndex++;
+              this.eventsDelayed = []; 
+              this.totalPontuation = 0; 
+              displayEvent(); 
             }
           } else {
-            clearInterval(setInterval(displayNextEvent, 5000));
+            clearInterval(interval);
           }
         };
-        displayNextEvent();
-        setInterval(displayNextEvent, 5000);
+        displayEvent();
+        interval = setInterval(displayEvent, 5000);
       } catch (error) {
         alert("ERROR: " + error.message);
       }
     },
 
-
-
     methods: {
-        top3Team() {
-            
+        top3Teams() {
+          let team = this.teamStore.getTeam(this.currentAthleteTeam)
+          let findTeamIndex = this.top3TeamsArray.findIndex((team) => team.teamAcronym == this.currentAthleteTeam)
+          if(findTeamIndex != -1){
+            let pontuation = +this.top3TeamsArray[findTeamIndex].teamPontuation + this.totalPontuation
+            let teamReplace =  {teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: pontuation}
+            this.top3TeamsArray.splice(findTeamIndex, 1, teamReplace)
+          }else{
+            this.top3TeamsArray.push({teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: this.totalPontuation})
+          }
+        },
+
+        top5Athletes(){
+          this.top5AthletesArray.push({athleteName: this.currentAthleteName, athleteThumbnail: this.currentAthleteThumbnail, pontuation: this.totalPontuation})
         }
+    },
+
+    computed: {
+      sortPontuationAthlete() {
+        const sortedPontuationArray = this.top5AthletesArray.sort((a, b) => {
+          if(a.pontuation > b.pontuation) return -1
+          if(a.pontuation == b.pontuation) return 0
+          if(a.pontuation < b.pontuation) return 1
+        })
+
+        return sortedPontuationArray.slice(0, 5)
+      },
+
+      sortPontuationTeam(){
+        const sortedPontuationArray = this.top3TeamsArray.sort((a, b) => {
+          if(a.teamPontuation > b.teamPontuation) return -1
+          if(a.teamPontuation == b.teamPontuation) return 0
+          if(a.teamPontuation < b.teamPontuation) return 1
+        })
+
+        console.log("hi");
+        return sortedPontuationArray.slice(0, 3)
+      },
+
     },
 }
 </script>
@@ -151,6 +197,21 @@ export default {
         background-color: #FCF3F3;
     }
 
+    #noAthleteRoutine{
+      border: 1px solid #ED2E2F;
+      border-radius: 15px;
+      height: 84%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #noAthlete{
+      color: #ED2E2F;
+      text-align: center;
+    }
+
     .gridEvents {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -164,34 +225,38 @@ export default {
     }
 
     #athleteInfo{
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        margin: 2em 4em;
-        font-family: Lexend Deca Regular;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      margin: 2em 4em;
+      font-family: Lexend Deca Regular;
+      column-gap: 1em;
     }
 
     #thumbnail{
-        width: 7em;
-        border-radius: 7px;
+      width: 7em;
+      border-radius: 7px;
     }
 
     #athleteRoutine{
-        border: 1px solid #ED2E2F;
-        border-radius: 15px;
-        height: 84%;
+      border: 1px solid #ED2E2F;
+      border-radius: 15px;
+      height: 84%;
     }
 
     h1{
         font-family: Saphile;
-        color: #ED2E2F;
     }
 
-    h2{
-        color: #ED2E2F;
+    .fontSize20{
+      font-size: 20px;
     }
 
-    h3{
-        color: #4857A0;
+    .fontSize16{
+      font-size: 16px;
+    }
+
+    .fontSize13{
+      font-size: 13px;
     }
 
     #top3Teams{
@@ -208,18 +273,21 @@ export default {
         border-radius: 15px;
         position: relative;
         overflow: hidden;
+        min-height: 40em;
     }
 
     #dashboard{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 2em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2em;
+      min-height: 40em;
     }
 
     #tops{
-        display: grid;
-        grid-template-rows: 1fr 2fr;
-        row-gap: 2em;
+      display: grid;
+      grid-template-rows: 1fr 2fr;
+      row-gap: 2em;
+      min-height: 40em;
     }
 
   .background3 {
@@ -255,7 +323,8 @@ export default {
 
   #top{
     display: grid;
-    grid-template-columns: 1fr 0.5fr 3fr 2fr;
+    grid-template-columns: 0.1fr 0.1fr 4fr 2fr;
+    column-gap: 2em;
     z-index: 2;
     background-color: #FCF3F3;
     margin: 2em;
@@ -264,7 +333,12 @@ export default {
     align-items: center;
   }
 
-  #top h3{
+  #top5Athletes div h3{
+    margin: 0 2em;
+    color: #ED2E2F50;
+  }
+
+  #top3Teams div h3{
     margin: 0 2em;
     color: #4857A050;
   }
@@ -281,7 +355,6 @@ export default {
 
   .light{
     font-family: Lexend Deca Light;
-    font-size: 13px;
   }
   #nameMovement{
     text-align: left;
@@ -292,9 +365,17 @@ export default {
     text-align: center;
   }
 
+  .blue{
+    color: #4857A0;
+  }
+
+  .red{
+    color: #ED2E2F;
+  }
+
   #totalGrid{
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 3fr 1fr;
     margin-right: 1em;
   }
 
@@ -304,6 +385,8 @@ export default {
   }
 
   #total p{
-    margin: 1em;
+    margin: 0.5em;
+    font-size: 20px;
+    text-align: center;
   }
 </style>

@@ -9,6 +9,7 @@ export const useTeamStore = defineStore('team', {
    }),
   getters: {
     getTeams: (state) => state.teams,
+    getTeam: (state) => (acronym) => state.teams.find((team) => team.acronym == acronym)
   },
   actions: {
     async fetchTeams() {
