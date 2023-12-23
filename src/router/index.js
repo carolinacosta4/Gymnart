@@ -6,7 +6,9 @@ import FavoritesView from '../views/FavoritesView.vue'
 import UserPageView from '../views/UserPageView.vue'
 import CalendarView from '../views/CalendarView.vue'
 import QuizView from '../views/QuizView.vue'
-
+import LandingPageView from '../views/LandingPageView.vue'
+import LoginView from '../views/LoginSignUpView.vue'
+import PageNotFoundView from '../views/PageNotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +17,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
     },
     {
       path: '/search',
@@ -27,7 +34,7 @@ const router = createRouter({
       component: DashboardView
     },
     {
-      path: '/user', // add username to the path
+      path: '/user', // add username to the path?
       name: 'user',
       component: UserPageView
     },
@@ -45,6 +52,16 @@ const router = createRouter({
       path: '/quiz',
       name: 'quiz',
       component: QuizView
+    },
+    {
+      path: '/ladingPage',
+      name: 'landingPage',
+      component: LandingPageView
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "pagenotfound",
+      component: PageNotFoundView,
     },
   ]
 })
