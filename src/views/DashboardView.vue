@@ -176,7 +176,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
     @font-face {
         font-family: Saphile;
         src: url(@/assets/Saphile/Saphile-Regular.otf);
