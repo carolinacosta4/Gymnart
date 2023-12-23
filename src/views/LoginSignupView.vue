@@ -134,8 +134,7 @@
 	}
 </script>
 
-
-<style lang="css" scoped>
+<style  lang="css" scoped>
 
 
 @font-face {
