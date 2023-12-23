@@ -17,7 +17,17 @@
   }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+    @font-face {
+        font-family: Lexend Deca Regular;
+        src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: Lexend Deca Light;
+        src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+    }
+
 #main{
   display: flex;
   flex-direction: column;
@@ -30,6 +40,8 @@
   margin: 2em 3em 4em 3em;
   text-align: left;
   font-size: 16px;
+  color: #4857a0;
+  font-family: Lexend Deca Regular;
 }
 
 #btnGrid{

@@ -25,3 +25,9 @@ import Header from './assets/components/Header.vue';
   <RouterView />
   
 </template>
+
+<style lang="css" >
+  body{
+    background-color: #fcf3f3;
+  }
+</style>
