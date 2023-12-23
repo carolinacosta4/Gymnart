@@ -15,8 +15,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'landingPage',
+      component: LandingPageView
     },
     {
       path: '/login',
@@ -34,7 +34,7 @@ const router = createRouter({
       component: DashboardView
     },
     {
-      path: '/user', // add username to the path?
+      path: '/user', // add username to the path
       name: 'user',
       component: UserPageView
     },
@@ -54,9 +54,9 @@ const router = createRouter({
       component: QuizView
     },
     {
-      path: '/ladingPage',
-      name: 'landingPage',
-      component: LandingPageView
+      path: '/home',
+      name: 'home',
+      component: HomeView
     },
     {
       path: "/:pathMatch(.*)*",
