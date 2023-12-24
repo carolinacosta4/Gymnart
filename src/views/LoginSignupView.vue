@@ -45,7 +45,7 @@
 			</div>
 		
 		</div>
-		<p @click="this.$router.push('/ladingPage')" id="btnBack">Go back</p>     
+		<p @click="this.$router.push('/')" id="btnBack">Go back</p>     
 	</div>
 </template>
 
