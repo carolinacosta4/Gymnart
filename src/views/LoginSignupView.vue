@@ -45,16 +45,19 @@
 			</div>
 		
 		</div>
-		<p @click="this.$router.push('/ladingPage')" id="btnBack">Go back</p>     
+		<p @click="this.$router.push('/')" id="btnBack">Go back</p>     
 	</div>
 </template>
 
 
 
 <script>
+import { useUserStore } from '@/stores/users';
+
 	export default{
 		data() {
 			return {
+				store: useUserStore(),
 				name: '',
 				username: '',
 				email: '',
@@ -75,6 +78,8 @@
 			logInButton.addEventListener('click', () => {
 				container.classList.remove("right-panel-active");
 			});
+
+			console.log(this.store.users)
 		},
 		computed: {
 			isRequired(){
@@ -85,52 +90,25 @@
 			}
 		},
 		methods: {
-			login() {
-				const user = JSON.parse(localStorage.users).find(
-					(user) => user.username == this.usernameLogin && user.password == this.passwordLogin
-				);
-				if (user) {
-					localStorage.loggedUser = JSON.stringify(user);
-
+    		login() {
+				try {
+					const store = useUserStore()
+					store.login(this.usernameLogin, this.passwordLogin)
 					this.$router.push({ name: "home" });
-				} else {
-					alert("Invalid User!");
+					
+				} catch (error) {
+					alert(`Error: ${error.message}`); 
 				}
 			},
 			signup(){
-				const userName = JSON.parse(localStorage.users).find((user) => user.username == this.username)
-				const userEmail = JSON.parse(localStorage.users).find((user) => user.email == this.email)
-				if (userName){
-					alert('username already exists')
-				} 
-				else if (userEmail){
-					alert('email already linked to an account')
+				try {
+					const store = useUserStore()
+					store.signup(this.name, this.username, this.email, this.password, this.confirmPassword)
+				} catch (error) {
+					alert(`Error: ${error.message}`);
 				}
-				else if (this.name === '' || this.username === '' || this.email === '' || this.confirmPassword === '' || this.password === ''){
-					alert('fill all fields to create your account')
-				}
-				else if (this.password === this.confirmPassword){
-					let newUser = { name: this.name, 
-									username: this.username, 
-									email: this.email, 
-									password: this.confirmPassword, 
-									type:"guest", 
-									favoriteAthletes: [], 
-									favoriteTeams: [], 
-									medals: []
-					};
-					const users = JSON.parse(localStorage.getItem('users'));
-					users.push(newUser);
-					localStorage.setItem('users', JSON.stringify(users));
-					this.$router.push({ name: "home" })
-					alert('account created')
-				}
-				else {
-					alert('passwords do not match')
-				}
-				
 			}
-		},
+  },
 	}
 </script>
 

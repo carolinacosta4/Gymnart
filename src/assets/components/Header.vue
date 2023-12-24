@@ -13,16 +13,25 @@
 
 <script>
 import { RouterLink } from "vue-router";
+import { useUserStore } from "@/stores/users";
+
 export default {
     data() {
         return {
-            user: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null 
+            store: useUserStore(),
         }
+    },
+    computed: {
+        isUser(){
+            return this.store.isUser
+        },
     },
     methods: {
         logout() {
-            localStorage.removeItem("loggedUser")
-            this.$router.push({ name: "landingPage" });
+            const store = useUserStore()
+            // if (store.isUser) {
+                store.logout();
+            // }
         }
     },
 }
