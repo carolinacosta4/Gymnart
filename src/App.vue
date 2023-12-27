@@ -21,7 +21,7 @@ import Header from './assets/components/Header.vue';
 
 
 <template id="app">
-  <Header v-if="this.$route.path !== '/login' && this.$route.path !== '/'"></Header>
+  <Header v-if="this.$route.name !== 'login' && this.$route.name !== 'landingPage' && this.$route.name !== 'pageNotFound'"></Header>
   <RouterView />
   
 </template>
