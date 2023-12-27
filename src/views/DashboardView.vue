@@ -24,16 +24,16 @@
                     <p class="light" id="nameMovement">{{ ev.nameMovement }}</p>
                     <div class="gridEvents">
                         <img :src="ev.movementPicture" class="movementPicture">
-                        <p id="movement">{{ ev.movement }}</p>
-                        <p class="blue seconds fontSize20">{{ ev.seconds }}</p>
-                        <p class="red pontuation fontSize20">{{ ev.pontuation }}</p>
+                        <p id="movement" class="regular">{{ ev.movement }}</p>
+                        <p class="blue seconds fontSize20 regular">{{ ev.seconds }}</p>
+                        <p class="red pontuation fontSize20 regular">{{ ev.pontuation }}</p>
                     </div>
                 </div>
             </div>
             <div id="totalGrid">
                 <span></span>
                 <div id="total">
-                    <p class="red">Total: {{ totalPontuation }}</p>
+                    <p class="red regular">Total: {{ totalPontuation }}</p>
                 </div>
             </div>
         </div>
@@ -179,21 +179,21 @@ export default {
 <style lang="css" scoped>
     @font-face {
         font-family: Saphile;
-        src: url(@/assets/Saphile/Saphile-Regular.otf);
+        src: url(../assets/Saphile/Saphile-Regular.otf);
     }
 
     @font-face {
         font-family: Lexend Deca Regular;
-        src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+        src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
     }
 
     @font-face {
         font-family: Lexend Deca Light;
-        src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+        src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
     }
 
     body{
-        font-family: Lexend Deca Regular;
+        font-family: Lexend Deca Regular !important;
         background-color: #FCF3F3;
     }
 
@@ -267,6 +267,10 @@ export default {
 
     #top3Teams h2, #top5Athletes h2{
         margin: 0.5em 1.4em;
+    }
+
+    h2, .regular{
+      font-family: Lexend Deca Regular;
     }
 
     #top5Athletes{
@@ -358,7 +362,7 @@ export default {
   }
   #nameMovement{
     text-align: left;
-    margin-left: 4.5em;
+    margin-left: 4em;
   }
 
   .seconds, .pontuation{

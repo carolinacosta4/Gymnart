@@ -5,12 +5,13 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     user: null,
     users: [
-        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: []},
-        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: []},
+        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: []},
+        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: []},
       ],
   }),
   getters: {
     getUser: (state) => state.user,
+    getUsers: (state) => state.users,
     isUser: (state) => state.isUserAuthenticated,
   },
   actions: {
@@ -29,6 +30,7 @@ export const useUserStore = defineStore("user", {
         this.isUserAuthenticated = false;
         this.user = null;
     },
+
     signup(name, username, email, password, confirmPassword){
         const userName = this.users.find((user) => user.username == username);
         const userEmail = this.users.find((user) => user.email == email);
@@ -51,6 +53,7 @@ export const useUserStore = defineStore("user", {
                 username: username, 
                 email: email, 
                 password: confirmPassword, 
+                profilePicture: "../assets/maria.png",
                 type:"guest", 
                 favoriteAthletes: [], 
                 favoriteTeams: [], 
@@ -66,3 +69,5 @@ export const useUserStore = defineStore("user", {
   },  
   persist: true,
 });
+
+// localStorage.clear()
