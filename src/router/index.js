@@ -37,7 +37,7 @@ const router = createRouter({
       component: DashboardView
     },
     {
-      path: '/:id',
+      path: '/account/:id',
       name: 'account',
       component: UserPageView
     },
