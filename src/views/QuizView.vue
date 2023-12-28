@@ -7,7 +7,7 @@
       <div class="container">
         <div class="paralels box">
           <div class="imageHover marginBottom26" @mouseover="showOverlay" @mouseout="hideOverlay">
-            <img @click="selQuizz(1)" id="parallelsImg" src="@/assets/paralels.png" alt="">
+            <img @click="selQuizz(1)" src="@/assets/paralels.png" alt="">
             <img @click="selQuizz(1)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
           </div>
           <div class="d-flex justify-space-between">
@@ -20,7 +20,7 @@
         </div>
         <div class="beam box">
           <div class="imageHover marginBottom26" @mouseover="showOverlay" @mouseout="hideOverlay">
-            <img @click="selQuizz(2)" id="beamImg" src="@/assets/beam.png" alt="">
+            <img @click="selQuizz(2)" src="@/assets/beam.png" alt="">
             <img @click="selQuizz(2)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
           </div>
           <div class="d-flex justify-space-between">
@@ -33,8 +33,8 @@
         </div>
         <div class="solo box">
           <div class="imageHover marginBottom26" @mouseover="showOverlay" @mouseout="hideOverlay">
-            <img @click="selQuizz(3)" id="soloImg" src="@/assets/solo.png" alt="">
-            <img @click="selQuizz(3)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
+              <img @click="selQuizz(3)" src="@/assets/solo.png" alt="">
+              <img @click="selQuizz(3)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
@@ -46,8 +46,8 @@
         </div>
         <div class="vault box">
           <div class="imageHover marginBottom26" @mouseover="showOverlay" @mouseout="hideOverlay">
-            <img @click="selQuizz(4)" id="vaultImg" src="@/assets/vault.png" alt="">
-            <img @click="selQuizz(4)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
+              <img @click="selQuizz(4)" src="@/assets/vault.png" alt="">
+              <img @click="selQuizz(4)" src="@/assets/Play Icon.svg" class="hover-image" alt="">
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
@@ -67,7 +67,8 @@
         <p class="black regular fontSize24 marginLeft50 marginTop38 marginBottom41">{{ quizzes[quizz -
           1].questions[curQuestion].id }}. {{ quizzes[quizz
     - 1].questions[curQuestion].question }}</p>
-        <img class="imgQuestion marginLeft160 marginBottom48" :src="quizzes[quizz - 1].questions[curQuestion].image" alt="">
+        <img class="imgQuestion marginLeft160 marginBottom48" :src="quizzes[quizz - 1].questions[curQuestion].image"
+          alt="">
 
         <div :class="optionBg('A')" @click="selOption('A')">
           <div class="d-flex align-center">
@@ -110,13 +111,20 @@
 
       </div>
       <div v-if="quizzes[quizz - 1].showOnFinish && quizzes[quizz - 1].medalAwarded">
-        <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Congratulations!</h1>
+        <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Congratulations! {{ store.getUser.name
+        }}</h1>
+        <div class="d-flex justify-center marginBottom85">
+          <p class="red bold fontSize96 marginRight78">{{ quizzes[quizz - 1].lastScore }}%</p>
+          <img src="@/assets/Gold Medal.svg" alt="">
+        </div>
         <p class="d-flex justify-center black fontSize26 light">You got {{ quizzes[quizz - 1].lastScore }}% right and won
           a</p>
         <p class="d-flex justify-center gold fontSize26 light">GOLDEN MEDAL</p>
-        <p class="black light">Go to your user page to see what changed!</p>
-        <button @click="tryAgain(this.quizz)" class="btnRedFill marginRight27 medium fontSize22">Try Again</button>
-        <button @click="back" class="btnRedFill medium fontSize22">Back</button>
+        <p class="d-flex justify-center black fontSize20 light">Go to your user page to see what changed!</p>
+        <div class="d-flex justify-center marginTop69">
+          <button @click="tryAgain(this.quizz)" class="btnRedFill marginRight27 medium fontSize22">Try Again</button>
+          <button @click="back" class="btnRedFill medium fontSize22">Back</button>
+        </div>
       </div>
       <div v-if="quizzes[quizz - 1].showOnFinish && !quizzes[quizz - 1].medalAwarded">
         <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Bad News!</h1>
@@ -139,10 +147,12 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/users';
 
 export default {
   data() {
     return {
+      store: useUserStore(),
       quizz: 0,
       curQuestion: 0,
       quizzes: [
@@ -762,6 +772,7 @@ export default {
     },
     submitAnswers(quizz) {
       let correctAnswers = 0;
+      const store = useUserStore()
       for (let i = 0; i < this.quizzes[quizz].numQuestions; i++) {
         if (this.quizzes[quizz].questions[i].selectedOption == this.quizzes[quizz].questions[i].correctAnswer) {
           correctAnswers++;
@@ -770,6 +781,7 @@ export default {
       this.quizzes[quizz].lastScore = Math.round(correctAnswers / this.quizzes[quizz].numQuestions * 100);
       if (correctAnswers >= this.quizzes[quizz].passingScore) {
         this.quizzes[quizz].medalAwarded = true;
+        store.addMedal(this.quizzes[quizz].name)
       } else {
         this.quizzes[quizz].medalAwarded = false;
       }
@@ -797,18 +809,16 @@ export default {
         this.quizzes[this.quizz - 1].questions[i].selectedOption = "";
       }
     },
-    showOverlay() {
-      const hoverImage = this.$el.querySelector('.hover-image');
-      const hoverBlue = this.$el.querySelector('.hoverBlue');
-      hoverBlue.style.opacity = 1;
-      hoverImage.style.opacity = 1;
+    showOverlay(event) {
+      const container = event.currentTarget;
+      container.classList.add('hovered');
     },
-    hideOverlay() {
-      const hoverImage = this.$el.querySelector('.hover-image');
-      const hoverBlue = this.$el.querySelector('.hoverBlue');
-      hoverBlue.style.opacity = 0;
-      hoverImage.style.opacity = 0;
-    }
+
+    hideOverlay(event) {
+      const container = event.currentTarget;
+      container.classList.remove('hovered');
+    },
+
   },
 };
 
@@ -852,6 +862,10 @@ export default {
 
 .marginTop38 {
   margin-top: 38px;
+}
+
+.marginTop69 {
+  margin-top: 69px;
 }
 
 .marginTop25 {
@@ -945,10 +959,6 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-.imageHover:hover .hover-image {
-  opacity: 1;
-}
-
 .imageHover::before {
   content: "";
   position: absolute;
@@ -958,14 +968,17 @@ export default {
   width: 100%;
   height: 223px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
   background-color: rgba(72, 87, 160, 0.6);
 }
 
-.imageHover:hover::before {
+.hovered .hover-image {
   opacity: 1;
 }
 
+.hovered::before {
+  opacity: 1;
+}
 .imgQuestion {
   width: 670px;
   height: 315px;
@@ -1131,4 +1144,5 @@ body {
   background-color: #FCF3F3;
   width: 909px;
   height: 54px;
-}</style>
+}
+</style>

@@ -6,6 +6,8 @@
         <span class="pr-3"></span>
         <RouterLink :to="{ name: 'login' }" class="text">Login</RouterLink>
         <span class="pr-3"></span>
+        <RouterLink :to="{ name: 'quiz' }" class="text">Quizzes</RouterLink>
+        <span class="pr-3"></span>
         <RouterLink :to="{ name: 'landingPage' }" class="text" @click="logout()">Logout</RouterLink>
         <span class="pr-3"></span>
     </div>

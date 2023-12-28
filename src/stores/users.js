@@ -62,7 +62,23 @@ export const useUserStore = defineStore("user", {
             this.isUserAuthenticated = true;
             alert('account created')
         }
+    },
+    addMedal(newMedal) {
+        if (this.isUserAuthenticated) {
+            const existingMedal = this.user.medals.find(
+                (medal) => medal === newMedal
+            );
+            if (!existingMedal) {
+                this.user.medals.push(newMedal);
+            }else{
+                throw Error("Medal already added.");
+            }
+        } else {
+            throw Error("User not authenticated. Cannot add medal.");
+        }
     }
+    
+    
   },  
   persist: true,
 });
