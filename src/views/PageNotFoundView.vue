@@ -15,7 +15,7 @@
 <script setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 
 @font-face {
     font-family: LexendDecaRegular;
