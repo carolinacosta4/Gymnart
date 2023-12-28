@@ -6,6 +6,7 @@ import FavoritesView from '../views/FavoritesView.vue'
 import UserPageView from '../views/UserPageView.vue'
 import CalendarView from '../views/CalendarView.vue'
 import QuizView from '../views/QuizView.vue'
+import QuizSelectedView from '../views/QuizSelectedView.vue'
 import LandingPageView from '../views/LandingPageView.vue'
 import LoginView from '../views/LoginSignUpView.vue'
 import PageNotFoundView from '../views/PageNotFoundView.vue'
@@ -52,6 +53,11 @@ const router = createRouter({
       path: '/quiz',
       name: 'quiz',
       component: QuizView
+    },
+    {
+      path: '/quizSelected',
+      name: 'quizSelected',
+      component: QuizSelectedView
     },
     {
       path: '/home',
