@@ -1,9 +1,12 @@
 <template>
-    <h1>Manage Users</h1>
-    <div>
-        <img @click="toggleBtn" src="../assets/search.png" alt="">
-        <v-text-field v-if="isVisible" label="Search" v-model="searchAthletes" append-inner-icon="mdi-magnify" single-line hide-details></v-text-field>
-        <p>filter</p>
+    <h1>Manage Athletes</h1>
+    <div id="filterOptions">
+        <input type="text" v-if="isVisible" label="Search" v-model="searchAthletes" id="search">
+        <img @click="toggleBtn" src="../assets/search.png">
+        <div>
+            <img src="../assets/filter.png">
+            <p>Filter</p>
+        </div>
     </div>
     <div id="table">
         <div id="tableHead">
@@ -18,7 +21,10 @@
             <p>{{ athlete.gold }}</p>
             <p>{{ athlete.silver }}</p>
             <p>{{ athlete.bronze }}</p>
-            <p>{{ athlete.name }}</p>
+            <div>
+                <img src="../assets/delete.png" @click="deleteAthlete(athlete.name)">
+                <img src="../assets/edit.svg" @click="editTeam(athlete.name)">
+            </div>
         </div>
     </div>
 
@@ -43,16 +49,26 @@ import { useAthleteStore } from '../stores/athlete';
 
             search() {
                 return this.athletes.filter((athlete) => athlete.name.toLowerCase().startsWith(this.searchAthletes.toLowerCase()))
-            },
-
-            toggleBtn() {
-                return this.isVisible = !this.isVisible
             }
        },
 
-       created () {
-        this.athleteStore.fetchAthletes();
-       },
+        methods: {
+            toggleBtn() {
+                return this.isVisible = !this.isVisible
+            },
+
+            deleteAthlete(){
+
+            },
+
+            editAthlete(){
+
+            }
+        },
+
+        created () {
+            this.athleteStore.fetchAthletes();
+        },
     }
 </script>
 
@@ -97,5 +113,55 @@ import { useAthleteStore } from '../stores/athlete';
     grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
     height: 4em;
     align-items: center;
+}
+
+#tableBody div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tableBody div img{
+    width: 2em;
+    margin: 0 1em;
+    color: #4857A0;
+}
+
+#filterOptions{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+    justify-content: right;
+    align-items: center;
+}
+
+#filterOptions img{
+    width: 2em;
+    height: 2em;
+}
+
+#filterOptions div{
+    display: flex;
+    flex-direction: row;
+    margin: 0 1em;
+    align-items: center;
+}
+
+#filterOptions p{
+    font-size: 24px;
+    color: #F16A64;
+    font-family: Lexend Deca Regular;
+}
+
+#filterOptions div img{
+    width: 2.4em;
+    height: 1.6em;
+    margin: 0 1em;
+}
+
+#search{
+    background-color: #fcf3f3;
+    border-bottom: 3px solid #F16A64;
+    outline: none;
 }
 </style>

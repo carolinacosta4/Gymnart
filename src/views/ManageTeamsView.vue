@@ -1,9 +1,12 @@
 <template>
-    <h1>Manage Users</h1>
-    <div>
-        <img @click="toggleBtn" src="../assets/search.png" alt="">
-        <v-text-field v-if="isVisible" label="Search" v-model="searchTeams" append-inner-icon="mdi-magnify" single-line hide-details></v-text-field>
-        <p>filter</p>
+    <h1>Manage Teams</h1>
+    <div id="filterOptions">
+        <input type="text" v-if="isVisible" label="Search" v-model="searchTeams" id="search">
+        <img @click="toggleBtn" src="../assets/search.png">
+        <div>
+            <img src="../assets/filter.png">
+            <p>Filter</p>
+        </div>
     </div>
     <div id="table">
         <div id="tableHead">
@@ -18,7 +21,10 @@
             <p>{{ team.gold }}</p>
             <p>{{ team.silver }}</p>
             <p>{{ team.bronze }}</p>
-            <p>{{ team.name }}</p>
+            <div>
+                <img src="../assets/delete.png" @click="deleteTeam(team.acronym)">
+                <img src="../assets/edit.svg" @click="editTeam(team.acronym)">
+            </div>
         </div>
     </div>
   </template>
@@ -42,16 +48,26 @@ import { useTeamStore } from '../stores/team';
 
             search() {
                 return this.teams.filter((team) => team.name.toLowerCase().startsWith(this.searchTeams.toLowerCase()))
-            },
-
-            toggleBtn() {
-                return this.isVisible = !this.isVisible
             }
        },
 
-       created () {
-        this.teamStore.fetchTeams();
-       },
+        created () {
+            this.teamStore.fetchTeams();
+        },
+
+        methods: {
+            toggleBtn() {
+                return this.isVisible = !this.isVisible
+            },
+
+            deleteTeam(){
+
+            },
+
+            editTeam(){
+
+            }
+        },
     }
 </script>
 
@@ -77,7 +93,6 @@ import { useTeamStore } from '../stores/team';
 }
 
 #tableHead h3{
-    /* padding: 0 2em; */
     text-align: center;
     font-family: Lexend Deca Regular;
     color: #F16A64;
@@ -96,5 +111,55 @@ import { useTeamStore } from '../stores/team';
     grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
     height: 4em;
     align-items: center;
+}
+
+#tableBody div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tableBody div img{
+    width: 2em;
+    margin: 0 1em;
+    color: #4857A0;
+}
+
+#filterOptions{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+    justify-content: right;
+    align-items: center;
+}
+
+#filterOptions img{
+    width: 2em;
+    height: 2em;
+}
+
+#filterOptions div{
+    display: flex;
+    flex-direction: row;
+    margin: 0 1em;
+    align-items: center;
+}
+
+#filterOptions p{
+    font-size: 24px;
+    color: #F16A64;
+    font-family: Lexend Deca Regular;
+}
+
+#filterOptions div img{
+    width: 2.4em;
+    height: 1.6em;
+    margin: 0 1em;
+}
+
+#search{
+    background-color: #fcf3f3;
+    border-bottom: 3px solid #F16A64;
+    outline: none;
 }
 </style>

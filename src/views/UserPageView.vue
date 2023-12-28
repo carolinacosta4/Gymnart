@@ -3,7 +3,28 @@
     <div id="account">
       <div class="edit">
         <h1>Hi, {{ user.name }}!</h1>
-        <img src="../assets/edit.svg" alt="">
+        <v-dialog width="500">
+          <template v-slot:activator="{ props }">
+            <img src="../assets/edit.svg" v-bind="props">
+          </template>
+          <template v-slot:default="{ isActive }">
+            <v-card title="Dialog">
+              <v-card-text>
+                <input type="text" v-model="newName" style="background-color: aqua;">
+              </v-card-text>
+
+              <v-card-actions>
+                <v-btn @click="editName">SAVE</v-btn>
+                <v-spacer></v-spacer>
+
+                <v-btn
+                  text="Close Dialog"
+                  @click="isActive.value = false"
+                ></v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
       </div>
       <div>
         <p>Badge</p>
@@ -48,7 +69,8 @@ import { useUserStore } from '../stores/users';
   export default {
     data() {
       return {
-        userStore: useUserStore()
+        userStore: useUserStore(),
+        newName: ""
       }
     },
 
@@ -66,7 +88,23 @@ import { useUserStore } from '../stores/users';
       logout() {
         this.userStore.logout()
         this.$router.push({name: 'landingPage'})
-      }
+      },
+
+      editName() {
+        this.userStore.editName(this.newName)
+      },
+
+      editUsername() {
+        this.userStore.editUsername(this.newUsername)
+      },
+
+      editEmail() {
+        this.userStore.editEmail(this.newEmail)
+      },
+
+      editPassword() {
+        this.userStore.editPassword(this.newPassword)
+      },
     },
   }
 </script>
