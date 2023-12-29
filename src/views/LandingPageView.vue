@@ -5,7 +5,7 @@
   <div id="bgContainer">
     <div id="nav" class="padding4">
       <img id="iconGymnart" src="../assets/landingPageIcons/titulo gymnart-11.svg" alt="GYMNART icon">
-      <RouterLink :to="{ name: 'login' }" id="btnLoginNav"> <u>Log in</u></RouterLink>
+      <RouterLink :to="{ name: 'login' }" id="btnLoginNav"> Login</RouterLink>
     </div>
 
     <div id="masterMoves" class="padding4">
@@ -182,7 +182,11 @@
 #btnLoginNav{
   color: #fcf3f3;
   font-family: LexendDecaThin;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  border: 1px solid;
+  border-radius: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 /* ____ MAIN PAGE MASTER THE MOVES ______ */

@@ -18,13 +18,13 @@
 
 			<div class="form-container log-in-container" id="formLogin">
 				<v-form @submit.prevent="login">
-				<h1>Log in</h1>
+				<h1>Login</h1>
 				<v-text-field v-model="usernameLogin" label="Username" class="textField" :rules='isRequired'></v-text-field>
 
 				<v-text-field v-model="passwordLogin" label="Password" class="textField" :rules='isRequired'></v-text-field>
 				<p id="textForgotPass">Forgot your password?</p>
 
-				<button id="logBtn" type="submit">Log in</button>
+				<button id="logBtn" type="submit">Login</button>
 				</v-form>
 			</div>
 
@@ -33,7 +33,7 @@
 					<div class="overlay-panel overlay-left">
 						<h1 class="title">Welcome Back!</h1>
 						<p class="descriptionOverlay">Login to know the latest results from your favorite athletes</p>
-						<button class="ghost" id="logIn">Log In</button>
+						<button class="ghost" id="logIn">Login</button>
 					</div>
 
 					<div class="overlay-panel overlay-right">
