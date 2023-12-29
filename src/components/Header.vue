@@ -4,6 +4,8 @@
         <span class="pr-3"></span>
         <RouterLink :to="{name: 'dashboard'}" class="text">Dashboard</RouterLink>
         <span class="pr-3"></span>
+        <RouterLink :to="{ name: 'quiz' }" class="text">Quizzes</RouterLink>
+        <span class="pr-3"></span>
         <RouterLink v-if="!store.isUser" :to="{ name: 'login' }" class="text">Login</RouterLink>
         <RouterLink v-else :to="{ name: 'account', params:{id: user.username} }" class="text">Account</RouterLink>
         <span class="pr-3"></span>

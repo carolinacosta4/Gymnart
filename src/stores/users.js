@@ -103,7 +103,23 @@ export const useUserStore = defineStore("user", {
     delete(username){
         let index = this.users.findIndex((user) => user.username == username)
         this.users.splice(index, 1)
+    },
+    addMedal(newMedal) {
+        if (this.isUserAuthenticated) {
+            const existingMedal = this.user.medals.find(
+                (medal) => medal === newMedal
+            );
+            if (!existingMedal) {
+                this.user.medals.push(newMedal);
+            }else{
+                throw Error("Medal already added.");
+            }
+        } else {
+            throw Error("User not authenticated. Cannot add medal.");
+        }
     }
+    
+    
   },  
   persist: true,
 });
