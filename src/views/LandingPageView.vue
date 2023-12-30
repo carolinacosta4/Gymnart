@@ -164,10 +164,6 @@
 #bgContainer {
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
-	/* width: 100vw;
-	height: 100vh;
-  margin-left: -18vw;
-  margin-top: -5vh; */
 }
 
 #nav{

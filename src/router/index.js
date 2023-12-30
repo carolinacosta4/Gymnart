@@ -13,6 +13,7 @@ import PageNotFoundView from '../views/PageNotFoundView.vue'
 import ManageAthletesView from '../views/ManageAthletesView.vue'
 import ManageTeamsView from '../views/ManageTeamsView.vue'
 import ManageUsersView from '../views/ManageUsersView.vue'
+import { useUserStore } from '../stores/users'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,42 +31,50 @@ const router = createRouter({
     {
       path: '/search',
       name: 'search',
-      component: SearchView
+      component: SearchView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: DashboardView
+      component: DashboardView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/account/:id',
       name: 'account',
-      component: UserPageView
+      component: UserPageView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/favorites',
       name: 'favorites',
-      component: FavoritesView
+      component: FavoritesView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/calendar',
       name: 'calendar',
-      component: CalendarView
+      component: CalendarView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/quiz',
       name: 'quiz',
-      component: QuizView
+      component: QuizView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/quizSelected',
       name: 'quizSelected',
-      component: QuizSelectedView
+      component: QuizSelectedView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/home',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { requiresAuth: true }
     },
     {
       path: "/:pathMatch(.*)*",
@@ -76,18 +85,38 @@ const router = createRouter({
       path: "/manageUsers",
       name: "manageUsers",
       component: ManageUsersView,
+      meta: { requiresAuth: true }
     },
     {
       path: "/manageAthletes",
       name: "manageAthletes",
       component: ManageAthletesView,
+      meta: { requiresAuth: true }
     },
     {
       path: "/manageTeams",
       name: "manageTeams",
       component: ManageTeamsView,
+      meta: { requiresAuth: true }
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore();
+
+  if (to.meta.requiresAuth && !userStore.isUser) {
+    return next({
+      path: "/login",
+      query: { redirect: to.fullPath },
+    });
+  }
+
+  if ((to.name === 'login' || to.name === 'landingPage') && userStore.isUser) {
+    return next({ name: 'home' }); 
+  }
+
+  next();
+});
 
 export default router
