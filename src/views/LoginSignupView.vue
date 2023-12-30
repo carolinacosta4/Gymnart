@@ -8,8 +8,8 @@
 				<v-text-field v-model="name" label="Name" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
 				<v-text-field v-model="username" label="Username" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
 				<v-text-field v-model="email" label="Email" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
-				<v-text-field v-model="password" label="Password" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
-				<v-text-field v-model="confirmPassword" label="Confirm Password" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
+				<v-text-field v-model="password" type="password" label="Password" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
+				<v-text-field v-model="confirmPassword" type="password" label="Confirm Password" class="textField" :rules='isRequired' hide-details="auto"></v-text-field>
 				<span id="messageSignUp"></span>
 
 				<button id="accountCreated" type="submit">Sign Up</button>
@@ -21,7 +21,7 @@
 				<h1>Log in</h1>
 				<v-text-field v-model="usernameLogin" label="Username" class="textField" :rules='isRequired'></v-text-field>
 
-				<v-text-field v-model="passwordLogin" label="Password" class="textField" :rules='isRequired'></v-text-field>
+				<v-text-field v-model="passwordLogin" type="password" label="Password" class="textField" :rules='isRequired'></v-text-field>
 				<p id="textForgotPass">Forgot your password?</p>
 
 				<button id="logBtn" type="submit">Log in</button>

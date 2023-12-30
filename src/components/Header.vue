@@ -1,5 +1,7 @@
 <template>
     <div id="header">
+        <RouterLink :to="{ name: 'user' }" class="text">User Page</RouterLink>
+        <span class="pr-3"></span>
         <RouterLink :to="{ name: 'home' }" class="text">Home</RouterLink>
         <span class="pr-3"></span>
         <RouterLink :to="{name: 'dashboard'}" class="text">Dashboard</RouterLink>
