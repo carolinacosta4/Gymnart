@@ -39,7 +39,7 @@
                 <span class="pr-3"></span>
             </div>
         </div>
-        <span class="text"><img src="../assets/iconsNav/logout.svg" @click="openLogOutModal()" alt="logout icon outlined" class="icon"></span>
+        <img src="../assets/iconsNav/logout.svg" @click="openLogOutModal()" alt="logout icon outlined" class="icon">
     </div>
 
     <!-- Confirm Log Out Pop Up -->
