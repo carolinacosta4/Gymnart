@@ -1,6 +1,6 @@
 <template>
     <div id="header">
-        <RouterLink :to="{ name: 'account', params:{id: user.username}  }" class="text"><img src="../assets/iconsNav/user.svg" alt="user icon" class="icon" id="user" @click="addToList('user')"></RouterLink>
+        <RouterLink v-if="isUserLogged" :to="{ name: 'account', params:{id: user.username}  }" class="text"><img src="../assets/iconsNav/user.svg" alt="user icon" class="icon" id="user" @click="addToList('user')"></RouterLink>
         <span class="pr-3"></span>
         <div id="mainIcons">
             <div class="divHover">
@@ -45,7 +45,7 @@
 
 <script>
 import { RouterLink } from "vue-router";
-import { useUserStore } from "@/stores/users";
+import { useUserStore } from "../stores/users";
 
 export default {
     data() {
@@ -54,7 +54,7 @@ export default {
         }
     },
     computed: {
-        isUser(){
+        isUserLogged(){
             return this.store.isUser
         },
         
