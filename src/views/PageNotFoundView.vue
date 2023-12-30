@@ -27,6 +27,10 @@
     src: url(../assets/Saphile/Saphile-Regular.otf);
 }
 
+#container{
+  padding: 2rem;
+}
+
 h1{
     font-family: Saphile;
     color: #ed2e2f;

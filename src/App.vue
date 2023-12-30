@@ -5,7 +5,7 @@ import Header from './assets/components/Header.vue';
   export default {
     components: {
       Header,
-    },
+},
     created(){
       if (!localStorage.users) {
       const users = [

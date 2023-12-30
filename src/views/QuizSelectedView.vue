@@ -411,6 +411,7 @@
   body {
     background-color: #FCF3F3;
     font-family: Lexend Deca Regular;
+    padding: 2rem;
   }
   
   .btnSelQuestionsFilled {
