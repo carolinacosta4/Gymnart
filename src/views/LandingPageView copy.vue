@@ -102,12 +102,6 @@
     src: url(../assets/Saphile/Saphile-Regular.otf);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .white{
   color: #fcf3f3;
 }
@@ -168,13 +162,11 @@
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
 	width: 100vw;
-  margin: 0;
+	height: 100vh;
+  margin-left: -18vw;
+  margin-top: -5vh;
 }
 
-html{
-  margin: 0;
-  padding: 0;
-}
 
 #nav{
   display: flex;
@@ -234,7 +226,7 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: relative; /* Adicione essa propriedade */
   z-index: 0;
   margin-top: 5em;
 }
