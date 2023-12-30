@@ -93,7 +93,7 @@
 
 @font-face {
     font-family: LexendDecaThin;
-    src: url(../assets/Lexend_Deca/LexendDeca-Thin.ttf);
+    src: url(../assets/Lexend_Deca/LexendDeca-Medium.ttf);
 }
 
 @font-face {
@@ -128,12 +128,12 @@
 }
 .subtitle{
   font-family: LexendDecaThin;
-  font-size: 2.8em;
+  font-size: 2.5em;
 }
 
 .textMain{
   font-family: LexendDecaThin;
-  font-size: 1.8em;
+  font-size: 1.5em;
   max-width: 31em;
   text-align: center;
   margin-top: 1em;
@@ -141,7 +141,7 @@
 
 .text{
   font-family: LexendDecaRegular;
-  font-size: 1.8em;
+  font-size: 1.5em;
   max-width: 31em;
   text-align: left;
   margin-top: 1em;
@@ -149,7 +149,7 @@
 
 .h2Saphile{
   font-family: Saphile;
-  font-size: 3.5em;
+  font-size: 3em;
 }
 
 .beigeBG{
@@ -177,6 +177,7 @@
   background: #4857a0;
   margin-bottom: -1em;
   width: 100vw;
+  align-items: center;
 }
 
 #iconGymnart{
@@ -191,6 +192,7 @@
   border-radius: 0.5em;
   padding-left: 1em;
   padding-right: 1em;
+  margin-top: -0.5em;
 }
 
 /* ____ MAIN PAGE MASTER THE MOVES ______ */
@@ -205,7 +207,7 @@
 
 #btnCreateAccountMaster{
   font-family: LexendDecaThin;
-  font-size: 1.5em;
+  font-size: 1.4em;
   border: 1px solid;
   border-radius: 0.5em;
   width: 10em;
@@ -216,7 +218,7 @@
 #beigeWavesLeftBottom{
   position: relative;
   max-width: 30em;
-  margin-bottom: -6em;
+  margin-bottom: -8em;
   margin-left: -4em;
   align-self: baseline;
   margin-top: -5em;
@@ -279,7 +281,7 @@
   max-width: 30em;
   align-self: flex-end;
   margin-top: -11em;
-  border-radius: 1.5em;
+  border-radius: 2em;
 }
 
 #top3teams{
@@ -326,7 +328,7 @@
 .featuresTitle{
   text-align: left;
   font-family: LexendDecaRegular;
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: -1em;
 }
 
@@ -349,7 +351,7 @@
 #btnCreateAccountKeep{
   font-family: LexendDecaThin;
   font-size: 1.5em;
-  color: #f8e2d6;
+  color: #fcf3f3;
   background-color: #f16a64;
   border-radius: 0.5em;
   width: 10em;
