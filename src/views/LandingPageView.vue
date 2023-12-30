@@ -175,7 +175,7 @@
   flex-direction: row;
   justify-content: space-between;
   background: #4857a0;
-  margin: 0;
+  margin-bottom: -1em;
   width: 100vw;
 }
 
