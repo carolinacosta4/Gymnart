@@ -178,7 +178,6 @@
         const container = event.currentTarget;
         container.classList.remove('hovered');
       },
-  
     },
   };
   

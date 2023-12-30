@@ -1,0 +1,194 @@
+@font-face {
+    font-family: Saphile;
+    src: url(@/assets/Saphile/Saphile-Regular.otf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca Regular;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca Medium;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca ExtraLight;
+    src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca Thin;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca Light;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend Deca Bold;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
+  }
+  
+  .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20vh;
+  }
+  
+  .inputs {
+    display: flex;
+    height: 60vh;
+    width: 70vw;
+  }
+  
+  .inputsTeam {
+    display: flex;
+    height: 40vh;
+    width: 65vw;
+  }
+  
+  .inputsCol{
+    height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  
+  .regular {
+    font-family: Lexend Deca Regular;
+  }
+  
+  .fontSize24 {
+    font-size: 24px;
+  }
+  
+  .modalTitle {
+    color: #ed2e2f;
+    font-size: 36px;
+    font-family: Lexend Deca Regular;
+  }
+  
+  .label {
+    font-family: Lexend Deca ExtraLight;
+    font-size: 24px;
+    color: black;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(72, 87, 160, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    background: #fcf3f3;
+    width: 813px;
+    height: auto;
+    padding: 20px;
+    border-radius: 21px;
+    color: black;
+    padding-left: 53px;
+  }
+  
+  input {
+    font-size: 18px;
+    font-family: Lexend Deca ExtraLight;
+    color: #f16a64;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #f8e2d6;
+    border-radius: 10px;
+    margin-top: 9px;
+    width: 338px;
+    height: 42px;
+  }
+  
+  input::placeholder {
+    font-size: 18px;
+    font-family: Lexend Deca ExtraLight;
+    color: #f16a64;
+  }
+  
+  .titleAndXbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btnsBottom {
+    display: flex;
+    justify-content: end;
+    margin-top: 70px;
+  }
+  
+  .close {
+    color: #4857a0;
+    font-size: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .close:hover {
+    color: #ed2e2f;
+  }
+  
+  .lightRed {
+    color: #f16a64;
+  }
+  
+  .bgLightRed {
+    background-color: #f16a64;
+  }
+  
+  .black {
+    color: black;
+  }
+  
+  .snow {
+    color: #fcf3f3;
+  }
+  
+  .bgBeige {
+    background-color: #f8e2d6;
+  }
+  
+  .btnCancel {
+    border-radius: 10px;
+    background: none;
+    border: 2px solid #f16a64;
+    color: #f16a64;
+    width: 129px;
+    height: 44px;
+    margin-right: 22px;
+  }
+  
+  .btnCancel:hover {
+    background-color: #f16a64;
+    color: #fcf3f3;
+  }
+  
+  .btnSave {
+    border-radius: 10px;
+    background-color: #f16a64;
+    border: 2px solid #f16a64;
+    color: #fcf3f3;
+    width: 129px;
+    height: 44px;
+  }
+  
+  .btnSave:hover {
+    background-color: #ed2e2f;
+    border: 2px solid #ed2e2f;
+  }
