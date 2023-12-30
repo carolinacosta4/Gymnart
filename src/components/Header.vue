@@ -64,10 +64,10 @@ export default {
         changeIcon(idIcon, option){
             let icon = document.getElementById(idIcon)
             if (option === 'blank'){
-                icon.src = ` http://localhost:4000/src/assets/iconsNav/${idIcon}.svg`
+                icon.src = `src/assets/iconsNav/${idIcon}.svg`
             }
             else if (option === 'filled'){
-                icon.src = `http://localhost:4000/src/assets/iconsNav/${idIcon}Filled.svg`
+                icon.src = `src/assets/iconsNav/${idIcon}Filled.svg`
             }
 
         }
