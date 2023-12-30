@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main" v-if="userStore.isUser">
     <div id="account">
       <div class="edit">
         <h1>Hi, {{ user.name }}!</h1>
@@ -21,7 +21,6 @@
                   <input type="text" v-model="newName" placeholder="Type here..." id="newName" />
                 </div>
               </v-card-text>
-
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
@@ -41,23 +40,98 @@
         <p class="fontLight">Username</p>
         <div class="edit4">
           <p class="lightRed">{{ user.username }}</p>
-          <img src="../assets/edit.svg" alt="">
+          <v-dialog width="500">
+            <template v-slot:activator="{ props }">
+              <img src="../assets/edit.svg" v-bind="props">
+            </template>
+            <template v-slot:default="{ isActive }">
+              <v-card class="modal-content modalTitle" title="Edit your Username">
+                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                <v-card-text class="data">
+                  <div class="curData">
+                    <p class="label">Current Username:</p>
+                    <p class="regular fontSize24">{{ user.username }}</p>
+                  </div>
+                  <div class="newData">
+                    <label class="label" for="newUsername">New Username:</label>
+                    <br/>
+                    <input type="text" v-model="newUsername" placeholder="Type here..." id="newUsername" />
+                  </div>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
+                  <v-btn @click="editUsername">SAVE</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+        </v-dialog>
         </div>
         <p class="fontLight">Email</p>
         <div class="edit4">
           <p class="lightRed">{{ user.email }}</p>
-          <img src="../assets/edit.svg" alt="">
+          <v-dialog width="500">
+            <template v-slot:activator="{ props }">
+              <img src="../assets/edit.svg" v-bind="props">
+            </template>
+            <template v-slot:default="{ isActive }">
+              <v-card class="modal-content modalTitle" title="Edit your Email">
+                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                <v-card-text class="data">
+                  <div class="curData">
+                    <p class="label">Current Email:</p>
+                    <p class="regular fontSize24">{{ user.email }}</p>
+                  </div>
+                  <div class="newData">
+                    <label class="label" for="newEmail">New Email:</label>
+                    <br/>
+                    <input type="text" v-model="newEmail" placeholder="Type here..." id="newEmail" />
+                  </div>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
+                  <v-btn @click="editEmail">SAVE</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
         </div>
         <p class="fontLight">Password</p>
         <div class="edit4">
           <div id="password">
             <p class="lightRed" v-for="index in passwordUser.length">•</p>
           </div>
-          <img src="../assets/edit.svg" alt="">
+          <v-dialog width="500">
+            <template v-slot:activator="{ props }">
+              <img src="../assets/edit.svg" v-bind="props">
+            </template>
+            <template v-slot:default="{ isActive }">
+              <v-card class="modal-content modalTitle" title="Edit your Password">
+                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                <v-card-text class="data">
+                  <div class="curData">
+                    <p class="label">Current Password:</p>
+                    <input type="password" placeholder="Type here..." v-model="oldPassword"/>
+                  </div>
+                  <div class="newData">
+                    <label class="label" for="newPassword">New Password:</label>
+                    <br/>
+                    <input type="password" v-model="newPassword" placeholder="Type here..." id="newPassword" />
+                  </div>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
+                  <v-btn @click="editPassword">SAVE</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
         </div>
       </div>
       <div>
-        <button class="red" @click="logout">Logout</button>
+        <button class="red" @click="logout()">Logout</button>
       </div>
     </div>
     <div v-if="user.type == 'admin'" id="manage">
@@ -75,7 +149,11 @@ import { useUserStore } from '../stores/users';
     data() {
       return {
         userStore: useUserStore(),
-        newName: ""
+        newName: "",
+        newUsername: "",
+        newEmail: "",
+        oldPassword: "",
+        newPassword: ""
       }
     },
 
@@ -91,8 +169,8 @@ import { useUserStore } from '../stores/users';
 
     methods: {
       logout() {
-        this.userStore.logout()
         this.$router.push({name: 'landingPage'})
+        this.userStore.logout()
       },
 
       editName() {
@@ -108,7 +186,11 @@ import { useUserStore } from '../stores/users';
       },
 
       editPassword() {
-        this.userStore.editPassword(this.newPassword)
+        if(this.oldPassword == this.user.password){
+          this.userStore.editPassword(this.newPassword)
+        }else{
+          alert("Wrong password")
+        }
       },
     },
   }
