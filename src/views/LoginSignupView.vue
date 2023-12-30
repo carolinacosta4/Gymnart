@@ -18,13 +18,13 @@
 
 			<div class="form-container log-in-container" id="formLogin">
 				<v-form @submit.prevent="login">
-				<h1>Log in</h1>
+				<h1>Login</h1>
 				<v-text-field v-model="usernameLogin" label="Username" class="textField" :rules='isRequired'></v-text-field>
 
 				<v-text-field v-model="passwordLogin" type="password" label="Password" class="textField" :rules='isRequired'></v-text-field>
 				<p id="textForgotPass">Forgot your password?</p>
 
-				<button id="logBtn" type="submit">Log in</button>
+				<button id="logBtn" type="submit">Login</button>
 				</v-form>
 			</div>
 
@@ -33,7 +33,7 @@
 					<div class="overlay-panel overlay-left">
 						<h1 class="title">Welcome Back!</h1>
 						<p class="descriptionOverlay">Login to know the latest results from your favorite athletes</p>
-						<button class="ghost" id="logIn">Log In</button>
+						<button class="ghost" id="logIn">Login</button>
 					</div>
 
 					<div class="overlay-panel overlay-right">
@@ -79,31 +79,37 @@ import { useUserStore } from '@/stores/users';
 				container.classList.remove("right-panel-active");
 			});
 
-			console.log(this.store.users)
 		},
+
 		computed: {
 			isRequired(){
 				return [
 					value => !!value || 'Required',
 				];
 				
+			},
+
+			users(){
+				return this.store.getUsers
+			},
+
+			user(){
+				return this.store.getUser
 			}
 		},
 		methods: {
     		login() {
 				try {
-					const store = useUserStore()
-					store.login(this.usernameLogin, this.passwordLogin)
+					this.store.login(this.usernameLogin, this.passwordLogin)
 					this.$router.push({ name: "home" });
-					
 				} catch (error) {
 					alert(`Error: ${error.message}`); 
 				}
 			},
 			signup(){
 				try {
-					const store = useUserStore()
-					store.signup(this.name, this.username, this.email, this.password, this.confirmPassword)
+					this.store.signup(this.name, this.username, this.email, this.password, this.confirmPassword)
+					this.$router.push({ name: "home" });
 				} catch (error) {
 					alert(`Error: ${error.message}`);
 				}
@@ -112,7 +118,7 @@ import { useUserStore } from '@/stores/users';
 	}
 </script>
 
-<style  lang="css" scoped>
+<style lang="css" scoped>
 
 
 @font-face {
@@ -241,7 +247,7 @@ h1{
 	position: relative;
 	overflow: hidden;
 	width: 55vw;
-	height: 65vh;
+	height: 84%;
 	top: 5%;
 	color: #4857a0;
 }

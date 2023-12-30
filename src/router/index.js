@@ -10,6 +10,9 @@ import QuizSelectedView from '../views/QuizSelectedView.vue'
 import LandingPageView from '../views/LandingPageView.vue'
 import LoginView from '../views/LoginSignUpView.vue'
 import PageNotFoundView from '../views/PageNotFoundView.vue'
+import ManageAthletesView from '../views/ManageAthletesView.vue'
+import ManageTeamsView from '../views/ManageTeamsView.vue'
+import ManageUsersView from '../views/ManageUsersView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +29,7 @@ const router = createRouter({
     },
     {
       path: '/search',
-      name: 'seach',
+      name: 'search',
       component: SearchView
     },
     {
@@ -35,8 +38,8 @@ const router = createRouter({
       component: DashboardView
     },
     {
-      path: '/user', // add username to the path
-      name: 'user',
+      path: '/account/:id',
+      name: 'account',
       component: UserPageView
     },
     {
@@ -68,6 +71,21 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "pageNotFound",
       component: PageNotFoundView,
+    },
+    {
+      path: "/manageUsers",
+      name: "manageUsers",
+      component: ManageUsersView,
+    },
+    {
+      path: "/manageAthletes",
+      name: "manageAthletes",
+      component: ManageAthletesView,
+    },
+    {
+      path: "/manageTeams",
+      name: "manageTeams",
+      component: ManageTeamsView,
     },
   ]
 })
