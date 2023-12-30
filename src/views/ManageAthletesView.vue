@@ -1,33 +1,34 @@
 <template>
-    <h1>Manage Athletes</h1>
-    <div id="filterOptions">
-        <input type="text" v-if="isVisible" label="Search" v-model="searchAthletes" id="search">
-        <img @click="toggleBtn" src="../assets/search.png">
-        <div>
-            <img src="../assets/filter.png">
-            <p>Filter</p>
-        </div>
-    </div>
-    <div id="table">
-        <div id="tableHead">
-            <h3>Name</h3>
-            <h3>Ouro</h3>
-            <h3>Prata</h3>
-            <h3>Bronze</h3>
-            <h3>Options</h3>
-        </div>
-        <div id="tableBody" v-for="athlete in search">
-            <p>{{ athlete.name }}</p>
-            <p>{{ athlete.gold }}</p>
-            <p>{{ athlete.silver }}</p>
-            <p>{{ athlete.bronze }}</p>
+    <div id="body">
+        <h1>Manage Athletes</h1>
+        <div id="filterOptions">
+            <input type="text" v-if="isVisible" label="Search" v-model="searchAthletes" id="search">
+            <img @click="toggleBtn" src="../assets/search.png">
             <div>
-                <img src="../assets/delete.png" @click="deleteAthlete(athlete.name)">
-                <img src="../assets/edit.svg" @click="editTeam(athlete.name)">
+                <img src="../assets/filter.png">
+                <p>Filter</p>
+            </div>
+        </div>
+        <div id="table">
+            <div id="tableHead">
+                <h3>Name</h3>
+                <h3>Ouro</h3>
+                <h3>Prata</h3>
+                <h3>Bronze</h3>
+                <h3>Options</h3>
+            </div>
+            <div id="tableBody" v-for="athlete in search">
+                <p>{{ athlete.name }}</p>
+                <p>{{ athlete.gold }}</p>
+                <p>{{ athlete.silver }}</p>
+                <p>{{ athlete.bronze }}</p>
+                <div>
+                    <img src="../assets/delete.png" @click="deleteAthlete(athlete.name)">
+                    <img src="../assets/edit.svg" @click="editTeam(athlete.name)">
+                </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -82,6 +83,10 @@ import { useAthleteStore } from '../stores/athlete';
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
 } 
+
+body{
+  padding: 2rem;
+}
 
 #tableHead, #tableBody{
     display: flex;

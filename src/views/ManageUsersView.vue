@@ -1,27 +1,29 @@
 <template>
-    <h1>Manage Users</h1>
-    <div id="filterOptions">
-        <input type="text" v-if="isVisible" label="Search" v-model="searchUsers" id="search">
-        <img @click="toggleBtn" src="../assets/search.png">
-        <div>
-            <img src="../assets/filter.png">
-            <p>Filter</p>
-        </div>
-    </div>
-    <div id="table">
-        <div id="tableHead">
-            <h3>Username</h3>
-            <h3>Email</h3>
-            <h3>Role</h3>
-            <h3>Options</h3>
-        </div>
-        <div id="tableBody" v-for="user in search">
-            <p>{{ user.username }}</p>
-            <p>{{ user.email }}</p>
-            <p>{{ user.type }}</p>
+    <div id="body">
+        <h1>Manage Users</h1>
+        <div id="filterOptions">
+            <input type="text" v-if="isVisible" label="Search" v-model="searchUsers" id="search">
+            <img @click="toggleBtn" src="../assets/search.png">
             <div>
-                <img src="../assets/block.png" @click="blockUser(user.username)">
-                <img src="../assets/delete.png" @click="deleteUser(user.username)">
+                <img src="../assets/filter.png">
+                <p>Filter</p>
+            </div>
+        </div>
+        <div id="table">
+            <div id="tableHead">
+                <h3>Username</h3>
+                <h3>Email</h3>
+                <h3>Role</h3>
+                <h3>Options</h3>
+            </div>
+            <div id="tableBody" v-for="user in search">
+                <p>{{ user.username }}</p>
+                <p>{{ user.email }}</p>
+                <p>{{ user.type }}</p>
+                <div>
+                    <img src="../assets/block.png" @click="blockUser(user.username)">
+                    <img src="../assets/delete.png" @click="deleteUser(user.username)">
+                </div>
             </div>
         </div>
     </div>
@@ -75,6 +77,10 @@ import { useUserStore } from '../stores/users';
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
 } 
+
+#body{
+  padding: 2rem;
+}
 
 #tableHead, #tableBody{
     display: flex;

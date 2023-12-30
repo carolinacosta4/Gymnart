@@ -102,6 +102,10 @@
     src: url(../assets/Saphile/Saphile-Regular.otf);
 }
 
+#app{
+  padding: 0 !important;
+}
+
 .white{
   color: #fcf3f3;
 }
@@ -161,10 +165,10 @@
 #bgContainer {
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
-	width: 100vw;
+	/* width: 100vw;
 	height: 100vh;
   margin-left: -18vw;
-  margin-top: -5vh;
+  margin-top: -5vh; */
 }
 
 

@@ -1,29 +1,31 @@
 <template>
-    <h1>Manage Teams</h1>
-    <div id="filterOptions">
-        <input type="text" v-if="isVisible" label="Search" v-model="searchTeams" id="search">
-        <img @click="toggleBtn" src="../assets/search.png">
-        <div>
-            <img src="../assets/filter.png">
-            <p>Filter</p>
-        </div>
-    </div>
-    <div id="table">
-        <div id="tableHead">
-            <h3>Name</h3>
-            <h3>Ouro</h3>
-            <h3>Prata</h3>
-            <h3>Bronze</h3>
-            <h3>Options</h3>
-        </div>
-        <div id="tableBody" v-for="team in search">
-            <p>{{ team.name }}</p>
-            <p>{{ team.gold }}</p>
-            <p>{{ team.silver }}</p>
-            <p>{{ team.bronze }}</p>
+    <div id="body">
+        <h1>Manage Teams</h1>
+        <div id="filterOptions">
+            <input type="text" v-if="isVisible" label="Search" v-model="searchTeams" id="search">
+            <img @click="toggleBtn" src="../assets/search.png">
             <div>
-                <img src="../assets/delete.png" @click="deleteTeam(team.acronym)">
-                <img src="../assets/edit.svg" @click="editTeam(team.acronym)">
+                <img src="../assets/filter.png">
+                <p>Filter</p>
+            </div>
+        </div>
+        <div id="table">
+            <div id="tableHead">
+                <h3>Name</h3>
+                <h3>Ouro</h3>
+                <h3>Prata</h3>
+                <h3>Bronze</h3>
+                <h3>Options</h3>
+            </div>
+            <div id="tableBody" v-for="team in search">
+                <p>{{ team.name }}</p>
+                <p>{{ team.gold }}</p>
+                <p>{{ team.silver }}</p>
+                <p>{{ team.bronze }}</p>
+                <div>
+                    <img src="../assets/delete.png" @click="deleteTeam(team.acronym)">
+                    <img src="../assets/edit.svg" @click="editTeam(team.acronym)">
+                </div>
             </div>
         </div>
     </div>
@@ -81,6 +83,10 @@ import { useTeamStore } from '../stores/team';
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
 } 
+
+#body{
+  padding: 2rem;
+}
 
 #tableHead, #tableBody{
     display: flex;

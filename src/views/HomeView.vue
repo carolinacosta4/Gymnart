@@ -27,13 +27,14 @@
         font-family: Lexend Deca Light;
         src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
     }
-
+    
 #main{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 2rem;
 }
 
 #main p{

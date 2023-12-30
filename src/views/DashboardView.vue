@@ -1,67 +1,69 @@
 <template>
-    <h1 class="red">Dashboard</h1>
-    <div id="dashboard">
-        <div v-if="eventsDelayed.length == 0" id="noAthleteRoutine">
-          <img src="@/assets/movements/movement.png" style="width: 10em;">
-          <h2 id="noAthlete">NO ATHLETE LIVE :(</h2>
-        </div>
-        <div v-else id="athleteRoutine">
-            <div id="athleteInfo">
-                <img :src="currentAthleteThumbnail" id="thumbnail">
-                <div>
-                    <h2 class="red">{{ currentAthleteName }}</h2>
-                    <h2 class="red">({{ currentAthleteTeam }})</h2>
-                    <h3 class="blue fontSize">{{ seconds }}s</h3>
-                </div>
-            </div>
-            <div id="header">
-                <span></span>
-                <p class="blue light fontSize13">Seconds</p>
-                <p class="red light fontSize13">Pontuation</p>
-            </div>
-            <div id="live">
-                <div v-for="ev in eventsDelayed" :key="ev.id">
-                    <p class="light" id="nameMovement">{{ ev.nameMovement }}</p>
-                    <div class="gridEvents">
-                        <img :src="ev.movementPicture" class="movementPicture">
-                        <p id="movement" class="regular">{{ ev.movement }}</p>
-                        <p class="blue seconds fontSize20 regular">{{ ev.seconds }}</p>
-                        <p class="red pontuation fontSize20 regular">{{ ev.pontuation }}</p>
-                    </div>
-                </div>
-            </div>
-            <div id="totalGrid">
-                <span></span>
-                <div id="total">
-                    <p class="red regular">Total: {{ totalPontuation }}</p>
-                </div>
-            </div>
-        </div>
-        <div id="tops">
-            <div id="top3Teams">
-                <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
-                <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
-                <h2 class="blue">Top 3 Teams</h2>
-                <div v-for="(team, index) in sortPontuationTeam" id="top">
-                    <h3 class="blue light fontSize20">{{ index+1 }}</h3>
-                    <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
-                    <p class="red light fontSize16">{{ team.teamName }}</p>
-                    <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
-                </div>
-            </div>
-            <div id="top5Athletes">
-                <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
-                <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
-                <h2 class="red">Top 5 Athletes</h2>
-                <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
-                    <h3 class="light fontSize20">{{ index+1 }}</h3>
-                    <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
-                    <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
-                    <p class="red light fontSize20">{{ athlete.pontuation }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="body">
+      <h1 class="red">Dashboard</h1>
+      <div id="dashboard">
+          <div v-if="eventsDelayed.length == 0" id="noAthleteRoutine">
+            <img src="@/assets/movements/movement.png" style="width: 10em;">
+            <h2 id="noAthlete">NO ATHLETE LIVE :(</h2>
+          </div>
+          <div v-else id="athleteRoutine">
+              <div id="athleteInfo">
+                  <img :src="currentAthleteThumbnail" id="thumbnail">
+                  <div>
+                      <h2 class="red">{{ currentAthleteName }}</h2>
+                      <h2 class="red">({{ currentAthleteTeam }})</h2>
+                      <h3 class="blue fontSize">{{ seconds }}s</h3>
+                  </div>
+              </div>
+              <div id="header">
+                  <span></span>
+                  <p class="blue light fontSize13">Seconds</p>
+                  <p class="red light fontSize13">Pontuation</p>
+              </div>
+              <div id="live">
+                  <div v-for="ev in eventsDelayed" :key="ev.id">
+                      <p class="light" id="nameMovement">{{ ev.nameMovement }}</p>
+                      <div class="gridEvents">
+                          <img :src="ev.movementPicture" class="movementPicture">
+                          <p id="movement" class="regular">{{ ev.movement }}</p>
+                          <p class="blue seconds fontSize20 regular">{{ ev.seconds }}</p>
+                          <p class="red pontuation fontSize20 regular">{{ ev.pontuation }}</p>
+                      </div>
+                  </div>
+              </div>
+              <div id="totalGrid">
+                  <span></span>
+                  <div id="total">
+                      <p class="red regular">Total: {{ totalPontuation }}</p>
+                  </div>
+              </div>
+          </div>
+          <div id="tops">
+              <div id="top3Teams">
+                  <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
+                  <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
+                  <h2 class="blue">Top 3 Teams</h2>
+                  <div v-for="(team, index) in sortPontuationTeam" id="top">
+                      <h3 class="blue light fontSize20">{{ index+1 }}</h3>
+                      <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
+                      <p class="red light fontSize16">{{ team.teamName }}</p>
+                      <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
+                  </div>
+              </div>
+              <div id="top5Athletes">
+                  <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
+                  <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
+                  <h2 class="red">Top 5 Athletes</h2>
+                  <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
+                      <h3 class="light fontSize20">{{ index+1 }}</h3>
+                      <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
+                      <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
+                      <p class="red light fontSize20">{{ athlete.pontuation }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -192,9 +194,9 @@ export default {
         src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
     }
 
-    body{
+    #body{
         font-family: Lexend Deca Regular !important;
-        background-color: #FCF3F3;
+        padding: 2rem;
     }
 
     #noAthleteRoutine{
