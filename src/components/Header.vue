@@ -16,8 +16,24 @@
             <RouterLink :to="{ name: 'quiz' }" class="text"><img src="../assets/iconsNav/quiz.svg" alt="console icon outlined" class="icon" id="quiz" @click="addToList('quiz')"></RouterLink>
             <span class="pr-3"></span>
         </div>
-        <RouterLink :to="{ name: 'landingPage' }" class="text" @click="logout()"><img src="../assets/iconsNav/logout.svg" alt="logout icon outlined" class="icon"></RouterLink>
+        <span class="text"><img src="../assets/iconsNav/logout.svg" @click="openLogOutModal()" alt="logout icon outlined" class="icon"></span>
     </div>
+
+    <!-- Confirm Log Out Pop Up -->
+
+    <div v-if="showModal" class="modal" id="logOutModal">
+        <div class="modal-content">
+          <span @click="closeLogoutModal()" class="close">&times;</span> 
+          <p class="modalTitle">Sign Out</p> 
+          <p class="logOutPrompt">Are you sure you want to sign out?</p>
+          <br/>
+          <div class="btnsBottom">
+            <button @click="logout()" class="btnYes">YES</button>
+            <button @click="closeLogoutModal()" class="btnNo">NO</button>
+          </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -28,6 +44,7 @@ export default {
     data() {
         return {
             store: useUserStore(),
+            showModal: false,
         }
     },
     computed: {
@@ -45,6 +62,7 @@ export default {
     methods: {
         logout() {
             this.store.logout();
+            this.$router.push({ name: "landingPage" });
         },
         addToList(idIcon){
             if (clickedIcon.length > 0){
@@ -59,7 +77,6 @@ export default {
                 clickedIcon.push(idIcon)
                 this.changeIcon(idIcon, 'blank')
             }
-            
         },
         changeIcon(idIcon, option){
             let icon = document.getElementById(idIcon)
@@ -70,7 +87,14 @@ export default {
                 icon.src = `src/assets/iconsNav/${idIcon}Filled.svg`
             }
 
-        }
+        },
+        openLogOutModal() {
+            this.showModal = true;
+        },
+         closeLogoutModal(){
+            this.showModal = false;
+        },
+
 
     },
 }
@@ -80,6 +104,8 @@ let clickedIcon = []
 
 
 <style lang="css" scoped>
+@import '../assets/logOutModalStyle.css';
+
 #header {
     height: 100%;
     display: flex;
