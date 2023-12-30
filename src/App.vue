@@ -1,6 +1,6 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
-import Header from './assets/components/Header.vue';
+import Header from './components/Header.vue';
 
   export default {
     components: {
