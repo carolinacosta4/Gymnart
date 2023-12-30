@@ -1,0 +1,102 @@
+@font-face {
+    font-family: Lexend Deca ExtraLight;
+    src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: Lexend Deca Regular;
+    src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+}
+
+#logOutModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(72, 87, 160, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#logOutModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    background: #fcf3f3;
+    width: 400px;
+    height: auto;
+    border-radius: 21px;
+}
+
+#logOutModal .modalTitle {
+    font-size: 24px;
+    font-family: Lexend Deca Regular;
+    color: #ED2E2F;
+    align-self: center;
+    margin-bottom: 40px;
+}
+
+#logOutModal .close {
+    color: #4857a0;
+    font-size: 50px;
+    align-self: end;
+    margin-bottom: -30px;
+    margin-right: 20px;
+}
+
+#logOutModal .close:hover {
+    cursor: pointer;
+    color: #ed2e2f;
+}
+
+
+.logOutPrompt {
+    font-size: 20px;
+    font-family: Lexend Deca ExtraLight;
+    color: black;
+    align-self: center;
+}
+
+#logOutModal .btnsBottom {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 73px;
+    margin-top: 20px;
+}
+
+
+.btnYes {
+    font-size: 20px;
+    font-family: Lexend Deca Regular;
+    color: #4857a0;
+    background: #F8E2D6;
+    border: none;
+    border-radius: 15px;
+    width: 93px;
+    height: 52px;
+    margin-right: 60px
+}
+
+.btnYes:hover {
+    background: #4857a0;
+    color: #F8E2D6;
+}
+
+
+.btnNo {
+    font-size: 20px;
+    font-family: Lexend Deca Regular;
+    color: #ED2E2F;
+    background: #F8E2D6;
+    border: none;
+    border-radius: 15px;
+    width: 93px;
+    height: 52px;
+}
+
+.btnNo:hover {
+    background: #ED2E2F;
+    color: #F8E2D6;
+}
