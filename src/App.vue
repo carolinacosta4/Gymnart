@@ -26,7 +26,7 @@ import Header from './assets/components/Header.vue';
   
 </template>
 
-<style lang="css" >
+<style lang="css" scoped>
   body{
     background-color: #fcf3f3;
   }

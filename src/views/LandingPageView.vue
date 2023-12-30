@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div id="bgContainer">
+  
     <div id="nav" class="padding4">
       <img id="iconGymnart" src="../assets/landingPageIcons/titulo gymnart-11.svg" alt="GYMNART icon">
       <RouterLink :to="{ name: 'login' }" id="btnLoginNav"> Login</RouterLink>
@@ -78,7 +78,6 @@
       </div>
 
     </div>
-  </div>
 </template>
 
 <style  lang="css" scoped>
@@ -167,7 +166,7 @@
 #bgContainer {
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
-	width: 100vw;
+	width: 100%;
   margin: 0;
 }
 
@@ -181,6 +180,8 @@ html{
   flex-direction: row;
   justify-content: space-between;
   background: #4857a0;
+  margin: 0;
+  width: 100vw;
 }
 
 #iconGymnart{
@@ -203,8 +204,8 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3em;
   background: #4857a0;
+  width: 100vw;
 }
 
 #btnCreateAccountMaster{
@@ -310,6 +311,7 @@ html{
   text-align: center;
   padding-top: 12em;
   padding-bottom: 10em;
+  width: 100vw;
 }
 
 .features{
