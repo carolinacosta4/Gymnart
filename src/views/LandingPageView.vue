@@ -101,10 +101,8 @@
     src: url(../assets/Saphile/Saphile-Regular.otf);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#app{
+  padding: 0 !important;
 }
 
 .white{
@@ -166,13 +164,10 @@
 #bgContainer {
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
-	width: 100%;
-  margin: 0;
-}
-
-html{
-  margin: 0;
-  padding: 0;
+	/* width: 100vw;
+	height: 100vh;
+  margin-left: -18vw;
+  margin-top: -5vh; */
 }
 
 #nav{

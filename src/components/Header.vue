@@ -1,16 +1,15 @@
 <template>
     <div id="header">
-        <RouterLink :to="{ name: 'user' }" class="text">User Page</RouterLink>
-        <span class="pr-3"></span>
         <RouterLink :to="{ name: 'home' }" class="text">Home</RouterLink>
         <span class="pr-3"></span>
         <RouterLink :to="{name: 'dashboard'}" class="text">Dashboard</RouterLink>
         <span class="pr-3"></span>
-        <RouterLink :to="{ name: 'login' }" class="text">Login</RouterLink>
-        <span class="pr-3"></span>
         <RouterLink :to="{ name: 'quiz' }" class="text">Quizzes</RouterLink>
         <span class="pr-3"></span>
-        <RouterLink :to="{ name: 'landingPage' }" class="text" @click="logout()">Logout</RouterLink>
+        <RouterLink v-if="!store.isUser" :to="{ name: 'login' }" class="text">Login</RouterLink>
+        <RouterLink v-else :to="{ name: 'account', params:{id: user.username} }" class="text">Account</RouterLink>
+        <span class="pr-3"></span>
+        <RouterLink v-if="store.isUser" :to="{ name: 'landingPage' }" class="text" @click="logout()">Logout</RouterLink>
         <span class="pr-3"></span>
     </div>
 </template>
@@ -26,16 +25,17 @@ export default {
         }
     },
     computed: {
-        isUser(){
+        userLogged(){
             return this.store.isUser
         },
+        
+        user(){
+            return this.store.getUser
+        }
     },
     methods: {
         logout() {
-            const store = useUserStore()
-            // if (store.isUser) {
-                store.logout();
-            // }
+            this.store.logout();
         }
     },
 }

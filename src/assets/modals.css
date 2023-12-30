@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 20vh;
+    /* height: 20vh; */
   }
   
   .inputs {
@@ -79,7 +79,7 @@
     color: black;
   }
   
-  .modal {
+  /* .modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -89,18 +89,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
   
   .modal-content {
     display: flex;
     flex-direction: column;
     background: #fcf3f3;
-    width: 813px;
+    /* width: 813px; */
     height: auto;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 21px;
     color: black;
-    padding-left: 53px;
+    /* padding-left: 53px; */
   }
   
   input {
@@ -121,12 +121,12 @@
     font-family: Lexend Deca ExtraLight;
     color: #f16a64;
   }
-  
+/*   
   .titleAndXbtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } */
   
   .btnsBottom {
     display: flex;
@@ -134,11 +134,11 @@
     margin-top: 70px;
   }
   
-  .close {
+  /* .close {
     color: #4857a0;
     font-size: 50px;
     margin-bottom: 50px;
-  }
+  } */
   
   .close:hover {
     color: #ed2e2f;
