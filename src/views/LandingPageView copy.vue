@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  
+  <div id="bgContainer">
     <div id="nav" class="padding4">
       <img id="iconGymnart" src="../assets/landingPageIcons/titulo gymnart-11.svg" alt="GYMNART icon">
       <RouterLink :to="{ name: 'login' }" id="btnLoginNav"> Login</RouterLink>
@@ -78,6 +78,7 @@
       </div>
 
     </div>
+  </div>
 </template>
 
 <style  lang="css" scoped>
@@ -99,10 +100,6 @@
 @font-face {
     font-family: Saphile;
     src: url(../assets/Saphile/Saphile-Regular.otf);
-}
-
-#app{
-  padding: 0 !important;
 }
 
 .white{
@@ -164,19 +161,18 @@
 #bgContainer {
 	background-color: #4857a0;
 	font-family: LexendDecaRegular;
-	/* width: 100vw;
+	width: 100vw;
 	height: 100vh;
   margin-left: -18vw;
-  margin-top: -5vh; */
+  margin-top: -5vh;
 }
+
 
 #nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background: #4857a0;
-  margin: 0;
-  width: 100vw;
 }
 
 #iconGymnart{
@@ -199,8 +195,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3em;
   background: #4857a0;
-  width: 100vw;
 }
 
 #btnCreateAccountMaster{
@@ -230,7 +226,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: relative; /* Adicione essa propriedade */
   z-index: 0;
   margin-top: 5em;
 }
@@ -306,7 +302,6 @@
   text-align: center;
   padding-top: 12em;
   padding-bottom: 10em;
-  width: 100vw;
 }
 
 .features{
