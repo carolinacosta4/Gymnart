@@ -1,6 +1,6 @@
 <template>
   <body>
-    <div>
+    <div class="parentContainer">
       <h1 class="red">Quizzes</h1>
       <p class="black extraLight fontSize24 marginTop38 marginBottom85">Participate in our quiz and win your own olympic
         medal!</p>
@@ -125,6 +125,10 @@ export default {
   src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
 }
 
+.parentContainer{
+  margin-left: 225px;
+}
+
 .marginTop38 {
   margin-top: 38px;
 }
@@ -235,6 +239,7 @@ export default {
   opacity: 0;
   transition: opacity 0.3s ease, background-color 0.3s ease;
   background-color: rgba(72, 87, 160, 0.6);
+  cursor: pointer;
 }
 
 .hovered .hover-image {
