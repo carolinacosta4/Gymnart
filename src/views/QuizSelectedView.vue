@@ -51,11 +51,11 @@
   
         </div>
         <div v-if="quizzesStore.quizzes[quizzesStore.quizz - 1].showOnFinish && quizzesStore.quizzes[quizzesStore.quizz - 1].medalAwarded">
-          <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Congratulations! {{ userStore.getUser.name
+          <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Congratulations! {{ userStore.getUserLogged.name
           }}</h1>
           <div class="d-flex justify-center marginBottom85">
             <p class="red bold fontSize96 marginRight78">{{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}%</p>
-            <img src="@/assets/Gold Medal.svg" alt="">
+            <img src="@/assets/goldMedal.svg" alt="">
           </div>
           <p class="d-flex justify-center black fontSize26 light">You got {{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}% right and won
             a</p>
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div v-if="quizzesStore.quizzes[quizzesStore.quizz - 1].showOnFinish && !quizzesStore.quizzes[quizzesStore.quizz - 1].medalAwarded">
-          <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Bad News, {{ userStore.getUser.name }}! </h1>
+          <h1 class="d-flex justify-center red fontSize48 marginTop47 marginBottom85">Bad News, {{ userStore.getUserLogged.name }}! </h1>
           <div class="d-flex justify-center marginBottom85">
             <p class="red bold fontSize96 marginRight78">{{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}%</p>
             <img src="@/assets/sad-face 1.svg" alt="">
@@ -139,7 +139,7 @@
         if (correctAnswers >= this.quizzesStore.quizzes[quizz].passingScore) {
           this.quizzesStore.quizzes[quizz].medalAwarded = true;
           try{
-            this.userStore.addMedal(this.quizzesStore.quizzes[quizz].name)
+            this.userStore.addMedal(this.quizzesStore.quizzes[quizz].medal)
           }catch(error){
             console.log(error);
           }
@@ -218,11 +218,6 @@
     font-family: Lexend Deca Bold;
     src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
   }
-
-  #quizDiv{
-    margin-left: 225px;
-  }
-  
   .marginTop38 {
     margin-top: 38px;
   }
@@ -417,6 +412,7 @@
     background-color: #FCF3F3;
     font-family: Lexend Deca Regular;
     padding: 2rem;
+    margin-left: 6em;
   }
   
   .btnSelQuestionsFilled {

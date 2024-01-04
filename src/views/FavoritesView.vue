@@ -15,5 +15,6 @@
 
 .favorites{
   padding: 2rem;
+  margin-left: 6em;
 }
 </style>

@@ -28,13 +28,14 @@
         src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
     }
     
-#main{
+#main:not(#subtitle){
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 2rem;
+  margin-left: 6em;
 }
 
 #main p{

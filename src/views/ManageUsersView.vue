@@ -4,9 +4,14 @@
         <div id="filterOptions">
             <input type="text" v-if="isVisible" label="Search" v-model="searchUsers" id="search">
             <img @click="toggleBtn" src="../assets/search.png">
-            <div>
-                <img src="../assets/filter.png">
-                <p>Filter</p>
+            <div class="dropdown" @mouseover="toggleDropdown(true)">
+                <div class="dropbtn">
+                    <img src="../assets/filter.png">
+                    <p>Filter</p>
+                </div>
+                <div v-if="isDropdownOpen" class="dropdownContent">
+                    <a href="#">Role</a>
+                </div>
             </div>
         </div>
         <div id="table">
@@ -37,7 +42,8 @@ import { useUserStore } from '../stores/users';
             return {
                 userStore: useUserStore(),
                 searchUsers: "",
-                isVisible: false
+                isVisible: false,
+                isDropdownOpen: false
             }
         },
 
@@ -62,6 +68,10 @@ import { useUserStore } from '../stores/users';
 
             deleteUser(username){
                 this.userStore.delete(username)
+            },
+
+            toggleDropdown(isOpen) {
+                this.isDropdownOpen = isOpen;
             }
         },
     }
@@ -78,8 +88,15 @@ import { useUserStore } from '../stores/users';
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
 } 
 
+h1{
+    color: #F16A64;
+    font-family: Saphile;
+    font-size: 30px;
+}
+
 #body{
   padding: 2rem;
+  margin-left: 6em;
 }
 
 #tableHead, #tableBody{
@@ -137,7 +154,7 @@ import { useUserStore } from '../stores/users';
     height: 2em;
 }
 
-#filterOptions div{
+.dropbtn{
     display: flex;
     flex-direction: row;
     margin: 0 1em;
@@ -160,5 +177,46 @@ import { useUserStore } from '../stores/users';
     background-color: #fcf3f3;
     border-bottom: 3px solid #F16A64;
     outline: none;
+}
+
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #F16A64;
+  min-width: 160px;
+  z-index: 1;
+  top: 100%;
+  border-radius: 10px;
+}
+
+.dropdownContent a {
+  color: #fcf3f3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  font-family: Lexend Deca Regular;
+}
+
+.dropdownContent a:hover {
+  background-color: #fcf3f3;
+  color: #F16A64;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
 }
 </style>

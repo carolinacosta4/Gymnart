@@ -8,12 +8,15 @@
             <img src="../assets/edit.svg" v-bind="props">
           </template>
           <template v-slot:default="{ isActive }">
-            <v-card class="modal-content modalTitle" title="Edit your Name">
-              <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+            <v-card>
+              <div id="head">
+                <h1 class="modalTitle">Edit your Name</h1>
+                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+              </div>
               <v-card-text class="data">
                 <div class="curData">
                   <p class="label">Current Name:</p>
-                  <p class="regular fontSize24">{{ user.name }}</p>
+                  <p class="regular fontSize22">{{ user.name }}</p>
                 </div>
                 <div class="newData">
                   <label class="label" for="newName">New name:</label>
@@ -23,15 +26,22 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
-                <v-btn @click="editName">SAVE</v-btn>
+                <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                <v-btn @click="editName" class="btnSave">SAVE</v-btn>
               </v-card-actions>
             </v-card>
           </template>
         </v-dialog>
       </div>
-      <div>
-        <p>Badge</p>
+      <div v-if="user.medals.length > 0">
+        <div v-for="medal in user.medals" :key="user.username" id="medalsDisplay">
+          <img :src="medal" class="medal">
+          <p>{{ medal }}</p>
+          <img src="../assets/goldmedal.png" class="medal">
+        </div>
+      </div>
+      <div v-else>
+        <span></span>
       </div>
       <div>
         <img src="../assets/maria.png" id="maria">
@@ -45,12 +55,15 @@
               <img src="../assets/edit.svg" v-bind="props">
             </template>
             <template v-slot:default="{ isActive }">
-              <v-card class="modal-content modalTitle" title="Edit your Username">
-                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+              <v-card>
+                <div id="head">
+                  <h1 class="modalTitle">Edit your Username</h1>
+                  <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                </div>
                 <v-card-text class="data">
                   <div class="curData">
                     <p class="label">Current Username:</p>
-                    <p class="regular fontSize24">{{ user.username }}</p>
+                    <p class="regular fontSize22">{{ user.username }}</p>
                   </div>
                   <div class="newData">
                     <label class="label" for="newUsername">New Username:</label>
@@ -60,8 +73,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
-                  <v-btn @click="editUsername">SAVE</v-btn>
+                  <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                  <v-btn @click="editUsername" class="btnSave">SAVE</v-btn>
                 </v-card-actions>
               </v-card>
             </template>
@@ -75,12 +88,15 @@
               <img src="../assets/edit.svg" v-bind="props">
             </template>
             <template v-slot:default="{ isActive }">
-              <v-card class="modal-content modalTitle" title="Edit your Email">
-                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+              <v-card>
+                <div id="head">
+                  <h1 class="modalTitle">Edit your Name</h1>
+                  <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                </div>
                 <v-card-text class="data">
                   <div class="curData">
                     <p class="label">Current Email:</p>
-                    <p class="regular fontSize24">{{ user.email }}</p>
+                    <p class="regular fontSize22">{{ user.email }}</p>
                   </div>
                   <div class="newData">
                     <label class="label" for="newEmail">New Email:</label>
@@ -90,8 +106,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
-                  <v-btn @click="editEmail">SAVE</v-btn>
+                  <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                  <v-btn @click="editEmail" class="btnSave">SAVE</v-btn>
                 </v-card-actions>
               </v-card>
             </template>
@@ -100,15 +116,17 @@
         <p class="fontLight">Password</p>
         <div class="edit4">
           <div id="password">
-            <p class="lightRed" v-for="index in passwordUser.length">•</p>
+            <p class="lightRed" v-for="index in passwordUser.length" :key="index">•</p>
           </div>
           <v-dialog width="500">
             <template v-slot:activator="{ props }">
               <img src="../assets/edit.svg" v-bind="props">
             </template>
             <template v-slot:default="{ isActive }">
-              <v-card class="modal-content modalTitle" title="Edit your Password">
-                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+              <v-card>
+                <div id="head">
+                  <h1 class="modalTitle">Edit your Name</h1>
+                </div>
                 <v-card-text class="data">
                   <div class="curData">
                     <p class="label">Current Password:</p>
@@ -122,8 +140,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn text="CANCEL" @click="isActive.value = false"></v-btn>
-                  <v-btn @click="editPassword">SAVE</v-btn>
+                  <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                  <v-btn @click="editPassword" class="btnSave">SAVE</v-btn>
                 </v-card-actions>
               </v-card>
             </template>
@@ -159,11 +177,11 @@ import { useUserStore } from '../stores/users';
 
     computed: {
       user() {
-        return this.userStore.getUser
+        return this.userStore.getUserLogged
       },
 
       passwordUser(){
-        return this.userStore.getUser.password.split('')
+        return this.userStore.getUserLogged.password.split('')
       }
     },
 
@@ -174,15 +192,21 @@ import { useUserStore } from '../stores/users';
       },
 
       editName() {
-        this.userStore.editName(this.newName)
+        if(this.newName != ""){
+          this.userStore.editName(this.newName)
+        }
       },
 
       editUsername() {
-        this.userStore.editUsername(this.newUsername)
+        if(this.newUsername != ""){
+          this.userStore.editUsername(this.newUsername)
+        }
       },
 
       editEmail() {
-        this.userStore.editEmail(this.newEmail)
+        if(this.newEmail != ""){
+          this.userStore.editEmail(this.newEmail)
+        }
       },
 
       editPassword() {
@@ -197,6 +221,7 @@ import { useUserStore } from '../stores/users';
 </script>
 
 <style lang="css" scoped>
+@import '../assets/modals.css';
 @font-face {
   font-family: Saphile;
   src: url(../assets/Saphile/Saphile-Regular.otf);
@@ -233,6 +258,8 @@ import { useUserStore } from '../stores/users';
   justify-content: center;
   flex-direction: column;
   padding: 2rem;
+  margin-left: 6em;
+  height: 40em;
 }
 
 #account{
@@ -305,14 +332,13 @@ h1{
   color: #FCF3F3;
   font-family: Lexend Deca ExtraLight;
 }
-</style>
 
+.medal{
+  width: 2em;
+}
 
-
-<script>
-
-</script>
-
-<style lang="css" scoped>
-  @import '../assets/modals.css';
+#medalsDisplay{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 </style>
