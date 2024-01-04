@@ -218,11 +218,6 @@
     font-family: Lexend Deca Bold;
     src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
   }
-
-  #quizDiv{
-    margin-left: 225px;
-  }
-  
   .marginTop38 {
     margin-top: 38px;
   }

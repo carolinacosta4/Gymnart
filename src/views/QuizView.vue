@@ -125,10 +125,6 @@ export default {
   src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
 }
 
-.parentContainer{
-  margin-left: 225px;
-}
-
 .marginTop38 {
   margin-top: 38px;
 }
