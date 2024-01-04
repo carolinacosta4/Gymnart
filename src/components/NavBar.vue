@@ -39,7 +39,7 @@
                 <span class="pr-3"></span>
             </div>
         </div>
-        <img src="../assets/iconsNav/logout.svg" @click="openLogOutModal()" alt="logout icon outlined" class="icon">
+        <img src="../assets/iconsNav/logout.svg" @click="openLogOutModal()" alt="logout icon outlined" id="iconLogout" class="icon">
     </div>
 
     <!-- Confirm Log Out Pop Up -->
@@ -195,5 +195,9 @@ let clickedIcon = []
 
 .divHover:hover .hover {
   display: block;
+}
+
+#iconLogout{
+    transform: scaleX(-1);
 }
 </style>

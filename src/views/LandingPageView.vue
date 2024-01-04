@@ -93,7 +93,7 @@
 
 @font-face {
     font-family: LexendDecaThin;
-    src: url(../assets/Lexend_Deca/LexendDeca-Medium.ttf);
+    src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
 }
 
 @font-face {
