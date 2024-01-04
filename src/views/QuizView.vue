@@ -1,6 +1,6 @@
 <template>
   <body>
-    <div>
+    <div class="parentContainer">
       <h1 class="red">Quizzes</h1>
       <p class="black extraLight fontSize24 marginTop38 marginBottom85">Participate in our quiz and win your own olympic
         medal!</p>
@@ -235,6 +235,7 @@ export default {
   opacity: 0;
   transition: opacity 0.3s ease, background-color 0.3s ease;
   background-color: rgba(72, 87, 160, 0.6);
+  cursor: pointer;
 }
 
 .hovered .hover-image {
@@ -319,6 +320,7 @@ body {
   background-color: #FCF3F3;
   font-family: Lexend Deca Regular;
   padding: 2rem;
+  margin-left: 6em;
 }
 
 .btnSelQuestionsFilled {

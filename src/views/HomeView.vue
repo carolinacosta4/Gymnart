@@ -73,7 +73,7 @@
   src: url(@/assets/Saphile/Saphile-Regular.otf);
 }
     
-#main{
+#main:not(#subtitle){
   display: flex;
   flex-direction: column;
   justify-content: center;

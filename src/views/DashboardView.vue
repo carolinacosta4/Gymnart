@@ -179,122 +179,123 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    @font-face {
-        font-family: Saphile;
-        src: url(../assets/Saphile/Saphile-Regular.otf);
-    }
+  @font-face {
+      font-family: Saphile;
+      src: url(../assets/Saphile/Saphile-Regular.otf);
+  }
 
-    @font-face {
-        font-family: Lexend Deca Regular;
-        src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
-    }
+  @font-face {
+      font-family: Lexend Deca Regular;
+      src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+  }
 
-    @font-face {
-        font-family: Lexend Deca Light;
-        src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
-    }
+  @font-face {
+      font-family: Lexend Deca Light;
+      src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
+  }
 
-    #body{
-        font-family: Lexend Deca Regular !important;
-        padding: 2rem;
-    }
+  #body{
+    font-family: Lexend Deca Regular !important;
+    padding: 2rem;
+    margin-left: 6em;
+  }
 
-    #noAthleteRoutine{
-      border: 1px solid #ED2E2F;
-      border-radius: 15px;
-      height: 84%;
-      display: flex;
-      flex-direction: column;
+  #noAthleteRoutine{
+    border: 1px solid #ED2E2F;
+    border-radius: 15px;
+    height: 84%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #noAthlete{
+    color: #ED2E2F;
+    text-align: center;
+  }
+
+  .gridEvents {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       align-items: center;
-      justify-content: center;
-    }
+      margin: 0.5em 0;
+  }
 
-    #noAthlete{
-      color: #ED2E2F;
-      text-align: center;
-    }
+  .movementPicture {
+      width: 3em;
+      margin-left: 4em;
+  }
 
-    .gridEvents {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        align-items: center;
-        margin: 0.5em 0;
-    }
+  #athleteInfo{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 2em 4em;
+    font-family: Lexend Deca Regular;
+    column-gap: 1em;
+  }
 
-    .movementPicture {
-        width: 3em;
-        margin-left: 4em;
-    }
+  #thumbnail{
+    width: 7em;
+    border-radius: 7px;
+  }
 
-    #athleteInfo{
-      display: grid;
-      grid-template-columns: 1fr 3fr;
-      margin: 2em 4em;
-      font-family: Lexend Deca Regular;
-      column-gap: 1em;
-    }
+  #athleteRoutine{
+    border: 1px solid #ED2E2F;
+    border-radius: 15px;
+    height: 84%;
+  }
 
-    #thumbnail{
-      width: 7em;
-      border-radius: 7px;
-    }
+  h1{
+      font-family: Saphile;
+  }
 
-    #athleteRoutine{
-      border: 1px solid #ED2E2F;
+  .fontSize20{
+    font-size: 20px;
+  }
+
+  .fontSize16{
+    font-size: 16px;
+  }
+
+  .fontSize13{
+    font-size: 13px;
+  }
+
+  #top3Teams{
       border-radius: 15px;
-      height: 84%;
-    }
+      position: relative;
+      overflow: hidden;
+  }
 
-    h1{
-        font-family: Saphile;
-    }
+  #top3Teams h2, #top5Athletes h2{
+      margin: 0.5em 1.4em;
+  }
 
-    .fontSize20{
-      font-size: 20px;
-    }
+  h2, .regular{
+    font-family: Lexend Deca Regular;
+  }
 
-    .fontSize16{
-      font-size: 16px;
-    }
-
-    .fontSize13{
-      font-size: 13px;
-    }
-
-    #top3Teams{
-        border-radius: 15px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    #top3Teams h2, #top5Athletes h2{
-        margin: 0.5em 1.4em;
-    }
-
-    h2, .regular{
-      font-family: Lexend Deca Regular;
-    }
-
-    #top5Athletes{
-        border-radius: 15px;
-        position: relative;
-        overflow: hidden;
-        min-height: 40em;
-    }
-
-    #dashboard{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 2em;
+  #top5Athletes{
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
       min-height: 40em;
-    }
+  }
 
-    #tops{
-      display: grid;
-      grid-template-rows: 1fr 2fr;
-      row-gap: 2em;
-      min-height: 40em;
-    }
+  #dashboard{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    min-height: 40em;
+  }
+
+  #tops{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    row-gap: 2em;
+    min-height: 40em;
+  }
 
   .background3 {
     height: 100%;

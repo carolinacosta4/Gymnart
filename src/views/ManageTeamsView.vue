@@ -2,12 +2,78 @@
     <div id="body">
         <h1>Manage Teams</h1>
         <div id="filterOptions">
-            <input type="text" v-if="isVisible" label="Search" v-model="searchTeams" id="search">
+            <input type="text" v-if="isVisible" label="Search" v-model="searchTeams" id="search" @keydown="changeFilterFlag('search')">
             <img @click="toggleBtn" src="../assets/search.png">
-            <div>
-                <img src="../assets/filter.png">
-                <p>Filter</p>
+            <div class="dropdown" @mouseover="toggleDropdown(true)">
+                <div class="dropbtn">
+                    <img src="../assets/filter.png">
+                    <p id="filterP">Filter</p>
+                </div>
+                <div v-if="isDropdownOpen" class="dropdownContent">
+                    <p @click="changeFilterFlag('gold')">Gold Medals</p>
+                    <p @click="changeFilterFlag('silver')">Silver Medals</p>
+                    <p @click="changeFilterFlag('bronze')">Bronze Medals</p>
+                </div>
             </div>
+            <v-dialog width="500">
+                <template v-slot:activator="{ props }">
+                    <button v-bind="props" class="addBtn">Add Team</button>
+                </template>
+                <template v-slot:default="{ isActive }">
+                    <v-card>
+                        <div id="head">
+                            <h1 class="modalTitle">Add Team</h1>
+                            <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
+                        </div>
+                    <v-card-text class="data">
+                        <div>
+                            <p for="txtTeamName" class="label">Name:</p>
+                            <input type="text" placeholder="Type here..." id="txtTeamName" v-model="name"/>
+                        </div>
+                        <div>
+                            <label for="txtFlagIcon" class="label">Flag Icon Url:</label>
+                            <br/>
+                            <input type="text" placeholder="Type here..." id="txtFlagIcon" v-model="flag"/>
+                        </div>
+                        <div>
+                            <label for="txtTeamPic" class="label">Team Picture Url:</label>
+                            <br/>
+                            <input type="text" placeholder="Type here..." id="txtTeamPic" v-model="picture"/>
+                        </div>
+                        <div>
+                            <label for="txtCoaches" class="label">Coaches:</label>
+                            <br/>
+                            <input type="text" placeholder="Type here..." id="txtCoaches" v-model="coaches"/>
+                        </div>
+                        <div>
+                            <label for="txtTeamAcronym" class="label">Team Acronym:</label><br>
+                            <br/>
+                            <input type="text" placeholder="Choose Team..." id="txtTeamAcronym" v-model="acronym"/>
+                        </div>
+                        <div>
+                            <label for="numGoldMedalsTeam" class="label">Gold Medals:</label><br>
+                            <br/>
+                            <input type="number" placeholder="Type here..." id="numGoldMedalsTeam" v-model="gold"/>
+                        </div>
+                        <div>
+                            <label for="numSilverMedalsTeam" class="label">Silver Medals:</label>
+                            <br/>
+                            <input type="number" placeholder="Type here..." id="numSilverMedalsTeam" v-model="silver"/>
+                        </div>
+                        <div>
+                            <label for="numBronzeMedalsTeam" class="label">Bronze Medals:</label>
+                            <br/>
+                            <input type="number" placeholder="Type here..." id="numBronzeMedalsTeam" v-model="bronze"/>
+                        </div>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                        <v-btn @click="addTeam" class="btnSave">SAVE</v-btn>
+                    </v-card-actions>
+                    </v-card>
+                </template>
+            </v-dialog>
         </div>
         <div id="table">
             <div id="tableHead">
@@ -17,7 +83,7 @@
                 <h3>Bronze</h3>
                 <h3>Options</h3>
             </div>
-            <div id="tableBody" v-for="team in search">
+            <div id="tableBody" v-for="team in filters">
                 <p>{{ team.name }}</p>
                 <p>{{ team.gold }}</p>
                 <p>{{ team.silver }}</p>
@@ -39,7 +105,17 @@ import { useTeamStore } from '../stores/team';
             return {
                 teamStore: useTeamStore(),
                 searchTeams: "",
-                isVisible: false
+                isVisible: false,
+                name: "",
+                flag: "",
+                picture: "",
+                coaches: "",
+                acronym: "",
+                gold: 0,
+                silver: 0,
+                bronze: 0,
+                isDropdownOpen: false,
+                filterFlag: "search"
             }
         },
 
@@ -48,8 +124,11 @@ import { useTeamStore } from '../stores/team';
                 return this.teamStore.getTeams
             },
 
-            search() {
-                return this.teams.filter((team) => team.name.toLowerCase().startsWith(this.searchTeams.toLowerCase()))
+            filters(){
+                if(this.filterFlag == "search") return this.teams.filter((team) => team.name.toLowerCase().startsWith(this.searchTeams.toLowerCase()))
+                if(this.filterFlag == "gold") return this.teams.filter((team) => team.gold > 0).sort((a, b) => b.gold - a.gold)
+                if(this.filterFlag == "silver") return this.teams.filter((team) => team.silver > 0).sort((a, b) => b.silver - a.silver)
+                if(this.filterFlag == "bronze") return this.teams.filter((team) => team.bronze > 0).sort((a, b) => b.bronze - a.bronze)
             }
        },
 
@@ -59,21 +138,35 @@ import { useTeamStore } from '../stores/team';
 
         methods: {
             toggleBtn() {
+                this.changeFilterFlag('search')
                 return this.isVisible = !this.isVisible
             },
 
-            deleteTeam(){
-
+            deleteTeam(acronym){
+                this.teamStore.delete(acronym)
             },
 
             editTeam(){
 
+            },
+
+            addTeam(){
+                this.teamStore.add(this.name, this.flag, this.picture, this.coaches, this.acronym, this.gold, this.silver, this.bronze)
+            },
+
+            toggleDropdown(isOpen) {
+                this.isDropdownOpen = isOpen;
+            },
+
+            changeFilterFlag(change){
+                this.filterFlag = change
             }
         },
     }
 </script>
 
 <style lang="css" scoped>
+@import url(../assets/modals.css);
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
@@ -86,6 +179,7 @@ import { useTeamStore } from '../stores/team';
 
 #body{
   padding: 2rem;
+  margin-left: 6em;
 }
 
 #tableHead, #tableBody{
@@ -96,6 +190,12 @@ import { useTeamStore } from '../stores/team';
 #tableHead{
     background-color: #F8E2D6;
     border-radius: 15px;
+}
+
+h1{
+    color: #F16A64;
+    font-family: Saphile;
+    font-size: 30px;
 }
 
 #tableHead h3{
@@ -144,14 +244,14 @@ import { useTeamStore } from '../stores/team';
     height: 2em;
 }
 
-#filterOptions div{
+.dropbtn{
     display: flex;
     flex-direction: row;
     margin: 0 1em;
     align-items: center;
 }
 
-#filterOptions p{
+#filterP{
     font-size: 24px;
     color: #F16A64;
     font-family: Lexend Deca Regular;
@@ -167,5 +267,55 @@ import { useTeamStore } from '../stores/team';
     background-color: #fcf3f3;
     border-bottom: 3px solid #F16A64;
     outline: none;
+}
+
+.addBtn{
+    background-color: #F16A64;
+    border-radius: 10px;
+    color: #fcf3f3;
+    height: 2em;
+    width: 8em;
+    font-size: 20px;
+    font-family: Lexend Deca ExtraLight;
+}
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #F16A64;
+  min-width: 160px;
+  z-index: 1;
+  top: 100%;
+  border-radius: 10px;
+}
+
+.dropdownContent p {
+  color: #fcf3f3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  font-family: Lexend Deca Regular;
+}
+
+.dropdownContent p:hover {
+  background-color: #fcf3f3;
+  color: #F16A64;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
 }
 </style>

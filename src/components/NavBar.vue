@@ -76,7 +76,7 @@ export default {
         },
         
         user(){
-            return this.store.getUser
+            return this.store.getUserLogged
         }
     },
     mounted() {  
