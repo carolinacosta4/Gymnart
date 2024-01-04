@@ -13,6 +13,7 @@ import PageNotFoundView from '../views/PageNotFoundView.vue'
 import ManageAthletesView from '../views/ManageAthletesView.vue'
 import ManageTeamsView from '../views/ManageTeamsView.vue'
 import ManageUsersView from '../views/ManageUsersView.vue'
+import AthleteView from '../views/AthleteView.vue'
 import { useUserStore } from '../stores/users'
 
 const router = createRouter({
@@ -98,6 +99,12 @@ const router = createRouter({
       name: "manageTeams",
       component: ManageTeamsView,
       meta: { requiresAuth: true }
+    },
+    {
+      path: "/athlete",
+      name: "athlete",
+      component: AthleteView,
+      meta: { requiresAuth: false }
     },
   ]
 })
