@@ -3,17 +3,16 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", {
   state: () => ({
     isUserAuthenticated: false,
-    user: null,
+    userLogged: null,
     users: [
-        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false},
+        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: ["../assets/goldmedal.png"], isBlocked: false},
         { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false},
       ],
   }),
   getters: {
-    getUser: (state) => state.user,
+    getUserLogged: (state) => state.userLogged,
     getUsers: (state) => state.users,
     isUser: (state) => state.isUserAuthenticated,
-    // isUserBlocked: (state) => state.user.isBlocked
   },
   actions: {
     login(username, password) {
@@ -22,14 +21,14 @@ export const useUserStore = defineStore("user", {
         );
         if (user && !user.isBlocked) {
             this.isUserAuthenticated = true;
-            this.user = user;
+            this.userLogged = user;
         } else {
             throw Error("User invalid!");
         }
     },
     logout() {
         this.isUserAuthenticated = false;
-        this.user = null;
+        this.userLogged = null;
     },
 
     signup(name, username, email, password, confirmPassword){
@@ -63,34 +62,34 @@ export const useUserStore = defineStore("user", {
             };
             this.users.push(newUser);
             console.log(this.users)
-            this.user = newUser;
+            this.userLogged = newUser;
             this.isUserAuthenticated = true;
             alert('account created')
         }
     },
 
     editName(newName){
-        let index = this.users.findIndex((user) => user.username == this.user.username)
-        this.user = {name: newName, username: this.user.username, email: this.user.email, password: this.user.password, profilePicture: this.user.profilePicture, type: this.user.type, favoriteAthletes: this.user.favoriteAthletes, favoriteTeams: this.user.favoriteTeams, medals: this.user.medals, isBlocked: this.user.isBlocked}
-        this.users.splice(index, 1, this.user)
+        let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+        this.userLogged = {name: newName, username: this.userLogged.username, email: this.userLogged.email, password: this.userLogged.password, profilePicture: this.userLogged.profilePicture, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked}
+        this.users.splice(index, 1, this.userLogged)
     },
 
     editUsername(newUsername){
-        let index = this.users.findIndex((user) => user.username == this.user.username)
-        this.user = {name: this.user.name, username: newUsername, email: this.user.email, password: this.user.password, profilePicture: this.user.profilePicture, type: this.user.type, favoriteAthletes: this.user.favoriteAthletes, favoriteTeams: this.user.favoriteTeams, medals: this.user.medals, isBlocked: this.user.isBlocked}
-        this.users.splice(index, 1, this.user)
+        let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+        this.userLogged = {name: this.userLogged.name, username: newUsername, email: this.userLogged.email, password: this.userLogged.password, profilePicture: this.userLogged.profilePicture, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked}
+        this.users.splice(index, 1, this.userLogged)
     },
 
     editEmail(newEmail){
-        let index = this.users.findIndex((user) => user.username == this.user.username)
-        this.user = {name: this.user.name, username: this.user.username, email: newEmail, password: this.user.password, profilePicture: this.user.profilePicture, type: this.user.type, favoriteAthletes: this.user.favoriteAthletes, favoriteTeams: this.user.favoriteTeams, medals: this.user.medals, isBlocked: this.user.isBlocked}
-        this.users.splice(index, 1, this.user)
+        let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+        this.userLogged = {name: this.userLogged.name, username: this.userLogged.username, email: newEmail, password: this.userLogged.password, profilePicture: this.userLogged.profilePicture, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked}
+        this.users.splice(index, 1, this.userLogged)
     },
 
     editPassword(newPassword){
-        let index = this.users.findIndex((user) => user.username == this.user.username)
-        this.user = {name: this.user.name, username: this.user.username, email: this.user.email, password: newPassword, profilePicture: this.user.profilePicture, type: this.user.type, favoriteAthletes: this.user.favoriteAthletes, favoriteTeams: this.user.favoriteTeams, medals: this.user.medals, isBlocked: this.user.isBlocked}
-        this.users.splice(index, 1, this.user)
+        let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+        this.userLogged = {name: this.userLogged.name, username: this.userLogged.username, email: this.userLogged.email, password: newPassword, profilePicture: this.userLogged.profilePicture, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked}
+        this.users.splice(index, 1, this.userLogged)
     },
 
     blocked(username){
@@ -104,18 +103,14 @@ export const useUserStore = defineStore("user", {
         let index = this.users.findIndex((user) => user.username == username)
         this.users.splice(index, 1)
     },
+
     addMedal(newMedal) {
-        if (this.isUserAuthenticated) {
-            const existingMedal = this.user.medals.find(
-                (medal) => medal === newMedal
-            );
-            if (!existingMedal) {
-                this.user.medals.push(newMedal);
-            }else{
-                throw Error("Medal already added.");
-            }
-        } else {
-            throw Error("User not authenticated. Cannot add medal.");
+        const existingMedal = this.userLogged.medals.find((medal) => medal === newMedal);
+        if (!existingMedal) {
+            this.userLogged.medals.push(newMedal);
+            console.log(this.userLogged);
+        }else{
+            throw Error("Medal already added.");
         }
     }
     

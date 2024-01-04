@@ -94,7 +94,7 @@ import { useUserStore } from '@/stores/users';
 			},
 
 			user(){
-				return this.store.getUser
+				return this.store.getUserLogged
 			}
 		},
 		methods: {

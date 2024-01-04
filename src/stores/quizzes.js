@@ -16,6 +16,7 @@ export const useQuizzesStore = defineStore('quiz', {
                 lastScore: 0,
                 medalAwarded: false,
                 showOnFinish: false,
+                medal: "src/assets/goldMedal.svg",
                 questions: [
                     {
                         id: 1,
@@ -177,6 +178,7 @@ export const useQuizzesStore = defineStore('quiz', {
                 lastScore: 0,
                 medalAwarded: false,
                 showOnFinish: false,
+                medal: "src/assets/silverMedal.svg",
                 questions: [
                     {
                         id: 1,
@@ -295,6 +297,7 @@ export const useQuizzesStore = defineStore('quiz', {
                 lastScore: 0,
                 medalAwarded: false,
                 showOnFinish: false,
+                medal: "src/assets/bronzeMedal.svg",
                 questions: [
                     {
                         id: 1,
@@ -413,6 +416,7 @@ export const useQuizzesStore = defineStore('quiz', {
                 lastScore: 0,
                 medalAwarded: false,
                 showOnFinish: false,
+                medal: "src/assets/goldMedal.svg",
                 questions: [
                     {
                         id: 1,
