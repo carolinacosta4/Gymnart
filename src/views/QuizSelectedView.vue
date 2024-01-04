@@ -1,6 +1,6 @@
 <template>
     <body>
-      <div id="quizzDiv">
+      <div id="quizDiv">
         <h1 class="red">Quizz - {{ quizzesStore.quizzes[quizzesStore.quizz - 1].name }}</h1>
         <p class="black light fontSize26 marginTop25"> {{ quizzesStore.quizzes[quizzesStore.quizz - 1].numQuestions }} questions</p>
         <p :class="changeDifficultyColor(quizzesStore.quizzes[quizzesStore.quizz - 1].difficulty)">{{ quizzesStore.quizzes[quizzesStore.quizz - 1].difficulty }}</p>
@@ -218,6 +218,10 @@
     font-family: Lexend Deca Bold;
     src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
   }
+
+  #quizDiv{
+    margin-left: 225px;
+  }
   
   .marginTop38 {
     margin-top: 38px;
@@ -329,6 +333,7 @@
     opacity: 0;
     transition: opacity 0.3s ease, background-color 0.3s ease;
     background-color: rgba(72, 87, 160, 0.6);
+    cursor: pointer;
   }
   
   .hovered .hover-image {
