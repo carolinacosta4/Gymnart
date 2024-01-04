@@ -1,10 +1,10 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
-import Header from './components/Header.vue';
+import NavBar from './components/NavBar.vue';
 
   export default {
     components: {
-      Header,
+      NavBar,
 },
   }
 </script>
@@ -12,7 +12,7 @@ import Header from './components/Header.vue';
 
 
 <template id="app">
-  <Header v-if="this.$route.name !== 'login' && this.$route.name !== 'landingPage' && this.$route.name !== 'pageNotFound'"></Header>
+  <NavBar v-if="this.$route.name !== 'login' && this.$route.name !== 'landingPage' && this.$route.name !== 'pageNotFound'"></NavBar>
   <RouterView />
   
 </template>
