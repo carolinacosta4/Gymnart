@@ -12,9 +12,9 @@ export default[
     "curiosities": "Simone Biles rose to fame in 2013 when she won two gold medals at the Artistic Gymnastics World Championships at just 16 years old, including the all-around title. The following years were equally victorious for the young gymnast. She secured four world gold medals in 2014 and another four in 2015, entering the Olympic stage with considerable momentum.",
     "picturePath": "https://static.euronews.com/articles/stories/07/85/18/64/320x180_cmsv2_1f54aa63-209d-5093-b60a-30a8ff5b6703-7851864.jpg",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j",
-    "firstOlympics": 0,
-    "height": "",
-    "location": "",
+    "firstOlympics": 2016,
+    "height": 1.42,
+    "location": "Columbus, Ohio",
     "isLive": false
     },
     {"id": 2,
@@ -31,7 +31,7 @@ export default[
     "picturePath": "https://static.euronews.com/articles/stories/07/85/18/64/320x180_cmsv2_1f54aa63-209d-5093-b60a-30a8ff5b6703-7851864.jpg",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -49,7 +49,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1671611227/primary/wmedlb4xxj1jz4zvwagy",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -67,7 +67,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -85,7 +85,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "https://www.jogadadomes.pt/wp-content/uploads/2015/03/filipamartins.jpg",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -103,7 +103,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -121,7 +121,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -139,7 +139,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -157,7 +157,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/bxgkiocnmklojlnoibkf",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -175,7 +175,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -193,7 +193,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -211,7 +211,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_1280/primary/gua8j8tmlx3c2bwalntf",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -229,7 +229,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -247,7 +247,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/b52vkkracznxkm5ucbhs",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     },
@@ -265,7 +265,7 @@ export default[
     "picturePath": "",
     "thumbnailPath": "",
     "firstOlympics": 0,
-    "height": "",
+    "height": 0,
     "location": "",
     "isLive": false
     }

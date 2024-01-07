@@ -1,7 +1,7 @@
 export default[
     {"name": "United States of America",
     "acronym": "USA",
-    "flagIcon": "",
+    "flagIcon": "src/assets/flagIcons/usaFlag.svg",
     "picture": "https://image-cdn.essentiallysports.com/wp-content/uploads/Team-USA-1-1.jpg",
     "athletesList": ["Simone Biles", "Skye Brakely", "Jade Carey", "Jordan Chiles", "Kayla Dicello", "Amelia Disidore", "Shilese Jones", "Katelyn Jong", "Kaliya Lincoln", "Eveylynn Lowe", "Nola Matthews", "Zoe Miller", "Joscelyn Roberson", "Tiana Sumanasekera", "Leanne Wong", "Alicia Zhou"],
     "gold": 3,
