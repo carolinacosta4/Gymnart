@@ -50,8 +50,20 @@
 </template>
 
 <script>
-  export default {
+import { useTeamStore } from '../stores/team';
+import { useAthleteStore } from '../stores/athlete';
 
+export default {
+  data() {
+    return {
+      teamStore: useTeamStore(),
+      athleteStore: useAthleteStore(),
+    };
+  },
+    created () {
+    this.athleteStore.fetchAthletes();
+    this.teamStore.fetchTeams()
+  },
   }
 </script>
 

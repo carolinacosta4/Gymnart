@@ -10,7 +10,7 @@
                     <p>Filter</p>
                 </div>
                 <div v-if="isDropdownOpen" class="dropdownContent">
-                    <a href="#">Role</a>
+                    <p @click="changeFilterFlag('role')">Role</p>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <h3>Role</h3>
                 <h3>Options</h3>
             </div>
-            <div id="tableBody" v-for="user in search">
+            <div id="tableBody" v-for="user in filters">
                 <p>{{ user.username }}</p>
                 <p>{{ user.email }}</p>
                 <p>{{ user.type }}</p>
@@ -43,7 +43,8 @@ import { useUserStore } from '../stores/users';
                 userStore: useUserStore(),
                 searchUsers: "",
                 isVisible: false,
-                isDropdownOpen: false
+                isDropdownOpen: false,
+                filterFlag: "search"
             }
         },
 
@@ -52,13 +53,15 @@ import { useUserStore } from '../stores/users';
                 return this.userStore.getUsers
             },
 
-            search() {
-                return this.users.filter((user) => user.username.toLowerCase().startsWith(this.searchUsers.toLowerCase()))
+            filters(){
+                if(this.filterFlag == "search") return this.users.filter((user) => user.username.toLowerCase().startsWith(this.searchUsers.toLowerCase()))
+                if(this.filterFlag == "role") return this.users.filter((user) => user.type).sort((a, b) => {if (a.type < b.type) return -1; if (a.type > b.type) return 1; return 0;});
             }
          },
 
         methods: {
             toggleBtn() {
+                this.changeFilterFlag('search')
                 return this.isVisible = !this.isVisible
             },
 
@@ -72,6 +75,10 @@ import { useUserStore } from '../stores/users';
 
             toggleDropdown(isOpen) {
                 this.isDropdownOpen = isOpen;
+            },
+
+            changeFilterFlag(change){
+                this.filterFlag = change
             }
         },
     }
@@ -201,8 +208,8 @@ h1{
   border-radius: 10px;
 }
 
-.dropdownContent a {
-  color: #fcf3f3;
+.dropdownContent p {
+  color: #fcf3f3 !important;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -210,9 +217,9 @@ h1{
   font-family: Lexend Deca Regular;
 }
 
-.dropdownContent a:hover {
+.dropdownContent p:hover {
   background-color: #fcf3f3;
-  color: #F16A64;
+  color: #F16A64 !important;
   border-radius: 10px;
 }
 

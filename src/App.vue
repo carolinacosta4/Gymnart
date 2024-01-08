@@ -12,9 +12,8 @@ import NavBar from './components/NavBar.vue';
 
 
 <template id="app">
-  <NavBar v-if="this.$route.name !== 'login' && this.$route.name !== 'landingPage' && this.$route.name !== 'pageNotFound'"></NavBar>
   <RouterView />
-  
+  <NavBar v-if="this.$route.name !== 'login' && this.$route.name !== 'landingPage' && this.$route.name !== 'pageNotFound'"></NavBar>
 </template>
 
 <style lang="css">
