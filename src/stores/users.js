@@ -114,6 +114,19 @@ export const useUserStore = defineStore("user", {
         }else{
             throw Error("Medal already added.");
         }
+    },
+
+    addRemoveFavorite(newFavorite, typeFavorites){        //Receives the Name of the Property That You Want to Add to or Remove from (favoriteAthletes or favoriteTeams)
+        if (this.userLogged[typeFavorites].length <= 5) {
+            const existingFavorite = this.userLogged[typeFavorites].includes(newFavorite);
+
+            if (!existingFavorite) {
+                this.userLogged[typeFavorites].push(newFavorite);
+            }else{
+                let index = this.userLogged[typeFavorites].indexOf(newFavorite)
+                this.userLogged[typeFavorites].splice(index, 1);
+            }
+        }
     }
     
     

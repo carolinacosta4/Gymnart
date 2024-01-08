@@ -1,56 +1,67 @@
 <template>
-    <div style="margin-left: 200px">
-        <div id="headerInfo">
-            <h1 class="title">{{ athleteStore.getAthlete(id).name }}</h1>
-            <img :src="teamStore.getTeam(athleteStore.getAthlete(id).teamAcronym).flagIcon" alt="">
-            <img src="../assets/iconsAthlete/favouriteIcon.svg" alt="">
-            <img src="../assets/iconsAthlete/liveIcon.svg" alt="">
-        </div>
-        <div id="athleteInfo">
-            <div class="smallInfo">
-                <img src="../assets/iconsAthlete/ageIcon.svg" alt="">
-                <p style="color: purple">{{ athleteStore.getAthlete(id).age }} years</p>
-            </div>
-            <div class="smallInfo">
-                <img src="../assets/iconsAthlete/birthPlaceIcon.svg" alt="">
-                <!-- <p style="color: purple">{{ athleteStore.getAthlete(id).birthPlace }}</p> -->
-            </div>
-            <div class="smallInfo">
-                <img src="../assets/iconsAthlete/heightIcon.svg" alt="">
-                <!-- <p style="color: purple">{{ athleteStore.getAthlete(id).height }}({{ athleteStore.getAthlete(id).height * 3.2808 }}ft)</p> -->
-            </div>
-            <div class="smallInfo">
-                <img src="../assets/iconsAthlete/firstOlympicsIcon.svg" alt="">
-                <!-- <p style="color: purple">{{ athleteStore.getAthlete(id).firstOlympics}}</p> -->
-            </div>
-        </div>
-        <h1 style="color: blue">Olympic Medals</h1>
-
-        <div id="medals">
-            <div id="silverMedals">
-                <img src="../assets/iconsAthlete/silverMedal.svg" alt="">
-                <p style="color: silver">{{ athleteStore.getAthlete(id).silver }}</p>
-
-            </div>
-            <div id="goldMedals">
-                <img src="../assets/iconsAthlete/goldMedal.svg" alt="">
-                <p style="color: gold">{{ athleteStore.getAthlete(id).gold }}</p>
-            </div>
-            <div id="bronzeMedals">
-                <img src="../assets/iconsAthlete/bronzeMedal.svg" alt="">
-                <p style="color: brown">{{ athleteStore.getAthlete(id).bronze }}</p>
-
-            </div>
-            <div id="lastResult">
-                <p style="color: brown">Last Result: {{ athleteStore.getAthlete(id).lastResult }}</p>
-            </div>
-        </div>
+    <div class="parentContainer">
         <div>
-            <h1 style="color: blue">Curiosities</h1>
-            <p style="color: pink">{{ athleteStore.getAthlete(id).curiosities }}</p>
+            <div id="headerInfo">
+                <h1 class="title">{{ athleteStore.getAthlete(id)?.name }}</h1>
+                <router-link :to="{ name: 'team', params: { acronym: athleteStore.getAthlete(id)?.teamAcronym } }">
+                    <img @mouseenter="showFlagHover" @mouseleave="hideFlagHover" id="athleteTeamFlag" :src="teamStore.getTeam(athleteStore.getAthlete(id)?.teamAcronym)?.flagIcon " alt=""/>
+                </router-link>
+                <div id="flagHover" v-if="hovered">
+                    <img src="../assets/iconsAthlete/flagHover.svg" alt=""/>
+                    <div id="teamNameHover">
+                        <p id="teamTitle">Team</p>
+                        <p v-if="athleteStore.getAthlete(id).teamAcronym"> {{ teamStore.getTeam(athleteStore.getAthlete(id).teamAcronym)?.name }}</p>
+                    </div>
+                </div>
+                <img id="iconFavorite" @click="toggleFavoriteAthlete" :src="favorite ? 'src/assets/iconsAthlete/favoriteIconFilled.svg' : 'src/assets/iconsAthlete/favoriteIcon.svg'" alt=""/>
+                <img id="liveIcon" v-if="athleteStore.getAthlete(id)?.isLive" src="../assets/iconsAthlete/liveIcon.svg" alt="" />
+                
+            </div>
+            <div id="athleteInfo">
+                <div class="smallInfo">
+                    <img src="../assets/iconsAthlete/ageIcon.svg" alt="">
+                    <p>{{ athleteStore.getAthlete(id)?.age }} years</p>
+                </div>
+                <div class="smallInfo">
+                    <img src="../assets/iconsAthlete/birthPlaceIcon.svg" alt="">
+                    <p>{{ athleteStore.getAthlete(id)?.location }}</p>
+                </div>
+                <div class="smallInfo">
+                    <img src="../assets/iconsAthlete/heightIcon.svg" alt="">
+                    <p>{{ athleteStore.getAthlete(id)?.height }}({{ (athleteStore.getAthlete(id)?.height * 3.2808).toFixed(1) }}ft)</p>     <!--Converts metres to feet with 1 decimal place-->
+                </div>
+                <div class="smallInfo">
+                    <img src="../assets/iconsAthlete/firstOlympicsIcon.svg" alt="">
+                    <p>{{ athleteStore.getAthlete(id)?.firstOlympics}}</p>
+                </div>
+            </div>
+            
+            <h1 class="title">Olympic Medals</h1>
+            <div id="medals">
+                <div class="medalsTextAlign" id="silverMedals">
+                    <img src="../assets/iconsAthlete/silverMedal.svg" alt="">
+                    <p class="medalsNumber">{{ athleteStore.getAthlete(id)?.silver }}</p>
+                </div>
+                <div class="medalsTextAlign" id="goldMedals">
+                    <img src="../assets/iconsAthlete/goldMedal.svg" alt="">
+                    <p class="medalsNumber">{{ athleteStore.getAthlete(id)?.gold }}</p>
+                </div>
+                <div class="medalsTextAlign" id="bronzeMedals">
+                    <img src="../assets/iconsAthlete/bronzeMedal.svg" alt="">
+                    <p class="medalsNumber">{{ athleteStore.getAthlete(id)?.bronze }}</p>
+                </div>
+                <div id="lastResult">
+                    <p class="subTitle">Last Result:</p>
+                    <p class="lastResultText">{{ athleteStore.getAthlete(id)?.lastResult }}</p>
+                </div>
+            </div>
+            <div id="athleteCuriosities">
+                <h1 class="title">Curiosities</h1>
+                <p class="text">{{ athleteStore.getAthlete(id)?.curiosities }}</p>
+            </div>
         </div>
-        <div>
-            <img :src="athleteStore.getAthlete(id).picturePath" alt="">
+        <div id="athleteImg">
+            <img :src="athleteStore.getAthlete(id)?.picturePath" alt="">
         </div>
     </div>
 </template>
@@ -58,80 +69,47 @@
 <script>
 import { useAthleteStore } from "@/stores/athlete"
 import { useTeamStore } from "@/stores/team";
+import { useUserStore } from "@/stores/users";
+
 export default {
     data() {
         return {
             athleteStore: useAthleteStore(),
             teamStore: useTeamStore(),
-            id: 1,
+            userStore: useUserStore(),
+            id: 0,
+            hovered: false,
+            favorite: false,
             // curAthlete: "",
             // athleteTeamAcronym: "",
         }
     },
+
     created() {
         this.athleteStore.fetchAthletes();
         this.teamStore.fetchTeams();
+        this.id = this.$route.params.id;
         // this.curAthlete = this.athleteStore.getAthlete(this.id)
         // this.athleteTeam = this.athleteStore.getAthlete(this.id).teamAcronym
     },
+
+    methods: {
+        showFlagHover() {
+            this.hovered = true;
+        },
+
+        hideFlagHover() {
+            this.hovered = false;
+        },
+
+        toggleFavoriteAthlete() {
+            this.userStore.addRemoveFavorite(this.id, "favoriteAthletes");
+            this.favorite = !this.favorite;
+        },
+  },
 }
 </script>
 
 <style>
-@font-face {
-    font-family: Saphile;
-    src: url(@/assets/Saphile/Saphile-Regular.otf);
-}
-
-@font-face {
-    font-family: Lexend Deca Regular;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
-}
-
-@font-face {
-    font-family: Lexend Deca Medium;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
-}
-
-@font-face {
-    font-family: Lexend Deca ExtraLight;
-    src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
-}
-
-@font-face {
-    font-family: Lexend Deca Thin;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Thin.ttf);
-}
-
-@font-face {
-    font-family: Lexend Deca Light;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
-}
-
-@font-face {
-    font-family: Lexend Deca Bold;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
-}
-
-
-#headerInfo {
-    display: flex;
-    flex-direction: row;
-}
-
-.smallInfo {
-    display: flex;
-    flex-direction: row;
-}
-
-#medals {
-    display: flex;
-    flex-direction: row;
-}
-
-.title {
-    color: #ED2E2F;
-    font-family: Saphile;
-    font-size: 36px;
-}
+    @import '../assets/athletePageStyle.css';
 </style>
