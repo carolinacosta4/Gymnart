@@ -1,0 +1,91 @@
+.parentContainer{
+    padding: 2rem;
+    margin-left: 15em;
+    display: flex;
+    flex-direction: column;
+}
+
+#topInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#teamFlag{
+    width: 57px;
+    height: 30px; 
+    margin-left: 6.8rem;
+}
+
+#teamPictureDiv{
+    width: 69rem;
+    height: 15.6rem; 
+    overflow: hidden;
+    border-radius: 1.3215rem;
+    margin-top: 3rem;
+}
+
+#teamPictureDiv img{
+    width: 100%;
+    border-radius: 1.3215rem;
+}
+
+#centerInfo{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    width: 69rem;
+    justify-content: space-around;
+}
+
+.coachesItem{
+    color: black;
+    font-family: Lexend Deca ExtraLight;
+    margin-left: 3rem;
+    font-size: 1.25rem;
+}
+
+#teamMedals{
+    display: flex;
+}
+
+#teamSilverMedals{
+    margin-top: 4.8rem;
+}
+
+#teamGoldMedals{
+    margin-top: 1.4rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+#teamBronzeMedals{
+    margin-top: 6.6rem;
+}
+
+#athletesList {
+    margin-top: 2rem;
+    font-family: Lexend Deca ExtraLight;
+    width: 69rem;
+}
+
+.athletesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem; 
+}
+
+.athleteItem {
+    padding: 1rem;
+    color: black;
+    font-size: 1.25rem;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
