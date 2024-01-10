@@ -9,8 +9,10 @@
         <p class="fontSize18">Last seen in <span class="bold">Athletes</span></p>
         <div class="athletes">
           <div v-for="athlete in lastAthletes" :key="athlete.id" class="athlete">
-            <img :src="athlete.thumbnailPath">
-            <h3>{{ athlete.name }}</h3>
+            <router-link :to="{ name: 'athlete', params:{id: athlete.id}  }">
+              <img :src="athlete.thumbnailPath">
+              <h3>{{ athlete.name }}</h3>
+            </router-link>
           </div>
         </div>
       </div>
@@ -18,8 +20,10 @@
         <p class="fontSize18">Last seen in <span class="bold">Teams</span></p>
         <div class="teams">
           <div v-for="team in lastTeams" class="team" :key="team.acronym">
-            <img :src="team.picture">
-            <h3>{{ team.name }}</h3>
+            <router-link :to="{ name: 'team', params:{acronym: team.acronym}  }">
+              <img :src="team.picture">
+              <h3>{{ team.name }}</h3>
+            </router-link>
           </div>
         </div>
       </div>
@@ -29,8 +33,10 @@
         <p class="fontSize18">Athlete</p>
         <div class="athletes">
           <div v-for="athlete in athletesFilter" :key="athlete.id" class="athlete">
-            <img :src="athlete.thumbnailPath">
-            <h3>{{ athlete.name }}</h3>
+            <router-link :to="{ name: 'athlete', params:{id: athlete.id}  }">
+              <img :src="athlete.thumbnailPath">
+              <h3>{{ athlete.name }}</h3>
+            </router-link>
           </div>
         </div>
       </div>
@@ -38,8 +44,10 @@
         <p class="fontSize18">Teams</p>
         <div class="teams">
           <div v-for="team in teamsFilter" class="team" :key="team.acronym">
-            <img :src="team.picture">
-            <h3>{{ team.name }}</h3>
+            <router-link :to="{ name: 'team', params:{acronym: team.acronym}  }">
+              <img :src="team.picture">
+              <h3>{{ team.name }}</h3>
+            </router-link>
           </div>
         </div>
       </div>
