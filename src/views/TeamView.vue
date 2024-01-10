@@ -113,7 +113,7 @@
 
 .parentContainer{
     padding: 2rem;
-    margin-left: 15em;
+    margin-left: 6em;
     display: flex;
 }
 

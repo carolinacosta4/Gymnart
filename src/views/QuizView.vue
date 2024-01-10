@@ -129,78 +129,27 @@ export default {
   margin-top: 38px;
 }
 
-.marginTop69 {
-  margin-top: 69px;
-}
-
-.marginTop25 {
-  margin-top: 25px;
-}
-
-.marginTop47 {
-  margin-top: 47px;
-}
-
-.marginTop19 {
-  margin-top: 19px;
-}
-
-.marginTop106 {
-  margin-top: 106px;
-}
-
 .marginBottom85 {
   margin-bottom: 85px;
-}
-
-.marginBottom48 {
-  margin-bottom: 48px;
-}
-
-.marginBottom41 {
-  margin-bottom: 41px;
 }
 
 .marginBottom26 {
   margin-bottom: 26px;
 }
 
-.marginLeft91 {
-  margin-left: 91px;
-}
-
-.marginLeft160 {
-  margin-left: 160px;
-}
-
-.marginLeft50 {
-  margin-left: 50px;
-}
-
 .marginLeft18 {
   margin-left: 18px;
-}
-
-.marginLeft36 {
-  margin-left: 36px;
 }
 
 .marginRight18 {
   margin-right: 18px;
 }
 
-.marginRight27 {
-  margin-right: 27px;
-}
-
-.marginRight78 {
-  margin-right: 78px;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 .box {
@@ -222,6 +171,7 @@ export default {
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .imageHover::before {
@@ -246,45 +196,12 @@ export default {
   opacity: 1;
 }
 
-.imgQuestion {
-  width: 670px;
-  height: 315px;
-}
-
-.fontSize48 {
-  font-size: 48px;
-}
-
-.fontSize30 {
-  font-size: 30px;
-}
-
-.fontSize96 {
-  font-size: 96px;
-}
-
 .fontSize20 {
   font-size: 20px;
 }
 
-.fontSize22 {
-  font-size: 22px;
-}
-
 .fontSize24 {
   font-size: 24px;
-}
-
-.fontSize28 {
-  font-size: 28px;
-}
-
-.fontSize26 {
-  font-size: 26px;
-}
-
-.fontSize13 {
-  font-size: 13px;
 }
 
 h1 {
@@ -304,16 +221,8 @@ h1 {
   font-family: Lexend Deca ExtraLight;
 }
 
-.light {
-  font-family: Lexend Deca Light;
-}
-
 .medium {
   font-family: Lexend Deca Medium;
-}
-
-.bold {
-  font-family: Lexend Deca Bold;
 }
 
 body {
@@ -323,62 +232,8 @@ body {
   margin-left: 6em;
 }
 
-.btnSelQuestionsFilled {
-  color: #FCF3F3;
-  font-size: 28px;
-  border-radius: 5px;
-  margin: 23px;
-  width: 44px;
-  height: 44px;
-  border: 2px solid #4857A0;
-  background-color: #4857A0;
-}
-
-.btnSelQuestions {
-  font-size: 28px;
-  color: #4857A0;
-  border-radius: 5px;
-  margin: 23px;
-  border: 2px solid #4857A0;
-  width: 44px;
-  height: 44px;
-}
-
-.btnSelQuestions:hover {
-  color: #FCF3F3;
-  background-color: #4857A0;
-}
-
-.btnRedFill {
-  background-color: #F16A64;
-  color: #FCF3F3;
-  border-radius: 5px;
-  width: 130px;
-  height: 44px;
-}
-
-.btnRedFill:hover {
-  background-color: #ED2E2F;
-}
-
-.bgBlue {
-  background-color: #4857A0;
-}
-
-.bgLightRed {
-  background-color: #F16A64;
-}
-
-.blue {
-  color: #4857A0;
-}
-
 .red {
   color: #ED2E2F;
-}
-
-.snow {
-  color: #FCF3F3;
 }
 
 .green {
@@ -387,31 +242,5 @@ body {
 
 .yellow {
   color: #DC9E42;
-}
-
-.gold {
-  color: #C09525;
-}
-
-.lightRed {
-  color: #F16A64;
-}
-
-.bgSelOption {
-  background: rgba(72, 87, 160, 0.1);
-  border-radius: 21px;
-  width: 909px;
-  height: 54px;
-}
-
-.optionHover:hover {
-  background: rgba(72, 87, 160, 0.1);
-  border-radius: 21px;
-}
-
-.bgUnSelOption {
-  background-color: #FCF3F3;
-  width: 909px;
-  height: 54px;
 }
 </style>
