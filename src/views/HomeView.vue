@@ -14,7 +14,7 @@
                 <h1 class="modalTitle">Asymmetric Parallels</h1>
               </div>
               <v-card-text class="cardInfo">
-                <div class="infoLeft">
+                <div class="info">
                   <p class="regular fontSize24">The Asymmetric Parallels are composed of two parallel bars of 2.36 meters positioned at different heights. </p>
                   <ul class="regular fontSize24">
                     <li>Highest bar: 2.36m</li>
@@ -22,7 +22,7 @@
                     <li>Distance between the two bars: 1.3 to 1.8m</li>
                   </ul>
                 </div>
-                <div class="infoRight">
+                <div class="info">
                   <p class="regular fontSize24">To get a good score, the gymnast is obliged to:</p>
                   <ul class="regular fontSize24">
                     <li>Exchange with bar flight from top to bottom</li>
@@ -33,7 +33,7 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                  <v-img src="../assets/exclamation.svg"></v-img>
+                  <img src="../assets/exclamation.svg">
                   <p><b>Important!</b> These distances can vary from 10cm to more or less, depending on the height of the gymnast.</p>
                 <v-spacer></v-spacer>
                 <v-btn text="Got it!" class="btnCancel" @click="isActive.value = false"></v-btn>
@@ -111,9 +111,14 @@
 display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
+column-gap: 3em;
 }
 
 ul{
   margin-left: 3em;
+}
+
+.info{
+  width: 23em;
 }
 </style>
