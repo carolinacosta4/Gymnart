@@ -37,7 +37,7 @@
     
 
     <div id="divFeatures" class="blueBG">
-      <h2 class="h2Saphile white">Simple but effective features</h2>
+      <h2 class="h2Saphile white" id="featuresTitle">Simple but effective features</h2>
       <div class="features">
         <img src="../assets/landingPageIcons/user.svg" alt="" class="icon">
         <div class="featuresDesc">
@@ -336,7 +336,7 @@
   border-top-right-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
   margin-top: 15em;
-  column-gap: 7em;
+  /* column-gap: 7em; */
   display: flex;
   flex-direction: row;
   text-align: left;
@@ -368,5 +368,7 @@
 
 }
 
-
+#featuresTitle{
+  margin-right: 2em;
+}
 </style>

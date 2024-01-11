@@ -198,17 +198,7 @@
     font-family: Lexend Deca Medium;
     src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
   }
-  
-  @font-face {
-    font-family: Lexend Deca ExtraLight;
-    src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
-  }
-  
-  @font-face {
-    font-family: Lexend Deca Thin;
-    src: url(@/assets/Lexend_Deca/LexendDeca-Thin.ttf);
-  }
-  
+
   @font-face {
     font-family: Lexend Deca Light;
     src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
@@ -234,10 +224,6 @@
     margin-top: 47px;
   }
   
-  .marginTop19 {
-    margin-top: 19px;
-  }
-  
   .marginTop106 {
     margin-top: 106px;
   }
@@ -254,10 +240,6 @@
     margin-bottom: 41px;
   }
   
-  .marginBottom26 {
-    margin-bottom: 26px;
-  }
-  
   .marginLeft91 {
     margin-left: 91px;
   }
@@ -270,16 +252,8 @@
     margin-left: 50px;
   }
   
-  .marginLeft18 {
-    margin-left: 18px;
-  }
-  
   .marginLeft36 {
     margin-left: 36px;
-  }
-  
-  .marginRight18 {
-    margin-right: 18px;
   }
   
   .marginRight27 {
@@ -296,42 +270,7 @@
     align-content: center;
   }
   
-  .box {
-    width: auto;
-    margin-bottom: 64px;
-    margin-right: 86px;
-    box-sizing: border-box;
-  }
-  
-  .imageHover {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hover-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-  }
-  
-  .imageHover::before {
-    content: "";
-    position: absolute;
-    border-radius: 21px;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 223px;
-    opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-    background-color: rgba(72, 87, 160, 0.6);
-    cursor: pointer;
-  }
-  
-  .hovered .hover-image {
+  .hovered {
     opacity: 1;
   }
   
@@ -367,16 +306,8 @@
     font-size: 24px;
   }
   
-  .fontSize28 {
-    font-size: 28px;
-  }
-  
   .fontSize26 {
     font-size: 26px;
-  }
-  
-  .fontSize13 {
-    font-size: 13px;
   }
   
   h1 {
@@ -386,14 +317,6 @@
   
   .black {
     color: black
-  }
-  
-  .thin {
-    font-family: Lexend Deca Thin;
-  }
-  
-  .extraLight {
-    font-family: Lexend Deca ExtraLight;
   }
   
   .light {
@@ -453,24 +376,8 @@
     background-color: #ED2E2F;
   }
   
-  .bgBlue {
-    background-color: #4857A0;
-  }
-  
-  .bgLightRed {
-    background-color: #F16A64;
-  }
-  
-  .blue {
-    color: #4857A0;
-  }
-  
   .red {
     color: #ED2E2F;
-  }
-  
-  .snow {
-    color: #FCF3F3;
   }
   
   .green {
@@ -483,10 +390,6 @@
   
   .gold {
     color: #C09525;
-  }
-  
-  .lightRed {
-    color: #F16A64;
   }
   
   .bgSelOption {

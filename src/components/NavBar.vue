@@ -191,10 +191,12 @@ let clickedIcon = []
   left: 0;
   margin-left: 2.5em;
   width: 9em;
+  z-index: 10000;
 }
 
 .divHover:hover .hover {
   display: block;
+  z-index: 10000;
 }
 
 #iconLogout{
