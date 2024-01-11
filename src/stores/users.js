@@ -127,9 +127,17 @@ export const useUserStore = defineStore("user", {
                 this.userLogged[typeFavorites].splice(index, 1);
             }
         }
-    }
+    },
     
-    
+    addLastSeenAthletes(id){
+        if(this.userLogged.lastSeenAthletes.includes){
+            
+        }
+    },
+
+    addLastSeenTeams(acronym){
+
+    },
   },  
   persist: true,
 });

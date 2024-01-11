@@ -9,7 +9,7 @@
         <p class="fontSize18">Last seen in <span class="bold">Athletes</span></p>
         <div class="athletes">
           <div v-for="athlete in lastAthletes" :key="athlete.id" class="athlete">
-            <router-link :to="{ name: 'athlete', params:{id: athlete.id}  }">
+            <router-link class="athleteLink" :to="{ name: 'athlete', params:{id: athlete.id}  }">
               <img :src="athlete.thumbnailPath">
               <h3>{{ athlete.name }}</h3>
             </router-link>
@@ -20,7 +20,7 @@
         <p class="fontSize18">Last seen in <span class="bold">Teams</span></p>
         <div class="teams">
           <div v-for="team in lastTeams" class="team" :key="team.acronym">
-            <router-link :to="{ name: 'team', params:{acronym: team.acronym}  }">
+            <router-link class="teamLink" :to="{ name: 'team', params:{acronym: team.acronym}  }">
               <img :src="team.picture">
               <h3>{{ team.name }}</h3>
             </router-link>
@@ -33,7 +33,7 @@
         <p class="fontSize18">Athlete</p>
         <div class="athletes">
           <div v-for="athlete in athletesFilter" :key="athlete.id" class="athlete">
-            <router-link :to="{ name: 'athlete', params:{id: athlete.id}  }">
+            <router-link class="athleteLink" :to="{ name: 'athlete', params:{id: athlete.id}  }">
               <img :src="athlete.thumbnailPath">
               <h3>{{ athlete.name }}</h3>
             </router-link>
@@ -44,7 +44,7 @@
         <p class="fontSize18">Teams</p>
         <div class="teams">
           <div v-for="team in teamsFilter" class="team" :key="team.acronym">
-            <router-link :to="{ name: 'team', params:{acronym: team.acronym}  }">
+            <router-link class="teamLink" :to="{ name: 'team', params:{acronym: team.acronym}  }">
               <img :src="team.picture">
               <h3>{{ team.name }}</h3>
             </router-link>
@@ -236,5 +236,9 @@ h3{
   font-size: 16px;
   margin-top: 0.5em;
   color: #4857A0;
+}
+
+.teamLink, .athleteLink{
+  text-decoration: none;
 }
 </style>
