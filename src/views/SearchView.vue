@@ -5,7 +5,7 @@
       <input type="text" label="Search" v-model="search" id="searchInput" placeholder="Search...">
     </div>
     <div id="lastSeen" v-if="search == ''">
-      <div id="athletesLastSeen">
+      <div id="athletesLastSeen" v-if="user.lastSeenAthletes.length != 0">
         <p class="fontSize18">Last seen in <span class="bold">Athletes</span></p>
         <div class="athletes">
           <div v-for="athlete in lastAthletes" :key="athlete.id" class="athlete">
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div id="teamsLastSeen">
+      <div id="teamsLastSeen" v-if="user.lastSeenTeams.length != 0">
         <p class="fontSize18">Last seen in <span class="bold">Teams</span></p>
         <div class="teams">
           <div v-for="team in lastTeams" class="team" :key="team.acronym">

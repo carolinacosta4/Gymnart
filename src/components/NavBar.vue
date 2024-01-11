@@ -1,40 +1,46 @@
 <template>
     <div id="header">
-        <RouterLink v-if="isUserLogged" :to="{ name: 'account', params:{id: user.username}  }" class="text"><img src="../assets/iconsNav/user.svg" alt="user icon" class="icon" id="user" @click="addToList('user')"></RouterLink>
+        <RouterLink v-if="isUserLogged" :to="{ name: 'account', params:{id: user.username}  }" class="text"><img src="../assets/iconsNav/user.svg" alt="user icon" class="icon" id="user"></RouterLink>
         <span class="pr-3"></span>
         <div id="mainIcons">
             <div class="divHover">
-                <RouterLink :to="{ name: 'search' }" class="text" ><img src="../assets/iconsNav/search.svg" alt="console icon outlined" id="search" class="icon" @click="addToList('search')"></RouterLink>
+                <RouterLink :to="{ name: 'search' }" class="text" ><img v-if="pageName != 'search'" src="../assets/iconsNav/search.svg" alt="console icon outlined" id="search" class="icon">
+                <img v-else src="../assets/iconsNav/searchFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/searchHover.svg" class="hover" alt="" id="searchHover">
                 <span class="pr-3"></span>
             </div>
 
             <div class="divHover">
-                <RouterLink :to="{ name: 'home' }" class="text"><img src="../assets/iconsNav/home.svg" alt="home icon outlined" id="home" class="icon" @click="addToList('home')"></RouterLink>
+                <RouterLink :to="{ name: 'home' }" class="text"><img v-if="pageName != 'home'" src="../assets/iconsNav/home.svg" alt="home icon outlined" id="home" class="icon">
+                <img v-else src="../assets/iconsNav/homeFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/homeHover.svg" class="hover" alt="" id="homeHover">
                 <span class="pr-3"></span>
             </div>
 
             <div class="divHover">
-                <RouterLink :to="{name: 'dashboard'}" class="text"><img src="../assets/iconsNav/dashboard.svg" alt="dashboard icon outlined" id="dashboard" class="icon" @click="addToList('dashboard')"></RouterLink>
+                <RouterLink :to="{name: 'dashboard'}" class="text"><img v-if="pageName != 'dashboard'" src="../assets/iconsNav/dashboard.svg" alt="dashboard icon outlined" id="dashboard" class="icon">
+                <img v-else src="../assets/iconsNav/dashboardFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/dashboardHover.svg" class="hover" alt="" id="dashboardHover">
                 <span class="pr-3"></span>
             </div>
 
             <div class="divHover">
-                <RouterLink :to="{ name: 'favorites' }" class="text"><img src="../assets/iconsNav/favorites.svg" alt="heart icon outlined" id="favorites" class="icon" @click="addToList('favorites')"></RouterLink>
+                <RouterLink :to="{ name: 'favorites' }" class="text"><img v-if="pageName != 'favorites'" src="../assets/iconsNav/favorites.svg" alt="heart icon outlined" id="favorites" class="icon">
+                <img v-else src="../assets/iconsNav/favoritesFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/favoritesHover.svg" class="hover" alt="" id="favoritesHover">
                 <span class="pr-3"></span>
             </div>
 
             <div class="divHover">
-                <RouterLink :to="{ name: 'calendar' }" class="text"><img src="../assets/iconsNav/calendar.svg" alt="calendar icon outlined" id="calendar" class="icon" @click="addToList('calendar')"></RouterLink>
+                <RouterLink :to="{ name: 'calendar' }" class="text"><img v-if="pageName != 'calendar'" src="../assets/iconsNav/calendar.svg" alt="calendar icon outlined" id="calendar" class="icon">
+                <img v-else src="../assets/iconsNav/calendarFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/calendarHover.svg" class="hover" alt="" id="calendarHover">
                 <span class="pr-3"></span>
             </div>
 
             <div class="divHover">
-                <RouterLink :to="{ name: 'quiz' }" class="text"><img src="../assets/iconsNav/quiz.svg" alt="console icon outlined" class="icon" id="quiz" @click="addToList('quiz')"></RouterLink>
+                <RouterLink :to="{ name: 'quiz' }" class="text"><img v-if="pageName != 'quiz'" src="../assets/iconsNav/quiz.svg" alt="console icon outlined" class="icon" id="quiz">
+                <img v-else src="../assets/iconsNav/quizFilled.svg" alt="console icon outlined" id="search" class="icon"></RouterLink>
                 <img src="../assets/iconsNav/quizHover.svg" class="hover" alt="" id="quizHover">
                 <span class="pr-3"></span>
             </div>
@@ -68,6 +74,7 @@ export default {
         return {
             store: useUserStore(),
             showModal: false,
+            id: null,
         }
     },
     computed: {
@@ -77,56 +84,27 @@ export default {
         
         user(){
             return this.store.getUserLogged
+        },
+
+        pageName(){
+            return this.$route.name
         }
     },
-    mounted() {  
-        this.addToList('home');
-    },
+
     methods: {
         logout() {
             this.store.logout();
             this.$router.push({ name: "landingPage" });
         },
-        addToList(idIcon){
-            if (idIcon === 'user'){
-                let previousId = clickedIcon[0]
-                this.changeIcon(previousId, 'blank')
-                clickedIcon = []
-            }
-            else if (clickedIcon.length > 0 && idIcon !== 'user'){
-                let previousId = clickedIcon[0]
-                this.changeIcon(previousId, 'blank')
-                
-                clickedIcon = []
-                clickedIcon.push(idIcon)
-                this.changeIcon(idIcon, 'filled')
-            }
-            else if (clickedIcon = []){
-                this.changeIcon(idIcon, 'filled')
-                clickedIcon.push(idIcon)
-            }
-        },
-        changeIcon(idIcon, option){
-            let icon = document.getElementById(idIcon)
-            if (option === 'blank'){
-                icon.src = `src/assets/iconsNav/${idIcon}.svg`
-            }
-            else if (option === 'filled'){
-                icon.src = `src/assets/iconsNav/${idIcon}Filled.svg`
-            }
 
-        },
         openLogOutModal() {
             this.showModal = true;
         },
          closeLogoutModal(){
             this.showModal = false;
         },
-
-
     },
 }
-let clickedIcon = []  
 
 </script>
 

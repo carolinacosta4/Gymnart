@@ -2,17 +2,9 @@
   <div class="parentContainer">
     <div id="topInfo">
       <h1 class="title">{{ team.name }}</h1>
-      <img id="teamFlag" :src="team.flagIcon" alt="" />
-      <img
-        id="iconFavorite"
-        @click="toggleFavoriteTeam"
-        :src="
-          favorite
-            ? 'src/assets/iconsAthlete/favoriteIconFilled.svg'
-            : 'src/assets/iconsAthlete/favoriteIcon.svg'
-        "
-        alt=""
-      />
+      <img id="teamFlag" :src="`/src/assets/flagIcons/${team.flagIcon}`" alt="" />
+      <img id="iconFavorite" @click="toggleFavoriteTeam" v-if="!favorite" src="/src/assets/favoriteIcon.svg"/>
+      <img id="iconFavorite" @click="toggleFavoriteTeam" v-else src="/src/assets/favoriteIconFilled.svg"/>
     </div>
     <div id="teamPictureDiv">
       <img :src="team.picture" alt="" />
@@ -84,19 +76,37 @@ export default {
     this.teamStore.fetchTeams();
     this.athleteStore.fetchAthletes();
     this.acronym = this.$route.params.acronym;
+    this.isFavorite()
+    this.addLastSeen()
   },
+
   methods: {
     toggleFavoriteTeam() {
       this.userStore.addRemoveFavorite(this.acronym, "favoriteTeams");
       this.favorite = !this.favorite;
     },
+
+    addLastSeen(){
+      this.userStore.addLastSeenTeams(this.team.acronym)
+    },
+
+    isFavorite(){
+        let favoriteTeam = this.user.favoriteTeams.find((favorite) => favorite == this.team.acronym)
+        if(favoriteTeam){
+            this.favorite = true
+        }
+    },
   },
 
-        computed: {
-            team() {
-                return this.teamStore.getTeam(this.acronym)
-            }
-        },
+  computed: {
+    team() {
+        return this.teamStore.getTeam(this.acronym)
+    },
+
+    user(){
+        return this.userStore.getUserLogged
+    }
+  },
 };
 </script>
 

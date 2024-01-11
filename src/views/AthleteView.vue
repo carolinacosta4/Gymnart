@@ -4,18 +4,17 @@
             <div id="headerInfo">
                 <h1 class="title">{{ athlete.name }}</h1>
                 <router-link :to="{ name: 'team', params: { acronym: athlete.teamAcronym } }">
-                    <img @mouseenter="showFlagHover" @mouseleave="hideFlagHover" id="athleteTeamFlag" :src="teamStore.getTeam(athlete.teamAcronym).flagIcon " alt=""/>
+                    <img @mouseenter="showFlagHover" @mouseleave="hideFlagHover" id="athleteTeamFlag" :src="`/src/assets/flagIcons/${teamIcon}`" alt=""/>
                 </router-link>
                 <div id="flagHover" v-if="hovered">
                     <img src="../assets/iconsAthlete/flagHover.svg" alt=""/>
                     <div id="teamNameHover">
                         <p id="teamTitle">Team</p>
-                        <p v-if="athlete.teamAcronym"> {{ athlete.name }}</p>
+                        <p v-if="athlete.teamAcronym"> {{ athlete.teamAcronym }}</p>
                     </div>
                 </div>
-                <img id="iconFavorite" @click="toggleFavoriteAthlete" :src="favorite ? 'src/assets/iconsAthlete/favoriteIconFilled.svg' : 'src/assets/iconsAthlete/favoriteIcon.svg'" alt=""/>
-                <img id="liveIcon" v-if="athlete.isLive" src="../assets/iconsAthlete/liveIcon.svg" alt="" />
-                
+                <img id="iconFavorite" @click="toggleFavoriteAthlete" v-if="!favorite" src="/src/assets/favoriteIcon.svg"/>
+                <img id="iconFavorite" @click="toggleFavoriteAthlete" v-else src="/src/assets/favoriteIconFilled.svg"/>
             </div>
             <div id="athleteInfo">
                 <div class="smallInfo">
@@ -77,7 +76,6 @@ export default {
             athleteStore: useAthleteStore(),
             teamStore: useTeamStore(),
             userStore: useUserStore(),
-            id: 0,
             hovered: false,
             favorite: false,
         }
@@ -87,6 +85,8 @@ export default {
         this.athleteStore.fetchAthletes();
         this.teamStore.fetchTeams();
         this.id = this.$route.params.id;
+        this.isFavorite()
+        this.addLastSeen()
     },
 
     methods: {
@@ -99,18 +99,33 @@ export default {
         },
 
         toggleFavoriteAthlete() {
-            this.userStore.addRemoveFavorite(this.id, "favoriteAthletes");
+            this.userStore.addRemoveFavorite(this.athlete.id, "favoriteAthletes");
             this.favorite = !this.favorite;
         },
 
         addLastSeen(){
             this.userStore.addLastSeenAthletes(this.athlete.id)
-        }
+        },
+
+        isFavorite(){
+            let favoriteAthlete = this.user.favoriteAthletes.find((favorite) => favorite == this.athlete.id)
+            if(favoriteAthlete){
+                this.favorite = true
+            }
+        },
     },
 
     computed: {
         athlete() {
             return this.athleteStore.getAthlete(this.id)
+        },
+
+        teamIcon(){
+            return this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon
+        },
+
+        user(){
+            return this.userStore.getUserLogged
         }
     },
 }

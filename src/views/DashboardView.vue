@@ -39,28 +39,40 @@
               </div>
           </div>
           <div id="tops">
-              <div id="top3Teams">
-                  <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
-                  <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
-                  <h2 class="blue">Top 3 Teams</h2>
-                  <div v-for="(team, index) in sortPontuationTeam" id="top">
-                      <h3 class="blue light fontSize20">{{ index+1 }}</h3>
-                      <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
-                      <p class="red light fontSize16">{{ team.teamName }}</p>
-                      <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
-                  </div>
-              </div>
-              <div id="top5Athletes">
-                  <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
-                  <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
-                  <h2 class="red">Top 5 Athletes</h2>
-                  <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
-                      <h3 class="light fontSize20">{{ index+1 }}</h3>
-                      <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
-                      <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
-                      <p class="red light fontSize20">{{ athlete.pontuation }}</p>
-                  </div>
-              </div>
+            <div v-if="top3TeamsArray.length == 0" id="noTop3">
+              <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
+              <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
+              <img src="@/assets/movements/turn.png" style="width: 10em;">
+              <h2 id="noAthlete">NO TOP 3 YET!</h2>
+            </div>
+            <div v-else id="top3Teams">
+                <img src="@/assets/backgrounds/leftTop3.png" class="background3 left3">
+                <img src="@/assets/backgrounds/rightTop3.png" class="background3 right3">
+                <h2 class="blue">Top 3 Teams</h2>
+                <div v-for="(team, index) in sortPontuationTeam" id="top">
+                    <h3 class="blue light fontSize20">{{ index+1 }}</h3>
+                    <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
+                    <p class="red light fontSize16">{{ team.teamName }}</p>
+                    <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
+                </div>
+            </div>
+            <div v-if="top5AthletesArray.length == 0" id="noTop5">
+              <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
+              <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
+              <img src="@/assets/movements/entry.png" style="width: 10em;">
+              <h2 id="noAthlete">NO TOP 5 YET!</h2>
+            </div>
+            <div v-else id="top5Athletes">
+                <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
+                <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
+                <h2 class="red">Top 5 Athletes</h2>
+                <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
+                    <h3 class="light fontSize20">{{ index+1 }}</h3>
+                    <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
+                    <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
+                    <p class="red light fontSize20">{{ athlete.pontuation }}</p>
+                </div>
+            </div>
           </div>
       </div>
   </div>
@@ -210,6 +222,25 @@ export default {
     justify-content: center;
   }
 
+  #noTop3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #noTop5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* position: relative;
+    overflow: hidden; */
+  }
+
   #noAthlete{
     color: #ED2E2F;
     text-align: center;
@@ -263,24 +294,24 @@ export default {
   }
 
   #top3Teams{
-      border-radius: 15px;
-      position: relative;
-      overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
   }
 
   #top3Teams h2, #top5Athletes h2{
-      margin: 0.5em 1.4em;
+    margin: 0.5em 1.4em;
   }
 
   h2, .regular{
     font-family: Lexend Deca Regular;
   }
 
-  #top5Athletes{
-      border-radius: 15px;
-      position: relative;
-      overflow: hidden;
-      min-height: 40em;
+  #top5Athletes, #noTop5{
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    min-height: 40em;
   }
 
   #dashboard{
