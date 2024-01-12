@@ -189,6 +189,7 @@
   padding-left: 1em;
   padding-right: 1em;
   margin-top: -0.5em;
+  text-decoration: none;
 }
 
 /* ____ MAIN PAGE MASTER THE MOVES ______ */

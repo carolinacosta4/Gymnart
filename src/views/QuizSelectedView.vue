@@ -57,8 +57,7 @@
             <p class="red bold fontSize96 marginRight78">{{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}%</p>
             <img src="@/assets/goldMedal.svg" alt="">
           </div>
-          <p class="d-flex justify-center black fontSize26 light">You got {{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}% right and won
-            a</p>
+          <p class="d-flex justify-center black fontSize26 light">You got {{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}% right and won a</p>
           <p class="d-flex justify-center gold fontSize26 light">GOLDEN MEDAL</p>
           <p class="d-flex justify-center black fontSize20 light">Go to your user page to see what changed!</p>
           <div class="d-flex justify-center marginTop69">

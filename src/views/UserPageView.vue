@@ -34,10 +34,10 @@
         </v-dialog>
       </div>
       <div v-if="user.medals.length > 0">
-        <div v-for="medal in user.medals" :key="user.username" id="medalsDisplay">
-          <img :src="medal" class="medal">
-          <p>{{ medal }}</p>
-          <img src="../assets/goldmedal.png" class="medal">
+        <div id="medalsDisplay">
+          <span v-for="medal in user.medals" :key="user.username">
+            <img :src="`/src/assets/${medal}`" class="medal">
+          </span>
         </div>
       </div>
       <div v-else>
@@ -183,6 +183,10 @@ import { useUserStore } from '../stores/users';
 
       passwordUser(){
         return this.userStore.getUserLogged.password.split('')
+      },
+
+      userMedals(){
+        return this.user.medals
       }
     },
 
@@ -217,6 +221,12 @@ import { useUserStore } from '../stores/users';
           alert("Wrong password")
         }
       },
+
+      medals(){
+        if(this.userMedals){
+
+        }
+      }
     },
   }
 </script>
