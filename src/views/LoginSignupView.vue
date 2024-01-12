@@ -47,6 +47,7 @@
 		</div>
 		<p @click="this.$router.push('/')" id="btnBack">Go back</p>     
 	</div>
+	<img src="../assets/backgrounds/beigeWavesLeftBottom.svg" alt="" id="ondas">
 </template>
 
 
@@ -376,5 +377,14 @@ h1{
 
 .container.right-panel-active .overlay-right {
 	transform: translateX(20%);
+}
+
+#ondas{
+	position: absolute;
+	display: flex;
+	height: 35%;
+	left: 0;
+	bottom: 0;
+	margin-bottom: -0.2em;
 }
 </style>
