@@ -59,8 +59,10 @@
             <div v-if="top5AthletesArray.length == 0" id="noTop5">
               <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
               <img src="@/assets/backgrounds/rightTop5.png" class="background5 right5">
-              <img src="@/assets/movements/entry.png" style="width: 10em;">
-              <h2 id="noAthlete">NO TOP 5 YET!</h2>
+              <div>
+                <img src="@/assets/movements/entry.png" style="width: 10em;">
+                <h2 id="noAthlete">NO TOP 5 YET!</h2>
+              </div>
             </div>
             <div v-else id="top5Athletes">
                 <img src="@/assets/backgrounds/leftTop5.png" class="background5 left5">
@@ -312,6 +314,14 @@ export default {
     position: relative;
     overflow: hidden;
     min-height: 40em;
+  }
+
+  #noTop5 div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 25%;
   }
 
   #dashboard{
