@@ -146,17 +146,14 @@ export default {
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .box {
-  width: auto;
-  margin-bottom: 64px;
-  margin-right: 86px;
+  width: 28rem;
   box-sizing: border-box;
+  margin-bottom: 40px;
 }
 
 .imageHover {
@@ -172,14 +169,13 @@ export default {
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease;
   z-index: 10;
+  cursor: pointer;
 }
 
 .imageHover::before {
   content: "";
   position: absolute;
   border-radius: 21px;
-  top: 0%;
-  left: 0%;
   width: 100%;
   height: 223px;
   opacity: 0;
