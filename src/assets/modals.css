@@ -170,3 +170,8 @@
     color: #F16A64;
     width: 8em;
   }
+
+  .cancelBtn:hover{
+    background-color: #f16a64;
+    color: #fcf3f3;
+  }
