@@ -158,6 +158,7 @@
       <button @click="this.$router.push({name: 'manageTeams'})">Manage Teams</button>
     </div>
   </div>
+  <img src="../assets/backgrounds/redWavesRigthBottom.svg" alt="" id="ondas">
 </template>
 
 <script>
@@ -340,5 +341,13 @@ h1{
 #medalsDisplay{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#ondas{
+	position: absolute;
+	display: flex;
+	height: 30%;
+	right: 0;
+  bottom: 0;
 }
 </style>
