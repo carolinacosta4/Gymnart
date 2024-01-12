@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <circle cx="250" cy="252.93" r="221.93" style="fill: #ed2e2f; stroke: #ed2e2f; stroke-miterlimit: 10; stroke-width: 36.6px;"/>
+  <circle cx="250" cy="252.93" r="221.93" style="fill: none; stroke: #ed2e2f; stroke-miterlimit: 10; stroke-width: 36.6px;"/>
   <line x1="250" y1="146.46" x2="250" y2="279.9" style="fill: none; stroke: #ed2e2f; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 36.6px;"/>
-  <ellipse cx="249.91" cy="340.76" rx="25.61" ry="24.89" style="fill: #ed2e2f; stroke-width: 0px;"/>
+  <ellipse cx="249.91" cy="340.76" rx="25.61" ry="24.89" style="fill: none; stroke: #ed2e2f stroke-width: 2px;"/>
 </svg>

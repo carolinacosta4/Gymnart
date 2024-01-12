@@ -34,10 +34,10 @@
         </v-dialog>
       </div>
       <div v-if="user.medals.length > 0">
-        <div v-for="medal in user.medals" :key="user.username" id="medalsDisplay">
-          <img :src="medal" class="medal">
-          <p>{{ medal }}</p>
-          <img src="../assets/goldmedal.png" class="medal">
+        <div id="medalsDisplay">
+          <span v-for="medal in user.medals" :key="user.username">
+            <img :src="`/src/assets/${medal}`" class="medal">
+          </span>
         </div>
       </div>
       <div v-else>
@@ -158,6 +158,7 @@
       <button @click="this.$router.push({name: 'manageTeams'})">Manage Teams</button>
     </div>
   </div>
+  <img src="../assets/backgrounds/redWavesRigthBottom.svg" alt="" id="ondas">
 </template>
 
 <script>
@@ -182,6 +183,10 @@ import { useUserStore } from '../stores/users';
 
       passwordUser(){
         return this.userStore.getUserLogged.password.split('')
+      },
+
+      userMedals(){
+        return this.user.medals
       }
     },
 
@@ -216,6 +221,12 @@ import { useUserStore } from '../stores/users';
           alert("Wrong password")
         }
       },
+
+      medals(){
+        if(this.userMedals){
+
+        }
+      }
     },
   }
 </script>
@@ -340,5 +351,13 @@ h1{
 #medalsDisplay{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#ondas{
+	position: absolute;
+	display: flex;
+	height: 30%;
+	right: 0;
+  bottom: 0;
 }
 </style>
