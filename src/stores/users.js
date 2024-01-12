@@ -5,7 +5,7 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     userLogged: null,
     users: [
-        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: ["../assets/goldmedal.png"], isBlocked: false, lastSeenAthletes:[3, 5], lastSeenTeams:["PT", "ITLY"]},
+        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[3, 5], lastSeenTeams:["PT", "ITLY"]},
         { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
       ],
   }),
@@ -63,7 +63,6 @@ export const useUserStore = defineStore("user", {
                 lastSeenTeams:[]
             };
             this.users.push(newUser);
-            console.log(this.users)
             this.userLogged = newUser;
             this.isUserAuthenticated = true;
             alert('account created')
@@ -107,12 +106,18 @@ export const useUserStore = defineStore("user", {
     },
 
     addMedal(newMedal) {
-        const existingMedal = this.userLogged.medals.find((medal) => medal === newMedal);
-        if (!existingMedal) {
-            this.userLogged.medals.push(newMedal);
-            console.log(this.userLogged);
+        if(newMedal == 'goldMedal.svg'){
+            const existingMedals = this.userLogged.medals.filter((medal) => medal === 'goldMedal.svg')
+            if(existingMedals.length < 2){
+                this.userLogged.medals.push(newMedal)
+            }
         }else{
-            throw Error("Medal already added.");
+            const existingMedal = this.userLogged.medals.find((medal) => medal === newMedal);
+            if (!existingMedal) {
+                this.userLogged.medals.push(newMedal);
+            }else{
+                throw Error("Medal already added.");
+            }
         }
     },
 
@@ -122,14 +127,64 @@ export const useUserStore = defineStore("user", {
 
             if (!existingFavorite) {
                 this.userLogged[typeFavorites].push(newFavorite);
+                let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+                this.users[index][typeFavorites].push(newFavorite)
             }else{
                 let index = this.userLogged[typeFavorites].indexOf(newFavorite)
                 this.userLogged[typeFavorites].splice(index, 1);
             }
         }
-    }
+    },
     
-    
+    addLastSeenAthletes(id){
+        let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
+        if(this.userLogged.lastSeenAthletes.includes(id)){
+            const index = this.userLogged.lastSeenAthletes.indexOf(id)
+            this.userLogged.lastSeenAthletes.splice(index, 1)
+        }
+
+        if(this.userLogged.lastSeenAthletes.length >= 3){
+            this.userLogged.lastSeenAthletes.shift()
+        }
+
+        this.userLogged.lastSeenAthletes.unshift(id)
+
+        if(this.users[userIndex].lastSeenAthletes.includes(id)){
+            const athleteIndex = this.users[userIndex].lastSeenAthletes.indexOf(id)
+            this.users[userIndex].lastSeenAthletes.splice(athleteIndex, 1)
+        }
+
+        if(this.users[userIndex].lastSeenAthletes.length >= 3){
+            this.users[userIndex].lastSeenAthletes.shift()
+        }
+
+        this.users[userIndex].lastSeenAthletes.unshift(id)            
+    },
+
+    addLastSeenTeams(acronym){
+        let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
+        if(this.userLogged.lastSeenTeams.includes(acronym)){
+            const index = this.userLogged.lastSeenTeams.indexOf(acronym)
+            this.userLogged.lastSeenTeams.splice(index, 1)
+        }
+
+        if(this.userLogged.lastSeenTeams.length >= 3){
+            this.userLogged.lastSeenTeams.shift()
+        }
+
+        this.userLogged.lastSeenTeams.unshift(acronym)
+
+        if(this.users[userIndex].lastSeenTeams.includes(acronym)){
+            const teamIndex = this.users[userIndex].lastSeenTeams.indexOf(acronym)
+            this.users[userIndex].lastSeenTeams.splice(teamIndex, 1)
+        }
+
+        if(this.users[userIndex].lastSeenTeams.length >= 3){
+            this.users[userIndex].lastSeenTeams.shift()
+        }
+
+        this.users[userIndex].lastSeenTeams.unshift(acronym)   
+    },
   },  
   persist: true,
 });

@@ -14,8 +14,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j",
     "firstOlympics": 2016,
     "height": 1.42,
-    "location": "Columbus, Ohio",
-    "isLive": false
+    "location": "Columbus, Ohio"
     },
     {"id": 2,
     "name": "Sunisa Lee",
@@ -32,8 +31,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 3,
     "name": "Jordan Chiles",
@@ -50,8 +48,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1671611227/primary/wmedlb4xxj1jz4zvwagy",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 4,
     "name": "Mariana Parente",
@@ -68,8 +65,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 5,
     "name": "Filipa Martins",
@@ -86,8 +82,7 @@ export default[
     "thumbnailPath": "https://www.jogadadomes.pt/wp-content/uploads/2015/03/filipamartins.jpg",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 6,
     "name": "Angelina Melnikova",
@@ -104,8 +99,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 7,
     "name": "Vladislava Urazova",
@@ -122,8 +116,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 8,
     "name": "Viktoria Listunova",
@@ -140,8 +133,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 9,
     "name": "Vanessa Ferrari",
@@ -158,8 +150,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/bxgkiocnmklojlnoibkf",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 10,
     "name": "Martina Maggio",
@@ -176,8 +167,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 11,
     "name": "Rebeca Andrade",
@@ -194,8 +184,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 12,
     "name": "Flávia Saraiva",
@@ -212,8 +201,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_1280/primary/gua8j8tmlx3c2bwalntf",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 13,
     "name": "Deng Linlin",
@@ -230,8 +218,7 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 14,
     "name": "Xijing Tang",
@@ -248,8 +235,7 @@ export default[
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/b52vkkracznxkm5ucbhs",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     },
     {"id": 15,
     "name": "Chenchen Guan",
@@ -266,7 +252,6 @@ export default[
     "thumbnailPath": "",
     "firstOlympics": 0,
     "height": 0,
-    "location": "",
-    "isLive": false
+    "location": ""
     }
 ]

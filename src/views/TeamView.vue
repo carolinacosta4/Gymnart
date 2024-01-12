@@ -1,28 +1,20 @@
-    <template>
+<template>
   <div class="parentContainer">
     <div id="topInfo">
-      <h1 class="title">{{ teamStore.getTeam(acronym)?.name }}</h1>
-      <img id="teamFlag" :src="teamStore.getTeam(acronym)?.flagIcon" alt="" />
-      <img
-        id="iconFavorite"
-        @click="toggleFavoriteTeam"
-        :src="
-          favorite
-            ? 'src/assets/iconsAthlete/favoriteIconFilled.svg'
-            : 'src/assets/iconsAthlete/favoriteIcon.svg'
-        "
-        alt=""
-      />
+      <h1 class="title">{{ team.name }}</h1>
+      <img id="teamFlag" :src="`/src/assets/flagIcons/${team.flagIcon}`" alt="" />
+      <img id="iconFavorite" @click="toggleFavoriteTeam" v-if="!favorite" src="/src/assets/favoriteIcon.svg"/>
+      <img id="iconFavorite" @click="toggleFavoriteTeam" v-else src="/src/assets/favoriteIconFilled.svg"/>
     </div>
     <div id="teamPictureDiv">
-      <img :src="teamStore.getTeam(acronym)?.picture" alt="" />
+      <img :src="team.picture" alt="" />
     </div>
     <div id="centerInfo">
       <div id="coachesDiv">
         <h1 class="title">Coaches</h1>
         <ul id="coachesList">
           <li
-            v-for="(coach, index) in teamStore.getTeam(acronym)?.coachesName"
+            v-for="(coach, index) in team.coachesName"
             :key="index"
             class="coachesItem"
           >
@@ -35,15 +27,15 @@
         <div id="teamMedals">
           <div class="medalsTextAlign" id="teamSilverMedals">
             <img src="../assets/iconsAthlete/silverMedal.svg" alt="" />
-            <p class="medalsNumber">{{ teamStore.getTeam(acronym)?.silver }}</p>
+            <p class="medalsNumber">{{ team.silver }}</p>
           </div>
           <div class="medalsTextAlign" id="teamGoldMedals">
             <img src="../assets/iconsAthlete/goldMedal.svg" alt="" />
-            <p class="medalsNumber">{{ teamStore.getTeam(acronym)?.gold }}</p>
+            <p class="medalsNumber">{{ team.gold }}</p>
           </div>
           <div class="medalsTextAlign" id="teamBronzeMedals">
             <img src="../assets/iconsAthlete/bronzeMedal.svg" alt="" />
-            <p class="medalsNumber">{{ teamStore.getTeam(acronym)?.bronze }}</p>
+            <p class="medalsNumber">{{ team.bronze }}</p>
           </div>
         </div>
       </div>
@@ -52,8 +44,7 @@
       <h1 class="title">Athletes</h1>
       <div class="athletesGrid">
         <div
-          v-for="(athleteName, index) in teamStore.getTeam(acronym)
-            ?.athletesList"
+          v-for="(athleteName, index) in team.athletesList"
           :key="index"
           class="athleteItem"
         >
@@ -66,7 +57,7 @@
   </div>
 </template>
 
-    <script>
+<script>
 import { useAthleteStore } from "@/stores/athlete";
 import { useTeamStore } from "@/stores/team";
 import { useUserStore } from "@/stores/users";
@@ -85,20 +76,44 @@ export default {
     this.teamStore.fetchTeams();
     this.athleteStore.fetchAthletes();
     this.acronym = this.$route.params.acronym;
+    this.isFavorite()
+    this.addLastSeen()
   },
+
   methods: {
     toggleFavoriteTeam() {
       this.userStore.addRemoveFavorite(this.acronym, "favoriteTeams");
       this.favorite = !this.favorite;
     },
+
+    addLastSeen(){
+      this.userStore.addLastSeenTeams(this.team.acronym)
+    },
+
+    isFavorite(){
+        let favoriteTeam = this.user.favoriteTeams.find((favorite) => favorite == this.team.acronym)
+        if(favoriteTeam){
+            this.favorite = true
+        }
+    },
+  },
+
+  computed: {
+    team() {
+        return this.teamStore.getTeam(this.acronym)
+    },
+
+    user(){
+        return this.userStore.getUserLogged
+    }
   },
 };
 </script>
 
-<style>
+<style lang="css" scoped>
 @font-face {
-  font-family: Saphile;
-  src: url(@/assets/Saphile/Saphile-Regular.otf);
+    font-family: Saphile;
+    src: url(@/assets/Saphile/Saphile-Regular.otf);
 }
 
 @font-face {
@@ -131,7 +146,7 @@ export default {
   src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
 }
 
-#parentContainer {
+.parentContainer {
     display: flex;
     flex-direction: column;
     padding: 2rem;
