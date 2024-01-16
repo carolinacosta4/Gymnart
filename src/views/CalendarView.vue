@@ -1,5 +1,5 @@
 <script>
-// import { VCalendar } from 'vuetify/labs/VCalendar'
+import { VCalendar } from 'vuetify/labs/VCalendar'
 
 import { useDate } from 'vuetify'
 
@@ -7,7 +7,7 @@ const today = new Date()
 
   export default {
     components: {
-      // VCalendar,
+      VCalendar,
     },
     data: () => ({
       focus: '',

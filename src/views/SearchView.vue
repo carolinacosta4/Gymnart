@@ -72,6 +72,11 @@ import { useUserStore } from '../stores/users';
       }
     },
 
+    created () {
+      this.athleteStore.fetchAthletes();
+      this.teamStore.fetchTeams()
+    },
+
     computed: {
       athletesFilter(){
         return this.athletes.filter((athlete) => {

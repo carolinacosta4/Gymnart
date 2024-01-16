@@ -1,11 +1,25 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import NavBar from './components/NavBar.vue';
+import { useTeamStore } from './stores/team';
+import { useAthleteStore } from './stores/athlete';
 
   export default {
     components: {
       NavBar,
-},
+    },
+
+    data() {
+      return {
+        teamStore: useTeamStore(),
+        athleteStore: useAthleteStore()
+      }
+    },
+
+created () {
+    this.athleteStore.fetchAthletes();
+    this.teamStore.fetchTeams()
+  },
   }
 </script>
 
