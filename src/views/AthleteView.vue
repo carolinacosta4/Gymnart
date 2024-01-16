@@ -174,6 +174,7 @@ export default {
 }
 
 #headerInfo {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -258,12 +259,15 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
-    width: 300px;
+}
+
+#flagHover{
+    display: flex;
 }
 
 #athleteTeamFlag {
-    width: 57px;
-    height: 30px; 
+    max-width: 57px;
+    max-height: 30px; 
     margin-left: 6.8rem;
 }
 
@@ -276,10 +280,10 @@ export default {
 #teamNameHover{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 1.7rem;
+    top: 1rem;
+    left: 5rem;
     font-size: 1.25rem;
 }
 
@@ -291,12 +295,6 @@ export default {
 
 #flagHover{
     position: relative;
-}
-
-#flagHover img {
-    width: 201px;
-    height: 99px;
-    align-self: center;
 }
 
 #athleteInfo {
@@ -322,17 +320,16 @@ export default {
 }
 
 #athleteImg{
-    margin-left: 5.9rem;
     display: flex;
 }
 
 #iconFavorite{
-    margin-left: 15rem;
+    position: absolute;
+    margin-left: 40rem;
 }
 
-#liveIcon{
-    margin-left: 10rem;
+#iconFavorite:hover{
+    cursor: pointer;
 }
-
 
 </style>
