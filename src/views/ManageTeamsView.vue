@@ -40,6 +40,11 @@
                             <input type="text" placeholder="Type here..." id="txtTeamPic" v-model="picture"/>
                         </div>
                         <div>
+                            <label for="txtTeamPic" class="label">Team Picture Page Url:</label>
+                            <br/>
+                            <input type="text" placeholder="Type here..." id="txtTeamPic" v-model="pagePicture"/>
+                        </div>
+                        <div>
                             <label for="txtCoaches" class="label">Coaches:</label>
                             <br/>
                             <input type="text" placeholder="Type here..." id="txtCoaches" v-model="coaches"/>
@@ -119,6 +124,7 @@ import { useTeamStore } from '../stores/team';
                 silver: 0,
                 bronze: 0,
                 description: "",
+                pagePicture: "",
                 isDropdownOpen: false,
                 filterFlag: "search"
             }
@@ -156,7 +162,7 @@ import { useTeamStore } from '../stores/team';
             },
 
             addTeam(){
-                this.teamStore.add(this.name, this.flag, this.picture, this.coaches, this.acronym, this.gold, this.silver, this.bronze, this.description)
+                this.teamStore.add(this.name, this.flag, this.picture, this.pagePicture, this.coaches, this.acronym, this.gold, this.silver, this.bronze, this.description)
             },
 
             toggleDropdown(isOpen) {

@@ -5,8 +5,8 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     userLogged: null,
     users: [
-        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [1,3], favoriteTeams: ['PT','BRA','USA'], medals: [], isBlocked: false, lastSeenAthletes:[3, 5], lastSeenTeams:["PT", "ITLY"]},
-        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [5,2], favoriteTeams: ['CN','ITLY'], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
+        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
+        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
       ],
   }),
   getters: {
@@ -126,18 +126,47 @@ export const useUserStore = defineStore("user", {
         }
     },
 
-    addRemoveFavorite(newFavorite, typeFavorites){
-        if (this.userLogged[typeFavorites].length <= 4) {
-            const existingFavorite = this.userLogged[typeFavorites].includes(newFavorite);
-
-            if (!existingFavorite) {
-                this.userLogged[typeFavorites].push(newFavorite);
-                let index = this.users.findIndex((user) => user.username == this.userLogged.username)
-                this.users[index][typeFavorites].push(newFavorite)
-            }else{
-                let index = this.userLogged[typeFavorites].indexOf(newFavorite)
-                this.userLogged[typeFavorites].splice(index, 1);
+    addFavoriteAthlete(newFavorite) {
+        console.log("aqui");
+        if (this.userLogged.favoriteAthletes.length <= 4) {
+            console.log(newFavorite);
+            const index = this.userLogged.favoriteAthletes.findIndex(fav => fav == newFavorite);
+            if (index == -1) {
+                this.userLogged.favoriteAthletes.push(newFavorite);
+                let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
+                this.users[userIndex].favoriteAthletes.push(newFavorite)
             }
+            console.log(index);
+            console.log(this.userLogged.favoriteAthletes);
+        }
+    },
+    
+    removeFavoriteAthlete(id) {
+        let index = this.userLogged.favoriteAthletes.indexOf(id);
+        if (index !== -1) {
+            this.userLogged.favoriteAthletes.splice(index, 1);
+        }
+    },
+
+    addFavoriteTeam(newFavorite) {
+        console.log("aqui");
+        if (this.userLogged.favoriteTeams.length <= 4) {
+            console.log(newFavorite);
+            const index = this.userLogged.favoriteTeams.findIndex(fav => fav == newFavorite);
+            if (index == -1) {
+                this.userLogged.favoriteTeams.push(newFavorite);
+                let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
+                this.users[userIndex].favoriteTeams.push(newFavorite)
+            }
+            console.log(index);
+            console.log(this.userLogged.favoriteTeams);
+        }
+    },
+    
+    removeFavoriteTeam(acronym) {
+        let index = this.userLogged.favoriteTeams.indexOf(acronym);
+        if (index != -1) {
+            this.userLogged.favoriteTeams.splice(index, 1);
         }
     },
     

@@ -7,7 +7,7 @@
       <img id="iconFavorite" @click="toggleFavoriteTeam" v-else src="/src/assets/favoriteIconFilled.svg"/>
     </div>
     <div id="teamPictureDiv">
-      <img :src="team.picture" alt="" />
+      <img :src="`/src/assets/teamImages/${team.pagePicture}`" alt="" />
     </div>
     <div id="centerInfo">
       <div id="coachesDiv">
@@ -68,8 +68,8 @@ export default {
     };
   },
   created() {
-    this.teamStore.fetchTeams();
-    this.athleteStore.fetchAthletes();
+    // this.teamStore.fetchTeams();
+    // this.athleteStore.fetchAthletes();
     this.acronym = this.$route.params.acronym;
     this.isFavorite()
     this.addLastSeen()
@@ -77,7 +77,11 @@ export default {
 
   methods: {
     toggleFavoriteTeam() {
-      this.userStore.addRemoveFavorite(this.acronym, "favoriteTeams");
+      if(!this.favorite){
+        this.userStore.addFavoriteTeam(this.team.acronym);
+      }else{
+        this.userStore.removeFavoriteTeam(this.team.acronym);
+      }
       this.favorite = !this.favorite;
     },
 
