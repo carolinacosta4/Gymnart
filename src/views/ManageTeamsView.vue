@@ -23,7 +23,6 @@
                     <v-card>
                         <div id="head">
                             <h1 class="modalTitle">Add Team</h1>
-                            <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
                         </div>
                     <v-card-text class="data">
                         <div>
@@ -64,6 +63,11 @@
                             <label for="numBronzeMedalsTeam" class="label">Bronze Medals:</label>
                             <br/>
                             <input type="number" placeholder="Type here..." id="numBronzeMedalsTeam" v-model="bronze"/>
+                        </div>
+                        <div>
+                            <label for="descriptionTeam" class="label">Description:</label>
+                            <br/>
+                            <input type="text" placeholder="Type here..." id="descriptionTeam" v-model="description"/>
                         </div>
                     </v-card-text>
                     <v-card-actions>
@@ -114,6 +118,7 @@ import { useTeamStore } from '../stores/team';
                 gold: 0,
                 silver: 0,
                 bronze: 0,
+                description: "",
                 isDropdownOpen: false,
                 filterFlag: "search"
             }
@@ -151,7 +156,7 @@ import { useTeamStore } from '../stores/team';
             },
 
             addTeam(){
-                this.teamStore.add(this.name, this.flag, this.picture, this.coaches, this.acronym, this.gold, this.silver, this.bronze)
+                this.teamStore.add(this.name, this.flag, this.picture, this.coaches, this.acronym, this.gold, this.silver, this.bronze, this.description)
             },
 
             toggleDropdown(isOpen) {

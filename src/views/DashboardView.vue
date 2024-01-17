@@ -8,16 +8,18 @@
           </div>
           <div v-else id="athleteRoutine">
               <div id="athleteInfo">
+                <router-link class="link" :to="{ name: 'athlete', params:{id: currentAthleteID}  }">
                   <img :src="currentAthleteThumbnail" id="thumbnail">
-                  <div>
-                    <router-link class="link" :to="{ name: 'athlete', params:{id: currentAthleteID}  }">
-                      <h2 class="red">{{ currentAthleteName }}</h2>
-                    </router-link>
-                    <router-link class="link" :to="{ name: 'team', params:{acronym: currentAthleteTeam}  }">
-                      <h2 class="red">({{ currentAthleteTeam }})</h2>
-                    </router-link>
-                    <h3 class="blue fontSize">{{ seconds }}s</h3>
-                  </div>
+                </router-link>
+                <div>
+                  <router-link class="link" :to="{ name: 'athlete', params:{id: currentAthleteID}  }">
+                    <h2 class="red">{{ currentAthleteName }}</h2>
+                  </router-link>
+                  <router-link class="link" :to="{ name: 'team', params:{acronym: currentAthleteTeam}  }">
+                    <h2 class="red">({{ currentAthleteTeam }})</h2>
+                  </router-link>
+                  <h3 class="blue fontSize">{{ seconds }}s</h3>
+                </div>
               </div>
               <div id="header">
                   <span></span>
@@ -251,9 +253,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    /* position: relative;
-    overflow: hidden; */
   }
 
   #noAthlete{
