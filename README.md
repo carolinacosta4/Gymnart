@@ -52,24 +52,21 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
-```
-sh
+```sh
 npm install
-´´´
+```
 
 ### Compile and Hot-Reload for Development
 
-```
-sh
+```sh
 npm run dev
-´´´
+```
 
 ### Compile and Minify for Production
 
-```
-sh
+```sh
 npm run build
-´´´
+```
 
 <hr>
 
@@ -105,11 +102,13 @@ Communication between members of the team:
 
 <h3>Start Persisted State plugin</h3>
 
-
+```sh
 npm i pinia-plugin-persistedstate
+```
 
 
 <h3>Install Vuetify</h3>
 
-
+```sh
 npm install vuetify
+```
