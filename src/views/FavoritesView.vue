@@ -55,9 +55,6 @@
         favoritesAthletesArray: []
       }
     },
-    // created() {
-    //   this.athleteStore.fetchAthletes()
-    // },
 
     computed: {
       user(){
@@ -93,15 +90,14 @@
             picturePath: athlete.thumbnailPath,
             description: athlete.description
           })
+          console.log(this.favoritesAthletesArray);
           
         })
       },
       favoritesTeams(){
         let favoritesTeamsList = this.user.favoriteTeams
-        console.log(favoritesTeamsList)
         favoritesTeamsList.forEach(element =>{
           let team = this.teams.find((team) => team.acronym == element)
-          console.log(team);
           this.favoritesTeamsArray.push({
             acronym: team.acronym,
             picturePath: team.picture,
