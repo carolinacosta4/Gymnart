@@ -99,7 +99,11 @@ export default {
         },
 
         toggleFavoriteAthlete() {
-            this.userStore.addRemoveFavorite(this.athlete.id, "favoriteAthletes");
+            if(!this.favorite){
+                this.userStore.addFavoriteAthlete(this.athlete.id);
+            }else{
+                this.userStore.removeFavoriteAthlete(this.athlete.id);
+            }
             this.favorite = !this.favorite;
         },
 
