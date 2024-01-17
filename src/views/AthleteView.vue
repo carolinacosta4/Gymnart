@@ -125,7 +125,6 @@ export default {
         },
 
         teamIcon(){
-            console.log(this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon);
             return this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon
         },
 

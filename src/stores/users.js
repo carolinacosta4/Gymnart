@@ -65,7 +65,6 @@ export const useUserStore = defineStore("user", {
             this.users.push(newUser);
             this.userLogged = newUser;
             this.isUserAuthenticated = true;
-            alert('account created')
         }
     },
 

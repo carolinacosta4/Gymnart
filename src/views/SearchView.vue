@@ -102,7 +102,6 @@ import { useUserStore } from '../stores/users';
         return this.lastTeamsArray
       },
 
-      // AQUI
       lastAthletes(){
         this.lastSeenAthletes()
         return this.lastAthletesArray
@@ -118,7 +117,6 @@ import { useUserStore } from '../stores/users';
         });
       },
 
-      // AQUI
       lastSeenAthletes(){
         let userLastSeen = this.user.lastSeenAthletes
         userLastSeen.forEach(element => {

@@ -84,14 +84,11 @@
         let favoritesList = this.user.favoriteAthletes
         favoritesList.forEach(element =>{
           let athlete = this.athletes.find((athlete) => athlete.id == element)
-          // console.log(athlete);
           this.favoritesAthletesArray.push({
             id: athlete.id,
             picturePath: athlete.thumbnailPath,
             description: athlete.description
-          })
-          console.log(this.favoritesAthletesArray);
-          
+          })          
         })
       },
       favoritesTeams(){
