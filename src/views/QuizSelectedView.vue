@@ -55,10 +55,10 @@
           }}</h1>
           <div class="d-flex justify-center marginBottom85">
             <p class="red bold fontSize96 marginRight78">{{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}%</p>
-            <img src="@/assets/goldMedal.svg" alt="">
+            <img :src="`/src/assets/${quizzesStore.quizzes[quizzesStore.quizz - 1].medal}`" alt="">
           </div>
           <p class="d-flex justify-center black fontSize26 light">You got {{ quizzesStore.quizzes[quizzesStore.quizz - 1].lastScore }}% right and won a</p>
-          <p class="d-flex justify-center gold fontSize26 light">GOLDEN MEDAL</p>
+          <p class="d-flex justify-center gold fontSize26 light">MEDAL</p>
           <p class="d-flex justify-center black fontSize20 light">Go to your user page to see what changed!</p>
           <div class="d-flex justify-center marginTop69">
             <button @click="tryAgain(this.quizzesStore.quizz)" class="btnRedFill marginRight27 medium fontSize22">Try Again</button>
