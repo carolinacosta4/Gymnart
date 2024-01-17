@@ -245,7 +245,6 @@ export default {
 }
 
 #teamPictureDiv {
-    width: 69rem;
     height: 15.6rem;
     overflow: hidden;
     border-radius: 1.3215rem;
@@ -261,8 +260,7 @@ export default {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
-    width: 69rem;
-    justify-content: space-around;
+    column-gap: 50%;
 }
 
 .coachesItem {
@@ -293,14 +291,12 @@ export default {
 #athletesList {
     margin-top: 2rem;
     font-family: Lexend Deca ExtraLight;
-    width: 69rem;
 }
 
 .athletesGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
-    margin-left: 6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
 }
 
 .athleteItem {
@@ -320,5 +316,9 @@ a:hover {
 
 #iconFavorite:hover{
   cursor: pointer;
+}
+
+#centerInfo{
+  text-align: left;
 }
 </style>

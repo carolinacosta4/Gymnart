@@ -8,12 +8,18 @@
           </div>
           <div v-else id="athleteRoutine">
               <div id="athleteInfo">
+                <router-link class="link" :to="{ name: 'athlete', params:{id: currentAthleteID}  }">
                   <img :src="currentAthleteThumbnail" id="thumbnail">
-                  <div>
-                      <h2 class="red">{{ currentAthleteName }}</h2>
-                      <h2 class="red">({{ currentAthleteTeam }})</h2>
-                      <h3 class="blue fontSize">{{ seconds }}s</h3>
-                  </div>
+                </router-link>
+                <div>
+                  <router-link class="link" :to="{ name: 'athlete', params:{id: currentAthleteID}  }">
+                    <h2 class="red">{{ currentAthleteName }}</h2>
+                  </router-link>
+                  <router-link class="link" :to="{ name: 'team', params:{acronym: currentAthleteTeam}  }">
+                    <h2 class="red">({{ currentAthleteTeam }})</h2>
+                  </router-link>
+                  <h3 class="blue fontSize">{{ seconds }}s</h3>
+                </div>
               </div>
               <div id="header">
                   <span></span>
@@ -51,8 +57,12 @@
                 <h2 class="blue">Top 3 Teams</h2>
                 <div v-for="(team, index) in sortPontuationTeam" id="top">
                     <h3 class="blue light fontSize20">{{ index+1 }}</h3>
-                    <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
-                    <p class="red light fontSize16">{{ team.teamName }}</p>
+                    <router-link class="link" :to="{ name: 'team', params:{acronym: team.teamAcronym}  }">
+                      <img :src="team.teamThumbnail" style="width: 52px; border-radius: 7px;">
+                    </router-link>
+                    <router-link class="link" :to="{ name: 'team', params:{acronym: team.teamAcronym}  }">
+                      <p class="red light fontSize16">{{ team.teamName }}</p>
+                    </router-link>
                     <p class="blue light fontSize20">{{ team.teamPontuation }}</p>
                 </div>
             </div>
@@ -70,8 +80,12 @@
                 <h2 class="red">Top 5 Athletes</h2>
                 <div v-for="(athlete, index) in sortPontuationAthlete" id="top">
                     <h3 class="light fontSize20">{{ index+1 }}</h3>
-                    <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
-                    <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
+                    <router-link class="link" :to="{ name: 'athlete', params:{id: athlete.id}  }">
+                      <img :src="athlete.athleteThumbnail" style="width: 52px; border-radius: 7px;">
+                    </router-link>
+                    <router-link class="link" :to="{ name: 'athlete', params:{id: athlete.id}  }">
+                      <p class="blue light fontSize16">{{ athlete.athleteName }}</p>
+                    </router-link>
                     <p class="red light fontSize20">{{ athlete.pontuation }}</p>
                 </div>
             </div>
@@ -99,6 +113,7 @@ export default {
             currentAthleteName: "",
             currentAthleteTeam: "",
             currentAthleteThumbnail: "",
+            currentAthleteID: 0,
             top5AthletesArray: [],
             top3TeamsArray: [],
             currentAthlete: ""
@@ -128,6 +143,8 @@ export default {
               this.currentAthleteName = athleteFind.name
               this.currentAthleteTeam = athleteFind.teamAcronym
               this.currentAthleteThumbnail = athleteFind.thumbnailPath
+              this.currentAthleteID = athleteFind.id
+              
             } else {
               currentEventIndex = 0;
               this.top3Teams()
@@ -162,7 +179,7 @@ export default {
         },
 
         top5Athletes(){
-          this.top5AthletesArray.push({athleteName: this.currentAthleteName, athleteThumbnail: this.currentAthleteThumbnail, pontuation: this.totalPontuation})
+          this.top5AthletesArray.push({athleteName: this.currentAthleteName, athleteThumbnail: this.currentAthleteThumbnail, pontuation: this.totalPontuation, id: this.currentAthleteID})
         }
     },
 
@@ -183,8 +200,6 @@ export default {
           if(a.teamPontuation == b.teamPontuation) return 0
           if(a.teamPontuation < b.teamPontuation) return 1
         })
-
-        console.log("hi");
         return sortedPontuationArray.slice(0, 3)
       },
 
@@ -238,9 +253,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    /* position: relative;
-    overflow: hidden; */
   }
 
   #noAthlete{
@@ -436,5 +448,9 @@ export default {
     margin: 0.5em;
     font-size: 20px;
     text-align: center;
+  }
+
+  .link{
+    text-decoration: none;
   }
 </style>
