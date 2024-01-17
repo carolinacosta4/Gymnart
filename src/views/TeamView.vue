@@ -7,7 +7,7 @@
       <img id="iconFavorite" @click="toggleFavoriteTeam" v-else src="/src/assets/favoriteIconFilled.svg"/>
     </div>
     <div id="teamPictureDiv">
-      <img :src="team.picture" alt="" />
+      <img :src="`/src/assets/teamImages/${team.pagePicture}`" alt="" />
     </div>
     <div id="centerInfo">
       <div id="coachesDiv">
