@@ -330,9 +330,15 @@ export default {
 #athleteCuriosities p{
     font-size: 1.1rem;
 }
+#atheteImg{
+    max-height: 54rem;
+    width: 19rem;
+}
 
-#athleteImg{
-    display: flex;
+#athleteImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 #iconFavorite{
