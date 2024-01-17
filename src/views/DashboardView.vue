@@ -1,6 +1,6 @@
 <template>
   <div id="body">
-      <h1 class="red">Dashboard</h1>
+      <h1 class="red mainTitle">Dashboard</h1>
       <div id="dashboard">
           <div v-if="eventsDelayed.length == 0" id="noAthleteRoutine">
             <img src="@/assets/movements/movement.png" style="width: 10em;">
@@ -227,6 +227,10 @@ export default {
     font-family: Lexend Deca Regular !important;
     padding: 2rem;
     margin-left: 6em;
+  }
+
+  .mainTitle{
+    font-size: 3em;
   }
 
   #noAthleteRoutine{

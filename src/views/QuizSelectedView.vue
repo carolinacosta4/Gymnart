@@ -263,12 +263,6 @@
     margin-right: 78px;
   }
   
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-  }
-  
   .hovered {
     opacity: 1;
   }
@@ -365,14 +359,12 @@
   
   .btnRedFill {
     background-color: #F16A64;
+    border-radius: 10px;
+    height: 2.6em;
+    width: 10em;
+    font-size: 18px;
     color: #FCF3F3;
-    border-radius: 5px;
-    width: 130px;
-    height: 44px;
-  }
-  
-  .btnRedFill:hover {
-    background-color: #ED2E2F;
+    font-family: Lexend Deca ExtraLight;
   }
   
   .red {

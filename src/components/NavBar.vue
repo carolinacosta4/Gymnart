@@ -180,4 +180,8 @@ export default {
 #iconLogout{
     transform: scaleX(-1);
 }
+
+#iconLogout:hover{
+    cursor: pointer;
+}
 </style>

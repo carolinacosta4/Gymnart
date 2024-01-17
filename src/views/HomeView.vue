@@ -3,50 +3,50 @@
     <img src="@/assets/gymnartHomepage.png" alt="">
     <p>Women's artistic gymnastics has a rich history of challenges and impressive achievements. Athletes like Nadia Comăneci and Olga Korbut broke barriers in the 1970s and 1980s with their grace and strength, inspiring future generations. Today, gymnasts continue to captivate audiences by pushing boundaries and striving for perfection.</p>
     <h2 id="subtitle">Learn more about each modality:</h2>
-    <div id="btnGrid">
+    <div id="btnGrid" class="mx-auto">
 
 <!-- PARALELS -->
       <v-dialog width="800">
-          <template v-slot:activator="{ props }">
-            <button v-bind="props"><img src="@/assets/paralels.png" alt=""></button>
-          </template>
-          <template v-slot:default="{ isActive }">
-            <v-card>
-              <div id="v-card">
-                  <div id="head">
-                  <h1 class="modalTitle">Asymmetric Parallels</h1>
-                </div>
-                <v-card-text class="cardInfo">
-                  <div class="info">
-                    <p class="regular fontSize24">The Asymmetric Parallels are composed of two parallel bars of 2.36 meters positioned at different heights. </p>
-                    <ul class="regular fontSize24">
-                      <li>Highest bar: 2.36m</li>
-                      <li>Lowest bar: 1.7m</li>
-                      <li>Distance between the two bars: 1.3 to 1.8m</li>
-                    </ul>
-                  </div>
-                  <div class="info">
-                    <p class="regular fontSize24">To get a good score, the gymnast is obliged to:</p>
-                    <ul class="regular fontSize24">
-                      <li>Exchange with bar flight from top to bottom</li>
-                      <li>Exchange of bars from the lower to the upper</li>
-                      <li>Fly in the same bar</li>
-                    </ul>
-
-                  </div>
-                </v-card-text>
-                <div id="actions">
-                  <v-card-actions>
-                    <img src="../assets/exclamation.svg" class="iconExclamation">
-                    <p class="textWarning"><b>Important!</b> These distances can vary from 10cm to more or less, depending on the height of the gymnast.</p>
-                    <v-spacer></v-spacer>
-                    <v-btn text="Got it!" class="btnCancel ml-auto" @click="isActive.value = false"></v-btn>
-                  </v-card-actions>
-                </div>
+        <template v-slot:activator="{ props }">
+          <button v-bind="props"><img src="@/assets/paralels.png" alt=""></button>
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card>
+            <div id="v-card">
+                <div id="head">
+                <h1 class="modalTitle">Asymmetric Parallels</h1>
               </div>
-            </v-card>
-          </template>
-        </v-dialog>
+              <v-card-text class="cardInfo">
+                <div class="info">
+                  <p class="regular fontSize24">The Asymmetric Parallels are composed of two parallel bars of 2.36 meters positioned at different heights. </p>
+                  <ul class="regular fontSize24">
+                    <li>Highest bar: 2.36m</li>
+                    <li>Lowest bar: 1.7m</li>
+                    <li>Distance between the two bars: 1.3 to 1.8m</li>
+                  </ul>
+                </div>
+                <div class="info">
+                  <p class="regular fontSize24">To get a good score, the gymnast is obliged to:</p>
+                  <ul class="regular fontSize24">
+                    <li>Exchange with bar flight from top to bottom</li>
+                    <li>Exchange of bars from the lower to the upper</li>
+                    <li>Fly in the same bar</li>
+                  </ul>
+
+                </div>
+              </v-card-text>
+              <div id="actions">
+                <v-card-actions>
+                  <img src="../assets/exclamation.svg" class="iconExclamation">
+                  <p class="textWarning"><b>Important!</b> These distances can vary from 10cm to more or less, depending on the height of the gymnast.</p>
+                  <v-spacer></v-spacer>
+                  <v-btn text="Got it!" class="btnCancel ml-auto" @click="isActive.value = false"></v-btn>
+                </v-card-actions>
+              </div>
+            </div>
+          </v-card>
+        </template>
+      </v-dialog>
 
 <!-- BEAM -->
         <v-dialog width="800">
@@ -91,7 +91,7 @@
         </v-dialog>
 
 <!-- SOLO -->
-<v-dialog width="800">
+        <v-dialog width="800">
           <template v-slot:activator="{ props }">
             <button v-bind="props"><img src="@/assets/solo.png" alt=""></button>
           </template>
@@ -103,9 +103,7 @@
                 </div>
                 <v-card-text class="cardInfo">
                   <div class="info">
-                    <p class="regular fontSize24">  On the ground test, gymnasts perform swings, jumps and acrobatic movements. Gymnastics can not exceed the limit of the mattress, which has the form of
-
-a square with 12 meters of side and that is made of elastic material that dampens impacts and helps in the impulse of the jumps. The test has between 70 and 90 seconds. In addition, in the women's test there is a background music.</p>
+                    <p class="regular fontSize24">  On the ground test, gymnasts perform swings, jumps and acrobatic movements. Gymnastics can not exceed the limit of the mattress, which has the form ofa square with 12 meters of side and that is made of elastic material that dampens impacts and helps in the impulse of the jumps. The test has between 70 and 90 seconds. In addition, in the women's test there is a background music.</p>
                   </div>
                   <div class="info">
                     <p class="regular fontSize24">To get a good score, the gymnast is obliged to:</p>
@@ -132,7 +130,7 @@ a square with 12 meters of side and that is made of elastic material that dampen
         </v-dialog>
 
 <!-- VAULT -->
-<v-dialog width="800">
+        <v-dialog width="800">
           <template v-slot:activator="{ props }">
             <button v-bind="props"><img src="@/assets/vault.png" alt=""></button>
           </template>
@@ -187,7 +185,8 @@ export default {
     this.athleteStore.fetchAthletes();
     this.teamStore.fetchTeams()
   },
-  }
+
+}
 </script>
 
 <style lang="css" scoped>
@@ -226,11 +225,15 @@ export default {
 }
 
 #btnGrid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  column-gap: 4em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90em;
+  justify-content: center;
+  column-gap: 18em;
   row-gap: 2em;
+  margin-left: 8em;
+  margin-right: 6em;
 }
 
 #subtitle{
@@ -255,5 +258,13 @@ ul{
 
 .info{
   width: 23em;
+}
+
+button{
+  transition: transform 0.3s ease;
+}
+
+button:hover{
+  transform: scale(1.03);
 }
 </style>
