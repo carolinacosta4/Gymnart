@@ -167,7 +167,7 @@
   row-gap: 4em;
 }
 .subtitle{
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .img{
