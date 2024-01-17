@@ -4,7 +4,7 @@
             <div id="headerInfo">
                 <h1 class="title">{{ athlete.name }}</h1>
                 <router-link :to="{ name: 'team', params: { acronym: athlete.teamAcronym } }">
-                    <img @mouseenter="showFlagHover" @mouseleave="hideFlagHover" id="athleteTeamFlag" :src="getTeamIconPath" alt=""/>
+                    <img @mouseenter="showFlagHover" @mouseleave="hideFlagHover" id="athleteTeamFlag" :src="`/src/assets/flagIcons/${teamIcon}`" alt=""/>
                 </router-link>
                 <div id="flagHover" v-if="hovered">
                     <img src="../assets/iconsAthlete/flagHover.svg" alt=""/>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div id="athleteImg">
-            <img :src="athlete.picturePath" alt="">
+            <img :src="`/src/assets/athletesImages/${athlete.picturePath}`" alt="">
         </div>
     </div>
 </template>
@@ -125,20 +125,12 @@ export default {
         },
 
         teamIcon(){
-            console.log(this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon);
             return this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon
         },
 
         user(){
             return this.userStore.getUserLogged
         },
-
-        getTeamIconPath(){
-            if (this.teamIcon) {
-            return `/src/assets/flagIcons/${this.teamIcon}`;
-        }
-        return ''
-        }
     },
 }
 </script>

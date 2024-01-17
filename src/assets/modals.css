@@ -202,3 +202,9 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .avatars{
+    display: flex;
+    flex-direction: row;
+    column-gap: 6em;
+  }
