@@ -5,8 +5,8 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     userLogged: null,
     users: [
-        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[3, 5], lastSeenTeams:["PT", "ITLY"]},
-        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [], favoriteTeams: [], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
+        { name:'Admin', username: "admin", email: 'admin@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"admin", favoriteAthletes: [1,3], favoriteTeams: ['PT','BRA','USA'], medals: [], isBlocked: false, lastSeenAthletes:[3, 5], lastSeenTeams:["PT", "ITLY"]},
+        { name:'Maria', username: "maria", email: 'maria@email.com', password: "1234", profilePicture: "../assets/maria.png", type:"guest", favoriteAthletes: [5,2], favoriteTeams: ['CN','ITLY'], medals: [], isBlocked: false, lastSeenAthletes:[], lastSeenTeams:[]},
       ],
   }),
   getters: {
@@ -126,8 +126,8 @@ export const useUserStore = defineStore("user", {
         }
     },
 
-    addRemoveFavorite(newFavorite, typeFavorites){        //Receives the Name of the Property That You Want to Add to or Remove from (favoriteAthletes or favoriteTeams)
-        if (this.userLogged[typeFavorites].length <= 5) {
+    addRemoveFavorite(newFavorite, typeFavorites){
+        if (this.userLogged[typeFavorites].length <= 4) {
             const existingFavorite = this.userLogged[typeFavorites].includes(newFavorite);
 
             if (!existingFavorite) {

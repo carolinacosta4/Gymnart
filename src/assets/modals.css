@@ -52,6 +52,7 @@
     color: #ed2e2f;
     font-size: 30px;
     font-family: Lexend Deca Regular;
+    text-align: left;
   }
 
   #head{
@@ -174,4 +175,30 @@
   .cancelBtn:hover{
     background-color: #f16a64;
     color: #fcf3f3;
+  }
+
+  .iconExclamation{
+    width: 3em;
+    margin-right: 1em;
+  }
+
+  .textWarning{
+    color: #F16A64;
+    max-width: 20em;
+  }
+
+  #v-card{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-content: left;
+  }
+
+  #actions{
+    margin-top: 1em;
+  }
+
+  .actionsWithNoWarning{
+    display: flex;
+    justify-content: flex-end;
   }
