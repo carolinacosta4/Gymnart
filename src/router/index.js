@@ -105,13 +105,13 @@ const router = createRouter({
       path: '/athlete/:id',
       name: 'athlete',
       component: AthleteView,
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: true }
     },
     {
       path: '/team/:acronym',
       name: 'team',
       component: TeamView,
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: true }
     },
   ]
 })

@@ -27,11 +27,11 @@ export default[
     "bronze": 1,
     "lastResult": "Individual all-around gold Tokyo 2020",
     "curiosities": "",
-    "picturePath": "https://static.euronews.com/articles/stories/07/85/18/64/320x180_cmsv2_1f54aa63-209d-5093-b60a-30a8ff5b6703-7851864.jpg",
-    "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "picturePath": "",
+    "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1671609594/primary/eqeervowz90ywnikayw0",
+    "firstOlympics": 2020, 
+    "height": 1.52,
+    "location": "Saint Paul"
     },
     {"id": 3,
     "name": "Jordan Chiles",
@@ -46,9 +46,9 @@ export default[
     "curiosities": "",
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1671611227/primary/wmedlb4xxj1jz4zvwagy",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "firstOlympics": 2020,
+    "height": 1.50,
+    "location": "Tualatin"
     },
     {"id": 4,
     "name": "Mariana Parente",
@@ -62,10 +62,10 @@ export default[
     "lastResult": "N/A",
     "curiosities": "",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://www.jogadadomes.pt/wp-content/uploads/2022/08/Ginastica-EuropeuMunique-11-08-2022.jpg",
+    "firstOlympics": "N/A",
+    "height": 1.40,
+    "location": "Porto"
     },
     {"id": 5,
     "name": "Filipa Martins",
@@ -80,9 +80,9 @@ export default[
     "curiosities": "",
     "picturePath": "",
     "thumbnailPath": "https://www.jogadadomes.pt/wp-content/uploads/2015/03/filipamartins.jpg",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "firstOlympics": 2016,
+    "height": 1.63,
+    "location": "Porto"
     },
     {"id": 6,
     "name": "Angelina Melnikova",
@@ -96,10 +96,10 @@ export default[
     "lastResult": "Individual all-around bronze Tokyo 2020",
     "curiosities": "",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_1280/primary/gszzccsf9abfxq3p5gsq",
+    "firstOlympics": 2016,
+    "height": 1.54,
+    "location": "Voronej"
     },
     {"id": 7,
     "name": "Vladislava Urazova",
@@ -113,10 +113,10 @@ export default[
     "lastResult": "Individual all-around 4th Tokyo 2020",
     "curiosities": "",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://forgottenolympiansdotcom.files.wordpress.com/2020/07/vladislava-urazova-3.jpg?w=768&h=768&crop=1",
+    "firstOlympics": 2020,
+    "height": 1.58,
+    "location": "Rostov do Don"
     },
     {"id": 8,
     "name": "Viktoria Listunova",
@@ -130,10 +130,10 @@ export default[
     "lastResult": "Floor 8th Tokyo 2020",
     "curiosities": "",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://forgottenolympiansdotcom.files.wordpress.com/2021/04/listunova-51928266.jpg",
+    "firstOlympics": 2020,
+    "height": 1.57,
+    "location": "Moscow"
     },
     {"id": 9,
     "name": "Vanessa Ferrari",
@@ -148,9 +148,9 @@ export default[
     "curiosities": "",
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/bxgkiocnmklojlnoibkf",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "firstOlympics": 2008,
+    "height": 1.46,
+    "location": "Orzinuovi"
     },
     {"id": 10,
     "name": "Martina Maggio",
@@ -164,10 +164,10 @@ export default[
     "lastResult": "Individual all-around 19th Tokyo 2020",
     "curiosities": "",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1681050331/primary/omtdqyyntsbz2vlit8ud",
+    "firstOlympics": 2020,
+    "height": 1.56,
+    "location": "Villasanta"
     },
     {"id": 11,
     "name": "Rebeca Andrade",
@@ -181,10 +181,10 @@ export default[
     "lastResult": "Individual all-around Silver Tokyo 2020",
     "curiosities": "Andrade became extremely popular in Brazil after her success at the 2020 Olympic Games. In October 2021, she appeared on the cover of Vogue Brazil. She was also awarded the Brazil Olympic Prize which recognized her as the best Brazilian female athlete of the year. Andrade has worked with a psychologist on visualization techniques. She underwent three ACL reconstruction surgeries, all on her right knee. The gymnast she looks up to the most is Brazilian World Champion Daiane dos Santos.",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2023/10/06/rebeca-andrade-1hv89lqtyk7ci.png",
+    "firstOlympics": 2021,
+    "height": 1.45,
+    "location": "Guarulhos"
     },
     {"id": 12,
     "name": "Flávia Saraiva",
@@ -199,9 +199,9 @@ export default[
     "curiosities": "Flavia Saraiva, a gymnastics prodigy since childhood, gained global acclaim for her standout performances at the 2016 Rio Olympics. Despite her petite frame, she defies expectations, displaying remarkable strength and flexibility in her specialties—the balance beam and floor exercise. Beyond her technical prowess, Flavia's infectious enthusiasm and joyful demeanor have endeared her to fans worldwide, making her a beloved figure in the gymnastics community.",
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_1280/primary/gua8j8tmlx3c2bwalntf",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "firstOlympics": 2016,
+    "height": 1.55,
+    "location": "Rio de Janeiro"
     },
     {"id": 13,
     "name": "Deng Linlin",
@@ -215,10 +215,10 @@ export default[
     "lastResult": "Gold Beam London 2012",
     "curiosities": "Deng Linlin, the 'Ballet Princess', gained fame for her graceful balance beam routines, earning her a gold medal at the 2012 London Olympics. She became the youngest member of China's gymnastics team at the 2008 Beijing Olympics at the age of 16. Post-retirement, Deng Linlin transitioned to coaching, sharing her expertise with aspiring athletes. Her legacy extends beyond China, as her achievements continue to inspire gymnasts worldwide.",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://4.bp.blogspot.com/-yEjYhsYNRI0/UchbNkmcj3I/AAAAAAAAAkg/v9P5BoT3qx4/s500-c/Deng+Linlin.JPEG",
+    "firstOlympics": 2008,
+    "height": 1.46,
+    "location": "Lixin County"
     },
     {"id": 14,
     "name": "Xijing Tang",
@@ -233,9 +233,9 @@ export default[
     "curiosities": "She began training in gymnastics at age four at Dongcheng Sports School in the People's Republic of China. After her older brother began to train in gymnastics, she was scouted by coach Yan Na when she went to a session with her brother. In 2019 she was named an Elite Athlete of International Class by the General Administration of Sport of China. In 2017 she was named an Elite Athlete of National Class by the General Administration of Sport of China.",
     "picturePath": "",
     "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/b52vkkracznxkm5ucbhs",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "firstOlympics": 2020,
+    "height": 1.67,
+    "location": "Guangdong"
     },
     {"id": 15,
     "name": "Chenchen Guan",
@@ -249,9 +249,9 @@ export default[
     "lastResult": "Gold Beam Tokyo 2020",
     "curiosities": "Guan Chenchen, born in 2004 in Xiantao, China, is a rising gymnastics star. Her historic gold in the balance beam at the 2020 Tokyo Olympics showcased remarkable achievement at a young age. Known for precision and challenging routines, Guan has become a standout figure in the sport, contributing to China's gymnastics legacy. Her youthfulness and notable accomplishments foreshadow a promising future on the international stage. Stay updated on Guan Chenchen's journey through recent news and official gymnastics sources.",
     "picturePath": "",
-    "thumbnailPath": "",
-    "firstOlympics": 0,
-    "height": 0,
-    "location": ""
+    "thumbnailPath": "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/yyur2gvcbjqutnlhpfy2",
+    "firstOlympics": 2020,
+    "height": 1.37,
+    "location": "Jingzhou"
     }
 ]

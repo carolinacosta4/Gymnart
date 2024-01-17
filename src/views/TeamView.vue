@@ -13,11 +13,7 @@
       <div id="coachesDiv">
         <h1 class="title">Coaches</h1>
         <ul id="coachesList">
-          <li
-            v-for="(coach, index) in team.coachesName"
-            :key="index"
-            class="coachesItem"
-          >
+          <li v-for="(coach, index) in team.coachesName" :key="index" class="coachesItem">
             {{ coach }}
           </li>
         </ul>
@@ -43,14 +39,13 @@
     <div id="athletesList">
       <h1 class="title">Athletes</h1>
       <div class="athletesGrid">
-        <div
-          v-for="(athleteName, index) in team.athletesList"
-          :key="index"
-          class="athleteItem"
-        >
-          <router-link :to="{ name: 'athlete', params: { id: 1 } }">{{
-            athleteName
-          }}</router-link>
+        <div v-for="(athleteName, index) in team.athletesList" :key="index" class="athleteItem">
+          <router-link v-if="getAthleteIdByName(athleteName) != null" :to="{ name: 'athlete', params: { id: getAthleteIdByName(athleteName) } }">
+          {{ athleteName }}
+        </router-link>
+          <router-link v-else-if="getAthleteIdByName(athleteName) == null" :to="{ name: 'pageNotFound' }">
+          {{ athleteName }}
+        </router-link>
         </div>
       </div>
     </div>
@@ -96,6 +91,11 @@ export default {
             this.favorite = true
         }
     },
+
+    getAthleteIdByName(athleteName){
+      const athlete = this.athleteStore.getAthletes.find(a => a.name === athleteName);
+      return athlete ? athlete.id : null;
+    }
   },
 
   computed: {
@@ -159,6 +159,12 @@ export default {
     justify-content: space-between;
 }
 
+#topInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .smallInfo {
     display: flex;
     flex-direction: row;
@@ -210,6 +216,13 @@ export default {
     width: 300px;
 }
 
+#teamFlag{
+  max-width: 57px;
+  max-height: 30px; 
+  margin-left: 6.8rem;
+  margin-right: 6.8rem;
+}
+
 .flagHover {
     position: absolute;
     display: none;
@@ -232,7 +245,6 @@ export default {
 }
 
 #teamPictureDiv {
-    width: 69rem;
     height: 15.6rem;
     overflow: hidden;
     border-radius: 1.3215rem;
@@ -248,8 +260,7 @@ export default {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
-    width: 69rem;
-    justify-content: space-around;
+    column-gap: 50%;
 }
 
 .coachesItem {
@@ -280,13 +291,12 @@ export default {
 #athletesList {
     margin-top: 2rem;
     font-family: Lexend Deca ExtraLight;
-    width: 69rem;
 }
 
 .athletesGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
 }
 
 .athleteItem {
@@ -302,5 +312,13 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+#iconFavorite:hover{
+  cursor: pointer;
+}
+
+#centerInfo{
+  text-align: left;
 }
 </style>

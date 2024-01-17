@@ -26,8 +26,8 @@ export const useTeamStore = defineStore('team', {
       this.teams.splice(index, 1)
     },
 
-    add(name, flag, picture, coaches, acronym, gold, silver, bronze){
-      this.teams.push({name: name, acronym: acronym, flagIcon: flag, picture: picture, athletesList: "", gold: gold, silver: silver, bronze: bronze, coachesName: coaches})
+    add(name, flag, picture, coaches, acronym, gold, silver, bronze, description){
+      this.teams.push({name: name, acronym: acronym, flagIcon: flag, picture: picture, athletesList: "", gold: gold, silver: silver, bronze: bronze, coachesName: coaches, description: description})
     }
   },
   // persist: true,

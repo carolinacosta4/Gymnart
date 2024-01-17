@@ -106,15 +106,20 @@ export const useUserStore = defineStore("user", {
     },
 
     addMedal(newMedal) {
+        let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
         if(newMedal == 'goldMedal.svg'){
             const existingMedals = this.userLogged.medals.filter((medal) => medal === 'goldMedal.svg')
             if(existingMedals.length < 2){
                 this.userLogged.medals.push(newMedal)
+                this.users[userIndex].medals.push(newMedal)
+                console.log(this.users);
             }
         }else{
             const existingMedal = this.userLogged.medals.find((medal) => medal === newMedal);
             if (!existingMedal) {
                 this.userLogged.medals.push(newMedal);
+                this.users[userIndex].medals.push(newMedal)
+                console.log(this.users);
             }else{
                 throw Error("Medal already added.");
             }
