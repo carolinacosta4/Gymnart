@@ -1,4 +1,7 @@
 <template>
+    <div id="divButtonBack">
+        <button class="buttonGoBack" @click="this.$router.push('/account/:id')"> <u>Go Back </u></button>
+    </div>
     <div id="body">
         <h1>Manage Users</h1>
         <div id="filterOptions">
@@ -225,5 +228,22 @@ h1{
 
 .dropdown:hover .dropdownContent {
   display: block;
+}
+
+#divButtonBack{
+    padding-left: 2rem;
+    padding-top: 2rem;
+    margin-left: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.buttonGoBack{
+    color: #F16A64;
+    height: 2em;
+    width: 7em;
+    font-size: 17px;
+    font-family: Lexend Deca Regular;
 }
 </style>

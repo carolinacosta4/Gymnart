@@ -1,8 +1,8 @@
 <template>
   <body>
     <div class="parentContainer">
-      <h1 class="red">Quizzes</h1>
-      <p class="black extraLight fontSize24 marginTop38 marginBottom85">Participate in our quiz and win your own olympic
+      <h1 class="red mainTitle">Quizzes</h1>
+      <p class="blue extraLight fontSize24 marginTop38">Participate in our quiz and win your own olympic
         medal!</p>
       <div class="container">
         <div class="paralels box">
@@ -12,8 +12,8 @@
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
-              <p class="black medium fontSize24">Assymetric Parallels</p>
-              <p class="black thin fontSize20">7 questions</p>
+              <p class="blue medium fontSize24">Assymetric Parallels</p>
+              <p class="blue thin fontSize20">7 questions</p>
             </div>
             <p class="red medium fontSize24 marginRight18">Hard</p>
           </div>
@@ -25,8 +25,8 @@
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
-              <p class="black medium fontSize24">Beam</p>
-              <p class="black thin fontSize20">5 questions</p>
+              <p class="blue medium fontSize24">Beam</p>
+              <p class="blue thin fontSize20">5 questions</p>
             </div>
             <p class="yellow medium fontSize24 marginRight18">Medium</p>
           </div>
@@ -38,8 +38,8 @@
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
-              <p class="black medium fontSize24">Solo</p>
-              <p class="black thin fontSize20">5 questions</p>
+              <p class="blue medium fontSize24">Solo</p>
+              <p class="blue thin fontSize20">5 questions</p>
             </div>
             <p class="green medium fontSize24 marginRight18">Easy</p>
           </div>
@@ -51,8 +51,8 @@
           </div>
           <div class="d-flex justify-space-between">
             <div class="d-flex flex-column marginLeft18">
-              <p class="black medium fontSize24">Vault</p>
-              <p class="black thin fontSize20">8 questions</p>
+              <p class="blue medium fontSize24">Vault</p>
+              <p class="blue thin fontSize20">8 questions</p>
             </div>
             <p class="red medium fontSize24">Hard</p>
           </div>
@@ -125,12 +125,13 @@ export default {
   src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
 }
 
-.marginTop38 {
-  margin-top: 38px;
+.mainTitle{
+  font-size: 3em;
 }
 
-.marginBottom85 {
-  margin-bottom: 85px;
+.marginTop38 {
+  margin-top: 30px;
+  margin-bottom: 2em;
 }
 
 .marginBottom26 {
@@ -205,12 +206,12 @@ h1 {
   font-size: 36px;
 }
 
-.black {
-  color: black
+.blue {
+  color: #4857a0
 }
 
 .thin {
-  font-family: Lexend Deca Thin;
+  font-family: Lexend Deca ExtraLight;
 }
 
 .extraLight {
