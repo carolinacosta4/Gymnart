@@ -5,7 +5,7 @@
             <div>
                 <h1>Oops...</h1>
                 <p>Looks like this page does not exist!</p>
-                <button @click="this.$router.push('/')"> Go back to home </button>
+                <button @click="this.$router.push('/')"> Go back home </button>
             </div>
         </div>
         <img src="../assets/backgrounds/redWavesRigthBottom.svg" id="redWaves">
@@ -29,7 +29,6 @@
 
 #container{
   padding: 2rem;
-  margin-left: 6em;
 }
 
 h1{
@@ -66,13 +65,13 @@ button{
 
 #iconSadFace{
     width: auto;
-    height: 20em;
+    height: 15em;
 }
 
 #redWaves{
     position: fixed;
     width: auto;
-    height: 30em;
+    height: 20em;
     margin: -1em;
     bottom: 0;
     right: 0;
