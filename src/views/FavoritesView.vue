@@ -2,10 +2,10 @@
   <div class="main">
     <h1 class="mainTitle red saphile">Favorites</h1>
     <div class="favorites">
-      
+
       <div id="favAthlete">
         <p class="subtitle  saphile red">Favorite Athletes</p>
-        <v-carousel class="carousel" v-if="user.favoriteAthletes.length > 0" hide-delimiters>
+        <v-carousel :continuous="false" class="carousel mx-auto" v-if="user.favoriteAthletes.length > 0" hide-delimiters>
           <v-carousel-item v-for="athlete in favAthletes" :key="athlete.id" class="carouselInfo">
             <div class="info">
               <router-link :to="{ name: 'athlete', params:{id: athlete.id}  }">
@@ -22,7 +22,7 @@
 
       <div id="favTeam">
         <p class="subtitle  saphile red">Favorite Teams</p>
-        <v-carousel class="carousel" v-if="user.favoriteTeams.length > 0" hide-delimiters>
+        <v-carousel :continuous="false" class="carousel mx-auto" v-if="user.favoriteTeams.length > 0" hide-delimiters>
           <v-carousel-item v-for="team in favTeams" :key="team.acronym" class="carouselInfo">
             <div class="info">
               <router-link :to="{ name: 'team', params:{acronym: team.acronym}  }">
@@ -172,6 +172,7 @@
 
 .img{
   width: 20em;
+  border-radius: 2em;
 }
 
 .description{
@@ -204,5 +205,6 @@
   align-items: center;
   justify-content: center;
   width:70em;
+  margin-bottom: -9em;
 }
 </style>
