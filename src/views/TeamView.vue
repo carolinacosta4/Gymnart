@@ -68,8 +68,6 @@ export default {
     };
   },
   created() {
-    // this.teamStore.fetchTeams();
-    // this.athleteStore.fetchAthletes();
     this.acronym = this.$route.params.acronym;
     this.isFavorite()
     this.addLastSeen()
