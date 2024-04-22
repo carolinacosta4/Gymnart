@@ -30,5 +30,4 @@ export const useTeamStore = defineStore('team', {
       this.teams.push({name: name, acronym: acronym, flagIcon: flag, picture: picture, pagePicture: pagePicture, athletesList: "", gold: gold, silver: silver, bronze: bronze, coachesName: coaches, description: description})
     }
   },
-  // persist: true,
 })

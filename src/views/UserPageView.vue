@@ -11,7 +11,6 @@
             <v-card>
               <div id="head">
                 <h1 class="modalTitle">Edit your Name</h1>
-                <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
               </div>
               <v-card-text class="data">
                 <div class="curData">
@@ -44,7 +43,34 @@
         <span></span>
       </div>
       <div>
-        <img src="../assets/maria.png" id="maria">
+        <v-dialog width="500">
+          <template v-slot:activator="{ props }">
+            <img :src="`/src/assets/${user.profilePicture}`" id="maria" v-bind="props">
+          </template>
+          <template v-slot:default="{ isActive }">
+            <v-card>
+              <div id="head">
+                <h1 class="modalTitle">Edit your Picture</h1>
+              </div>
+              <v-card-text class="data">
+                <div class="avatars">
+                  <input type="radio" name="avatar" id="avatar1" class="avatar" value="mario.png" v-model="selectedAvatar">
+                  <label for="avatar1">
+                    <img src="/src/assets/mario.png" style="width: 12em; background-color: #ED2E2F;"></label>
+                  <input type="radio" name="avatar" id="avatar2" class="avatar" value="maria.png" v-model="selectedAvatar">
+                  <label for="avatar2">
+                    <img src="/src/assets/maria.png" style="width: 12em; background-color: #ED2E2F;">
+                  </label>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn text="CANCEL" @click="isActive.value = false" class="cancelBtn"></v-btn>
+                <v-btn @click="editAvatar" class="btnSave">SAVE</v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
       </div>
       <div>
         <p class="fontLight">Username</p>
@@ -58,7 +84,6 @@
               <v-card>
                 <div id="head">
                   <h1 class="modalTitle">Edit your Username</h1>
-                  <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
                 </div>
                 <v-card-text class="data">
                   <div class="curData">
@@ -91,7 +116,6 @@
               <v-card>
                 <div id="head">
                   <h1 class="modalTitle">Edit your Name</h1>
-                  <!-- <span class="close" @click="isActive.value = false">&times;</span> -->
                 </div>
                 <v-card-text class="data">
                   <div class="curData">
@@ -172,7 +196,8 @@ import { useUserStore } from '../stores/users';
         newUsername: "",
         newEmail: "",
         oldPassword: "",
-        newPassword: ""
+        newPassword: "",
+        selectedAvatar: "",
       }
     },
 
@@ -199,6 +224,12 @@ import { useUserStore } from '../stores/users';
       editName() {
         if(this.newName != ""){
           this.userStore.editName(this.newName)
+        }
+      },
+
+      editAvatar(){
+        if(this.selectedAvatar != ""){
+          this.userStore.editAvatar(this.selectedAvatar)
         }
       },
 
@@ -359,5 +390,9 @@ h1{
 	height: 30%;
 	right: 0;
   bottom: 0;
+}
+
+input[type="radio"]{
+  display: none;
 }
 </style>

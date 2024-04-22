@@ -59,43 +59,6 @@ const today = new Date()
     },
   }
 </script>
-
-<!-- <template>
-  <main>
-    <div id="content">
-      <div id="information">
-        <h1 class="mainTitle red saphile">Calendar</h1>
-        <div>
-          <div id="textInfo">
-            <h3 class="text blue">Next competition:</h3>
-            <p class="title blue LexendDecaMedium">1st of August 2024 | 14h </p>
-            <p class="text blue">93200 Saint-Denis, France</p>
-          </div>
-          <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83966.95397172855!2d2.247342149929991!3d48.87789969440399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e665da9e08e561%3A0x65455f9e577c366!2sStade%20Olympique%20Yves%20du%20Manoir!5e0!3m2!1sen!2spt!4v1704298654812!5m2!1sen!2spt" width="800" height="350" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-    
-      <div id="calendar">
-        <v-row >
-          <v-col>
-            <v-sheet >
-              <v-calendar
-                ref="calendar"
-                color="primary"
-                type="day"
-                :events="events"
-                id="rowCalendar"
-              ></v-calendar>
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </div>
-    </div>
-  </main>
-</template> -->
-
 <template>
   <main>
     <div id="content">
@@ -199,38 +162,6 @@ main{
   font-family: LexendDecaMedium;
   font-size: 1.5em;
 }
-
-/* #textInfo{
-  align-self: left;
-}
-
-#content{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  column-gap: 3em;
-}
-
-#information{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: left;
-  margin-bottom: 6em;
-}
-
-#map{
-  margin-top: 2em;
-}
-
-#calendar{
-  width: 50%;
-}
-
-#rowCalendar{
-  background-color: #fcf3f3;
-} */
 
 #information2{
   display: flex;

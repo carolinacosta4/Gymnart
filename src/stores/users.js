@@ -65,13 +65,18 @@ export const useUserStore = defineStore("user", {
             this.users.push(newUser);
             this.userLogged = newUser;
             this.isUserAuthenticated = true;
-            alert('account created')
         }
     },
 
     editName(newName){
         let index = this.users.findIndex((user) => user.username == this.userLogged.username)
         this.userLogged = {name: newName, username: this.userLogged.username, email: this.userLogged.email, password: this.userLogged.password, profilePicture: this.userLogged.profilePicture, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked, lastSeenAthletes: this.userLogged.lastSeenAthletes, lastSeenTeams: this.userLogged.lastSeenTeams}
+        this.users.splice(index, 1, this.userLogged)
+    },
+
+    editAvatar(selected){
+        let index = this.users.findIndex((user) => user.username == this.userLogged.username)
+        this.userLogged = {name: this.userLogged.name, username: this.userLogged.username, email: this.userLogged.email, password: this.userLogged.password, profilePicture: selected, type: this.userLogged.type, favoriteAthletes: this.userLogged.favoriteAthletes, favoriteTeams: this.userLogged.favoriteTeams, medals: this.userLogged.medals, isBlocked: this.userLogged.isBlocked, lastSeenAthletes: this.userLogged.lastSeenAthletes, lastSeenTeams: this.userLogged.lastSeenTeams}
         this.users.splice(index, 1, this.userLogged)
     },
 
@@ -112,14 +117,12 @@ export const useUserStore = defineStore("user", {
             if(existingMedals.length < 2){
                 this.userLogged.medals.push(newMedal)
                 this.users[userIndex].medals.push(newMedal)
-                console.log(this.users);
             }
         }else{
             const existingMedal = this.userLogged.medals.find((medal) => medal === newMedal);
             if (!existingMedal) {
                 this.userLogged.medals.push(newMedal);
                 this.users[userIndex].medals.push(newMedal)
-                console.log(this.users);
             }else{
                 throw Error("Medal already added.");
             }
@@ -127,17 +130,13 @@ export const useUserStore = defineStore("user", {
     },
 
     addFavoriteAthlete(newFavorite) {
-        console.log("aqui");
         if (this.userLogged.favoriteAthletes.length <= 4) {
-            console.log(newFavorite);
             const index = this.userLogged.favoriteAthletes.findIndex(fav => fav == newFavorite);
             if (index == -1) {
                 this.userLogged.favoriteAthletes.push(newFavorite);
                 let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
                 this.users[userIndex].favoriteAthletes.push(newFavorite)
             }
-            console.log(index);
-            console.log(this.userLogged.favoriteAthletes);
         }
     },
     
@@ -149,17 +148,13 @@ export const useUserStore = defineStore("user", {
     },
 
     addFavoriteTeam(newFavorite) {
-        console.log("aqui");
         if (this.userLogged.favoriteTeams.length <= 4) {
-            console.log(newFavorite);
             const index = this.userLogged.favoriteTeams.findIndex(fav => fav == newFavorite);
             if (index == -1) {
                 this.userLogged.favoriteTeams.push(newFavorite);
                 let userIndex = this.users.findIndex((user) => user.username == this.userLogged.username)
                 this.users[userIndex].favoriteTeams.push(newFavorite)
             }
-            console.log(index);
-            console.log(this.userLogged.favoriteTeams);
         }
     },
     

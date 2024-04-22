@@ -32,5 +32,4 @@ export const useAthleteStore = defineStore('athlete', {
       console.log(this.athletes);
     }
   },
-  // persist: true,
 })
