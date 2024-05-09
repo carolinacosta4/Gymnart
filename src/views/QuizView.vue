@@ -63,66 +63,50 @@
 </template>
 
 <script>
-import { useQuizzesStore } from '../stores/quizzes';
-
-export default {
-  data() {
-    return {
-      quizzesStore: useQuizzesStore(),
-    };
-  },
-  methods: {
-    selQuizz(curQuizz) {
-      this.quizzesStore.quizz = curQuizz;
-      this.$router.push('/quizSelected');
-    },
-    showOverlay(event) {
-      const container = event.currentTarget;
-      container.classList.add('hovered');
-    },
-    hideOverlay(event) {
-      const container = event.currentTarget;
-      container.classList.remove('hovered');
-    },
-  },
-};
-
+import{useQuizzesStore}from '../stores/quizzes';export default{data(){return{quizzesStore:useQuizzesStore(),}},methods:{selQuizz(curQuizz){this.quizzesStore.quizz=curQuizz;this.$router.push('/quizSelected')},showOverlay(event){const container=event.currentTarget;container.classList.add('hovered')},hideOverlay(event){const container=event.currentTarget;container.classList.remove('hovered')},},}
 </script>
 
 <style lang="css" scoped>
 @font-face {
   font-family: Saphile;
   src: url(@/assets/Saphile/Saphile-Regular.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Regular;
   src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Medium;
   src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca ExtraLight;
   src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Thin;
   src: url(@/assets/Lexend_Deca/LexendDeca-Thin.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Light;
   src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Bold;
   src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
+  font-display: swap;
 }
 
 .mainTitle{

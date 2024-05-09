@@ -186,80 +186,8 @@
 </template>
 
 <script>
-import { useUserStore } from '../stores/users';
-
-  export default {
-    data() {
-      return {
-        userStore: useUserStore(),
-        newName: "",
-        newUsername: "",
-        newEmail: "",
-        oldPassword: "",
-        newPassword: "",
-        selectedAvatar: "",
-      }
-    },
-
-    computed: {
-      user() {
-        return this.userStore.getUserLogged
-      },
-
-      passwordUser(){
-        return this.userStore.getUserLogged.password.split('')
-      },
-
-      userMedals(){
-        return this.user.medals
-      }
-    },
-
-    methods: {
-      logout() {
-        this.$router.push({name: 'landingPage'})
-        this.userStore.logout()
-      },
-
-      editName() {
-        if(this.newName != ""){
-          this.userStore.editName(this.newName)
-        }
-      },
-
-      editAvatar(){
-        if(this.selectedAvatar != ""){
-          this.userStore.editAvatar(this.selectedAvatar)
-        }
-      },
-
-      editUsername() {
-        if(this.newUsername != ""){
-          this.userStore.editUsername(this.newUsername)
-        }
-      },
-
-      editEmail() {
-        if(this.newEmail != ""){
-          this.userStore.editEmail(this.newEmail)
-        }
-      },
-
-      editPassword() {
-        if(this.oldPassword == this.user.password){
-          this.userStore.editPassword(this.newPassword)
-        }else{
-          alert("Wrong password")
-        }
-      },
-
-      medals(){
-        if(this.userMedals){
-
-        }
-      }
-    },
-  }
+import{useUserStore}from '../stores/users';export default{data(){return{userStore:useUserStore(),newName:"",newUsername:"",newEmail:"",oldPassword:"",newPassword:"",selectedAvatar:"",}},computed:{user(){return this.userStore.getUserLogged},passwordUser(){return this.userStore.getUserLogged.password.split('')},userMedals(){return this.user.medals}},methods:{logout(){this.$router.push({name:'landingPage'})
+this.userStore.logout()},editName(){if(this.newName!=""){this.userStore.editName(this.newName)}},editAvatar(){if(this.selectedAvatar!=""){this.userStore.editAvatar(this.selectedAvatar)}},editUsername(){if(this.newUsername!=""){this.userStore.editUsername(this.newUsername)}},editEmail(){if(this.newEmail!=""){this.userStore.editEmail(this.newEmail)}},editPassword(){if(this.oldPassword==this.user.password){this.userStore.editPassword(this.newPassword)}else{alert("Wrong password")}},medals(){if(this.userMedals){}}},}
 </script>
 
 <style lang="css" scoped>
@@ -267,26 +195,31 @@ import { useUserStore } from '../stores/users';
 @font-face {
   font-family: Saphile;
   src: url(../assets/Saphile/Saphile-Regular.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Regular;
   src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca Light;
   src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca SemiBold;
   src: url(../assets/Lexend_Deca/LexendDeca-SemiBold.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  font-display: swap;
 }    
 
 #password{

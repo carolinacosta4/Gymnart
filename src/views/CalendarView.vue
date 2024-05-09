@@ -1,63 +1,20 @@
 <script>
-import { VCalendar } from 'vuetify/labs/VCalendar'
-
-import { useDate } from 'vuetify'
-
-const today = new Date()
-
-  export default {
-    components: {
-      VCalendar,
-    },
-    data: () => ({
-      focus: '',
-      events: [],
-      colors: ['#4857a0', '#f16a64', '#ed2e2f'],
-      names: ['Individuals', 'Teams', 'Teams', 'Individuals'],
-    }),
-    mounted () {
-      const adapter = useDate()
-      this.fetchEvents({ start: adapter.startOfDay(adapter.startOfMonth(new Date())), end: adapter.endOfDay(adapter.endOfMonth(new Date())) })
-    },
-    methods: {
-      getEventColor (event) {
-        return event.color
-      },
-      fetchEvents ({ start, end }) {
-        const events = [{
-        title: 'Main Competition',
-        start: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 12, 0, 0),
-        end: new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0),
-        color: '#4857a0',
-      }]
-
-        const min = start
-        const max = end
-        const eventCount = 4
-        let idNames = 0
-
-        for (let i = 0; i < eventCount; i++) {
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(min.getTime(), max.getTime())
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            title: this.names[idNames],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-          })
-          idNames += 1
-        }
-
-        this.events = events
-      },
-      rnd (a, b) {
-        return Math.floor((b - a + 1) * Math.random()) + a
-      },
-    },
-  }
+import{VCalendar}from 'vuetify/labs/VCalendar'
+import{useDate}from 'vuetify'
+const today=new Date()
+export default{components:{VCalendar,},data:()=>({focus:'',events:[],colors:['#4857a0','#f16a64','#ed2e2f'],names:['Individuals','Teams','Teams','Individuals'],}),mounted(){const adapter=useDate()
+this.fetchEvents({start:adapter.startOfDay(adapter.startOfMonth(new Date())),end:adapter.endOfDay(adapter.endOfMonth(new Date()))})},methods:{getEventColor(event){return event.color},fetchEvents({start,end}){const events=[{title:'Main Competition',start:new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0),end:new Date(today.getFullYear(),today.getMonth(),today.getDate(),18,0,0),color:'#4857a0',}]
+const min=start
+const max=end
+const eventCount=4
+let idNames=0
+for(let i=0;i<eventCount;i++){const firstTimestamp=this.rnd(min.getTime(),max.getTime())
+const first=new Date(firstTimestamp-(firstTimestamp%900000))
+const secondTimestamp=this.rnd(min.getTime(),max.getTime())
+const second=new Date(first.getTime()+secondTimestamp)
+events.push({title:this.names[idNames],start:first,end:second,color:this.colors[this.rnd(0,this.colors.length-1)],})
+idNames+=1}
+this.events=events},rnd(a,b){return Math.floor((b-a+1)*Math.random())+a},},}
 </script>
 <template>
   <main>
@@ -99,26 +56,31 @@ const today = new Date()
 @font-face {
   font-family: Saphile;
   src: url('../assets/Saphile/Saphile-Regular.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaSemiBold;
   src: url('../assets/Lexend_Deca/LexendDeca-SemiBold.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaBold;
   src: url('../assets/Lexend_Deca/LexendDeca-Bold.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaRegular;
   src: url('../assets/Lexend_Deca/LexendDeca-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaMedium;
   src: url('../assets/Lexend_Deca/LexendDeca-Light.ttf');
+  font-display: swap;
 }
 
 main{

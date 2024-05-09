@@ -98,112 +98,64 @@
 import { useEventStore } from "@/stores/event"
 import { useAthleteStore } from "@/stores/athlete"
 import { useTeamStore } from "@/stores/team"
-
 export default {
-    data() {
-        return {
-            eventsStore: useEventStore(),
-            athleteStore: useAthleteStore(),
-            teamStore: useTeamStore(),
-            eventsDelayed: [],
-            athlete: "",
-            athletes: "",
-            seconds: 0,
-            totalPontuation: 0,
-            currentAthleteName: "",
-            currentAthleteTeam: "",
-            currentAthleteThumbnail: "",
-            currentAthleteID: 0,
-            top5AthletesArray: [],
-            top3TeamsArray: [],
-            currentAthlete: ""
-        }
-    },
-
-    created() {
-      try {
-        this.athleteStore.fetchAthletes()
-        this.eventsStore.fetchEvents()
-        this.teamStore.fetchTeams()
-
-        let currentAthleteIndex = 0
-        let currentEventIndex = 0
-        let interval = ""
-
-        const displayEvent = () => {
-          this.currentAthlete = this.eventsStore.getEvents[currentAthleteIndex]
-          if (this.currentAthlete) {
-            let athleteFind = this.athleteStore.getAthlete(this.currentAthlete.idAthlete)
-            const currentEvent = this.currentAthlete.events[currentEventIndex]
-            if (currentEvent) {
-              this.eventsDelayed.push(currentEvent)
-              this.seconds = currentEvent.seconds
-              this.totalPontuation += currentEvent.pontuation
-              currentEventIndex++
-              this.currentAthleteName = athleteFind.name
-              this.currentAthleteTeam = athleteFind.teamAcronym
-              this.currentAthleteThumbnail = athleteFind.thumbnailPath
-              this.currentAthleteID = athleteFind.id
-              
-            } else {
-              currentEventIndex = 0;
-              this.top3Teams()
-              this.top5Athletes()
-              currentAthleteIndex++;
-              this.eventsDelayed = []; 
-              this.totalPontuation = 0; 
-              displayEvent(); 
-            }
+  data() { return { eventsStore: useEventStore(), athleteStore: useAthleteStore(), teamStore: useTeamStore(), eventsDelayed: [], athlete: "", athletes: "", seconds: 0, totalPontuation: 0, currentAthleteName: "", currentAthleteTeam: "", currentAthleteThumbnail: "", currentAthleteID: 0, top5AthletesArray: [], top3TeamsArray: [], currentAthlete: "" } }, created() {
+    try {
+      this.athleteStore.fetchAthletes()
+      this.eventsStore.fetchEvents()
+      this.teamStore.fetchTeams()
+      let currentAthleteIndex = 0
+      let currentEventIndex = 0
+      let interval = ""
+      const displayEvent = () => {
+        this.currentAthlete = this.eventsStore.getEvents[currentAthleteIndex]
+        if (this.currentAthlete) {
+          let athleteFind = this.athleteStore.getAthlete(this.currentAthlete.idAthlete)
+          const currentEvent = this.currentAthlete.events[currentEventIndex]
+          if (currentEvent) {
+            this.eventsDelayed.push(currentEvent)
+            this.seconds = currentEvent.seconds
+            this.totalPontuation += currentEvent.pontuation
+            currentEventIndex++
+            this.currentAthleteName = athleteFind.name
+            this.currentAthleteTeam = athleteFind.teamAcronym
+            this.currentAthleteThumbnail = athleteFind.thumbnailPath
+            this.currentAthleteID = athleteFind.id
           } else {
-            clearInterval(interval);
+            currentEventIndex = 0; this.top3Teams()
+            this.top5Athletes()
+            currentAthleteIndex++; this.eventsDelayed = []; this.totalPontuation = 0; displayEvent()
           }
-        };
-        displayEvent();
-        interval = setInterval(displayEvent, 5000);
-      } catch (error) {
-        alert("ERROR: " + error.message);
-      }
+        } else { clearInterval(interval) }
+      }; displayEvent(); interval = setInterval(displayEvent, 5000)
+    } catch (error) { alert("ERROR: " + error.message) }
+  }, methods: {
+    top3Teams() {
+      let team = this.teamStore.getTeam(this.currentAthleteTeam)
+      let findTeamIndex = this.top3TeamsArray.findIndex((team) => team.teamAcronym == this.currentAthleteTeam)
+      if (findTeamIndex != -1) {
+        let pontuation = +this.top3TeamsArray[findTeamIndex].teamPontuation + this.totalPontuation
+        let teamReplace = { teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: pontuation }
+        this.top3TeamsArray.splice(findTeamIndex, 1, teamReplace)
+      } else { this.top3TeamsArray.push({ teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: this.totalPontuation }) }
+    }, top5Athletes() { this.top5AthletesArray.push({ athleteName: this.currentAthleteName, athleteThumbnail: this.currentAthleteThumbnail, pontuation: this.totalPontuation, id: this.currentAthleteID }) }
+  }, computed: {
+    sortPontuationAthlete() {
+      const sortedPontuationArray = this.top5AthletesArray.sort((a, b) => {
+        if (a.pontuation > b.pontuation) return -1
+        if (a.pontuation == b.pontuation) return 0
+        if (a.pontuation < b.pontuation) return 1
+      })
+      return sortedPontuationArray.slice(0, 5)
+    }, sortPontuationTeam() {
+      const sortedPontuationArray = this.top3TeamsArray.sort((a, b) => {
+        if (a.teamPontuation > b.teamPontuation) return -1
+        if (a.teamPontuation == b.teamPontuation) return 0
+        if (a.teamPontuation < b.teamPontuation) return 1
+      })
+      return sortedPontuationArray.slice(0, 3)
     },
-
-    methods: {
-        top3Teams() {
-          let team = this.teamStore.getTeam(this.currentAthleteTeam)
-          let findTeamIndex = this.top3TeamsArray.findIndex((team) => team.teamAcronym == this.currentAthleteTeam)
-          if(findTeamIndex != -1){
-            let pontuation = +this.top3TeamsArray[findTeamIndex].teamPontuation + this.totalPontuation
-            let teamReplace =  {teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: pontuation}
-            this.top3TeamsArray.splice(findTeamIndex, 1, teamReplace)
-          }else{
-            this.top3TeamsArray.push({teamName: team.name, teamAcronym: team.acronym, teamThumbnail: team.picture, teamPontuation: this.totalPontuation})
-          }
-        },
-
-        top5Athletes(){
-          this.top5AthletesArray.push({athleteName: this.currentAthleteName, athleteThumbnail: this.currentAthleteThumbnail, pontuation: this.totalPontuation, id: this.currentAthleteID})
-        }
-    },
-
-    computed: {
-      sortPontuationAthlete() {
-        const sortedPontuationArray = this.top5AthletesArray.sort((a, b) => {
-          if(a.pontuation > b.pontuation) return -1
-          if(a.pontuation == b.pontuation) return 0
-          if(a.pontuation < b.pontuation) return 1
-        })
-
-        return sortedPontuationArray.slice(0, 5)
-      },
-
-      sortPontuationTeam(){
-        const sortedPontuationArray = this.top3TeamsArray.sort((a, b) => {
-          if(a.teamPontuation > b.teamPontuation) return -1
-          if(a.teamPontuation == b.teamPontuation) return 0
-          if(a.teamPontuation < b.teamPontuation) return 1
-        })
-        return sortedPontuationArray.slice(0, 3)
-      },
-
-    },
+  },
 }
 </script>
 
@@ -211,16 +163,19 @@ export default {
   @font-face {
       font-family: Saphile;
       src: url(../assets/Saphile/Saphile-Regular.otf);
+      font-display: swap;
   }
 
   @font-face {
       font-family: Lexend Deca Regular;
       src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+      font-display: swap;
   }
 
   @font-face {
       font-family: Lexend Deca Light;
       src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
+      font-display: swap;
   }
 
   #body{
@@ -272,7 +227,8 @@ export default {
   }
 
   .movementPicture {
-      width: 3em;
+      width: 100%;
+      height: 100%;
       margin-left: 4em;
   }
 

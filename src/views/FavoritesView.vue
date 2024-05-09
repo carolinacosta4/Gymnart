@@ -41,91 +41,38 @@
 </template>
 
 <script>
-  import { useTeamStore } from '../stores/team';
-  import { useAthleteStore } from '../stores/athlete';
-  import { useUserStore } from '../stores/users';
-
-  export default {
-    data() {
-      return {
-        teamStore: useTeamStore(),
-        athleteStore: useAthleteStore(),
-        userStore: useUserStore(),
-        favoritesTeamsArray: [],
-        favoritesAthletesArray: []
-      }
-    },
-
-    computed: {
-      user(){
-        return this.userStore.getUserLogged
-      },
-
-      athletes() {
-        return this.athleteStore.getAthletes
-      },
-
-      teams() {
-        return this.teamStore.getTeams
-      },
-
-      favAthletes(){
-        this.favoritesAthletes()
-        return this.favoritesAthletesArray
-      },
-
-      favTeams(){
-        this.favoritesTeams()
-        return this.favoritesTeamsArray
-      }
-    },
-    methods: {
-      favoritesAthletes(){
-        let favoritesList = this.user.favoriteAthletes
-        favoritesList.forEach(element =>{
-          let athlete = this.athletes.find((athlete) => athlete.id == element)
-          this.favoritesAthletesArray.push({
-            id: athlete.id,
-            picturePath: athlete.thumbnailPath,
-            description: athlete.description
-          })          
-        })
-      },
-      favoritesTeams(){
-        let favoritesTeamsList = this.user.favoriteTeams
-        favoritesTeamsList.forEach(element =>{
-          let team = this.teams.find((team) => team.acronym == element)
-          this.favoritesTeamsArray.push({
-            acronym: team.acronym,
-            picturePath: team.picture,
-            description: team.description
-          })
-          
-        })
-      }
-    }
-}
+  import{useTeamStore}from '../stores/team';import{useAthleteStore}from '../stores/athlete';import{useUserStore}from '../stores/users';export default{data(){return{teamStore:useTeamStore(),athleteStore:useAthleteStore(),userStore:useUserStore(),favoritesTeamsArray:[],favoritesAthletesArray:[]}},computed:{user(){return this.userStore.getUserLogged},athletes(){return this.athleteStore.getAthletes},teams(){return this.teamStore.getTeams},favAthletes(){this.favoritesAthletes()
+return this.favoritesAthletesArray},favTeams(){this.favoritesTeams()
+return this.favoritesTeamsArray}},methods:{favoritesAthletes(){let favoritesList=this.user.favoriteAthletes
+favoritesList.forEach(element=>{let athlete=this.athletes.find((athlete)=>athlete.id==element)
+this.favoritesAthletesArray.push({id:athlete.id,picturePath:athlete.thumbnailPath,description:athlete.description})})},favoritesTeams(){let favoritesTeamsList=this.user.favoriteTeams
+favoritesTeamsList.forEach(element=>{let team=this.teams.find((team)=>team.acronym==element)
+this.favoritesTeamsArray.push({acronym:team.acronym,picturePath:team.picture,description:team.description})})}}}
 </script>
 
 <style lang="css" scoped>
 @font-face {
   font-family: LexendDecaRegular;
   src: url('../assets/Lexend_Deca/LexendDeca-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaMedium;
   src: url('../assets/Lexend_Deca/LexendDeca-Light.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: Saphile;
   src: url('../assets/Saphile/Saphile-Regular.otf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: LexendDecaSemiBold;
   src: url('../assets/Lexend_Deca/LexendDeca-SemiBold.ttf');
+  font-display: swap;
 }
 
 .main{
