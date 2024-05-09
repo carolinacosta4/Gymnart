@@ -110,73 +110,11 @@
   </template>
 
 <script>
-import { useTeamStore } from '../stores/team';
-
-    export default {
-        data() {
-            return {
-                teamStore: useTeamStore(),
-                searchTeams: "",
-                isVisible: false,
-                name: "",
-                flag: "",
-                picture: "",
-                coaches: "",
-                acronym: "",
-                gold: 0,
-                silver: 0,
-                bronze: 0,
-                description: "",
-                pagePicture: "",
-                isDropdownOpen: false,
-                filterFlag: "search"
-            }
-        },
-
-        computed: {
-            teams() {
-                return this.teamStore.getTeams
-            },
-
-            filters(){
-                if(this.filterFlag == "search") return this.teams.filter((team) => team.name.toLowerCase().startsWith(this.searchTeams.toLowerCase()))
-                if(this.filterFlag == "gold") return this.teams.filter((team) => team.gold > 0).sort((a, b) => b.gold - a.gold)
-                if(this.filterFlag == "silver") return this.teams.filter((team) => team.silver > 0).sort((a, b) => b.silver - a.silver)
-                if(this.filterFlag == "bronze") return this.teams.filter((team) => team.bronze > 0).sort((a, b) => b.bronze - a.bronze)
-            }
-       },
-
-        created () {
-            this.teamStore.fetchTeams();
-        },
-
-        methods: {
-            toggleBtn() {
-                this.changeFilterFlag('search')
-                return this.isVisible = !this.isVisible
-            },
-
-            deleteTeam(acronym){
-                this.teamStore.delete(acronym)
-            },
-
-            editTeam(){
-
-            },
-
-            addTeam(){
-                this.teamStore.add(this.name, this.flag, this.picture, this.pagePicture, this.coaches, this.acronym, this.gold, this.silver, this.bronze, this.description)
-            },
-
-            toggleDropdown(isOpen) {
-                this.isDropdownOpen = isOpen;
-            },
-
-            changeFilterFlag(change){
-                this.filterFlag = change
-            }
-        },
-    }
+import{useTeamStore}from '../stores/team';export default{data(){return{teamStore:useTeamStore(),searchTeams:"",isVisible:!1,name:"",flag:"",picture:"",coaches:"",acronym:"",gold:0,silver:0,bronze:0,description:"",pagePicture:"",isDropdownOpen:!1,filterFlag:"search"}},computed:{teams(){return this.teamStore.getTeams},filters(){if(this.filterFlag=="search")return this.teams.filter((team)=>team.name.toLowerCase().startsWith(this.searchTeams.toLowerCase()))
+if(this.filterFlag=="gold")return this.teams.filter((team)=>team.gold>0).sort((a,b)=>b.gold-a.gold)
+if(this.filterFlag=="silver")return this.teams.filter((team)=>team.silver>0).sort((a,b)=>b.silver-a.silver)
+if(this.filterFlag=="bronze")return this.teams.filter((team)=>team.bronze>0).sort((a,b)=>b.bronze-a.bronze)}},created(){this.teamStore.fetchTeams()},methods:{toggleBtn(){this.changeFilterFlag('search')
+return this.isVisible=!this.isVisible},deleteTeam(acronym){this.teamStore.delete(acronym)},editTeam(){},addTeam(){this.teamStore.add(this.name,this.flag,this.picture,this.pagePicture,this.coaches,this.acronym,this.gold,this.silver,this.bronze,this.description)},toggleDropdown(isOpen){this.isDropdownOpen=isOpen},changeFilterFlag(change){this.filterFlag=change}},}
 </script>
 
 <style lang="css" scoped>
@@ -184,11 +122,13 @@ import { useTeamStore } from '../stores/team';
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  font-display: swap;
 } 
 
 #body{

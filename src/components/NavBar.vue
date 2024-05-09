@@ -66,45 +66,7 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
-import { useUserStore } from "../stores/users";
-
-export default {
-    data() {
-        return {
-            store: useUserStore(),
-            showModal: false,
-            id: null,
-        }
-    },
-    computed: {
-        isUserLogged(){
-            return this.store.isUser
-        },
-        
-        user(){
-            return this.store.getUserLogged
-        },
-
-        pageName(){
-            return this.$route.name
-        }
-    },
-
-    methods: {
-        logout() {
-            this.store.logout();
-            this.$router.push({ name: "landingPage" });
-        },
-
-        openLogOutModal() {
-            this.showModal = true;
-        },
-         closeLogoutModal(){
-            this.showModal = false;
-        },
-    },
-}
+import{RouterLink}from "vue-router";import{useUserStore}from "../stores/users";export default{data(){return{store:useUserStore(),showModal:!1,id:null,}},computed:{isUserLogged(){return this.store.isUser},user(){return this.store.getUserLogged},pageName(){return this.$route.name}},methods:{logout(){this.store.logout();this.$router.push({name:"landingPage"})},openLogOutModal(){this.showModal=!0},closeLogoutModal(){this.showModal=!1},},}
 
 </script>
 
@@ -131,7 +93,7 @@ export default {
 }
 
 .icon{
-    height: auto;
+    height: 2em;
     width: 2em;
 }
 

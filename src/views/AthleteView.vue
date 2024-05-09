@@ -66,109 +66,54 @@
 </template>
 
 <script>
-import { useAthleteStore } from "@/stores/athlete"
-import { useTeamStore } from "@/stores/team";
-import { useUserStore } from "@/stores/users";
-
-export default {
-    data() {
-        return {
-            athleteStore: useAthleteStore(),
-            teamStore: useTeamStore(),
-            userStore: useUserStore(),
-            hovered: false,
-            favorite: false,
-        }
-    },
-
-    created() {
-        this.athleteStore.fetchAthletes();
-        this.teamStore.fetchTeams();
-        this.id = this.$route.params.id;
-        this.isFavorite()
-        this.addLastSeen()
-    },
-
-    methods: {
-        showFlagHover() {
-            this.hovered = true;
-        },
-
-        hideFlagHover() {
-            this.hovered = false;
-        },
-
-        toggleFavoriteAthlete() {
-            if(!this.favorite){
-                this.userStore.addFavoriteAthlete(this.athlete.id);
-            }else{
-                this.userStore.removeFavoriteAthlete(this.athlete.id);
-            }
-            this.favorite = !this.favorite;
-        },
-
-        addLastSeen(){
-            this.userStore.addLastSeenAthletes(this.athlete.id)
-        },
-
-        isFavorite(){
-            let favoriteAthlete = this.user.favoriteAthletes.find((favorite) => favorite == this.athlete.id)
-            if(favoriteAthlete){
-                this.favorite = true
-            }
-        },
-    },
-
-    computed: {
-        athlete() {
-            return this.athleteStore.getAthlete(this.id)
-        },
-
-        teamIcon(){
-            return this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon
-        },
-
-        user(){
-            return this.userStore.getUserLogged
-        },
-    },
-}
+import{useAthleteStore}from "@/stores/athlete"
+import{useTeamStore}from "@/stores/team";import{useUserStore}from "@/stores/users";export default{data(){return{athleteStore:useAthleteStore(),teamStore:useTeamStore(),userStore:useUserStore(),hovered:!1,favorite:!1,}},created(){this.athleteStore.fetchAthletes();this.teamStore.fetchTeams();this.id=this.$route.params.id;this.isFavorite()
+this.addLastSeen()},methods:{showFlagHover(){this.hovered=!0},hideFlagHover(){this.hovered=!1},toggleFavoriteAthlete(){if(!this.favorite){this.userStore.addFavoriteAthlete(this.athlete.id)}else{this.userStore.removeFavoriteAthlete(this.athlete.id)}
+this.favorite=!this.favorite},addLastSeen(){this.userStore.addLastSeenAthletes(this.athlete.id)},isFavorite(){let favoriteAthlete=this.user.favoriteAthletes.find((favorite)=>favorite==this.athlete.id)
+if(favoriteAthlete){this.favorite=!0}},},computed:{athlete(){return this.athleteStore.getAthlete(this.id)},teamIcon(){return this.teamStore.getTeam(this.athlete.teamAcronym).flagIcon},user(){return this.userStore.getUserLogged},},}
 </script>
 
 <style lang="css" scoped>
     @font-face {
     font-family: Saphile;
     src: url(@/assets/Saphile/Saphile-Regular.otf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca Medium;
     src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca ExtraLight;
     src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca Thin;
     src: url(@/assets/Lexend_Deca/LexendDeca-Thin.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca Light;
     src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca Bold;
     src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
+    font-display: swap;
 }
 
 .parentContainer{

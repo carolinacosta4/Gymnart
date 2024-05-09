@@ -118,78 +118,12 @@
 </template>
 
 <script>
-import { useAthleteStore } from '../stores/athlete';
-
-    export default {
-        data() {
-            return {
-                athleteStore: useAthleteStore(),
-                searchAthletes: "",
-                isVisible: false,
-                name: "",
-                acronym: "",
-                description: "",
-                curiosities: "",
-                lastResult: "",
-                teamName: "",
-                age: 0,
-                gold: 0,
-                silver: 0,
-                bronze: 0,
-                picture: "",
-                isDropdownOpen: false,
-                filterFlag: "search",
-                firstOlympics: 0,
-                height: "",
-                birth: ""
-            }
-        },
-
-        computed: {
-            athletes() {
-                return this.athleteStore.getAthletes
-            },
-
-            filters(){
-                if(this.filterFlag == "search") return this.athletes.filter((athlete) => athlete.name.toLowerCase().startsWith(this.searchAthletes.toLowerCase()))
-                if(this.filterFlag == "gold") return this.athletes.filter((athlete) => athlete.gold > 0).sort((a, b) => b.gold - a.gold)
-                if(this.filterFlag == "silver") return this.athletes.filter((athlete) => athlete.silver > 0).sort((a, b) => b.silver - a.silver)
-                if(this.filterFlag == "bronze") return this.athletes.filter((athlete) => athlete.bronze > 0).sort((a, b) => b.bronze - a.bronze)
-                if(this.filterFlag == "team") return this.athletes.filter((athlete) => athlete.teamAcronym).sort((a, b) => {if (a.teamAcronym < b.teamAcronym) return -1; if (a.teamAcronym > b.teamAcronym) return 1; return 0;});
-            }
-       },
-
-        methods: {
-            toggleBtn() {
-                this.changeFilterFlag('search')
-                return this.isVisible = !this.isVisible
-            },
-
-            deleteAthlete(id){
-                this.athleteStore.delete(id)
-            },
-
-            editAthlete(){
-
-            },
-
-            addAthlete(){
-                this.athleteStore.add(this.name, this.acronym, this.description, this.curiosities, this.lastResult, this.teamName, this.age, this.gold, this.silver, this.bronze, this.picture, this.firstOlympics, this.height, this.birth)
-            },
-
-            toggleDropdown(isOpen) {
-                this.isDropdownOpen = isOpen;
-            },
-
-            changeFilterFlag(change){
-                this.filterFlag = change
-            }
-        },
-
-        created () {
-            this.athleteStore.fetchAthletes();
-        },
-    }
+import{useAthleteStore}from '../stores/athlete';export default{data(){return{athleteStore:useAthleteStore(),searchAthletes:"",isVisible:!1,name:"",acronym:"",description:"",curiosities:"",lastResult:"",teamName:"",age:0,gold:0,silver:0,bronze:0,picture:"",isDropdownOpen:!1,filterFlag:"search",firstOlympics:0,height:"",birth:""}},computed:{athletes(){return this.athleteStore.getAthletes},filters(){if(this.filterFlag=="search")return this.athletes.filter((athlete)=>athlete.name.toLowerCase().startsWith(this.searchAthletes.toLowerCase()))
+if(this.filterFlag=="gold")return this.athletes.filter((athlete)=>athlete.gold>0).sort((a,b)=>b.gold-a.gold)
+if(this.filterFlag=="silver")return this.athletes.filter((athlete)=>athlete.silver>0).sort((a,b)=>b.silver-a.silver)
+if(this.filterFlag=="bronze")return this.athletes.filter((athlete)=>athlete.bronze>0).sort((a,b)=>b.bronze-a.bronze)
+if(this.filterFlag=="team")return this.athletes.filter((athlete)=>athlete.teamAcronym).sort((a,b)=>{if(a.teamAcronym<b.teamAcronym)return-1;if(a.teamAcronym>b.teamAcronym)return 1;return 0})}},methods:{toggleBtn(){this.changeFilterFlag('search')
+return this.isVisible=!this.isVisible},deleteAthlete(id){this.athleteStore.delete(id)},editAthlete(){},addAthlete(){this.athleteStore.add(this.name,this.acronym,this.description,this.curiosities,this.lastResult,this.teamName,this.age,this.gold,this.silver,this.bronze,this.picture,this.firstOlympics,this.height,this.birth)},toggleDropdown(isOpen){this.isDropdownOpen=isOpen},changeFilterFlag(change){this.filterFlag=change}},created(){this.athleteStore.fetchAthletes()},}
 </script>
 
 <style lang="css" scoped>
@@ -197,11 +131,13 @@ import { useAthleteStore } from '../stores/athlete';
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  font-display: swap;
 } 
 
 #body{

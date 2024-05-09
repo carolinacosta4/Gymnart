@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   
     <div id="nav" class="padding4">
@@ -84,21 +81,25 @@
 @font-face {
     font-family: LexendDecaBold;
     src: url(../assets/Lexend_Deca/LexendDeca-Bold.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: LexendDecaRegular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: LexendDecaThin;
     src: url(../assets/Lexend_Deca/LexendDeca-Light.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Saphile;
     src: url(../assets/Saphile/Saphile-Regular.otf);
+    font-display: swap;
 }
 
 #app{
@@ -232,6 +233,7 @@
   position: relative;
   z-index: 0;
   margin-top: 5em;
+  height: 100%;
 }
 
 #imgDashFrames1{
@@ -250,7 +252,7 @@
   margin-left: -63em;
   border-radius: 1.5em;
   width: 30vw;
-  
+  height: 100%;
 }
 
 #divImg3{
@@ -265,6 +267,7 @@
 #imgDashFrames3{
   border-radius: 1.5em;
   width: 25vw;
+  height: 100%;
 }
 
 #fakeDataTxt{
