@@ -38,64 +38,22 @@
   </template>
 
 <script>
-import { useUserStore } from '../stores/users';
-
-    export default {
-        data() {
-            return {
-                userStore: useUserStore(),
-                searchUsers: "",
-                isVisible: false,
-                isDropdownOpen: false,
-                filterFlag: "search"
-            }
-        },
-
-        computed: {
-            users() {
-                return this.userStore.getUsers
-            },
-
-            filters(){
-                if(this.filterFlag == "search") return this.users.filter((user) => user.username.toLowerCase().startsWith(this.searchUsers.toLowerCase()))
-                if(this.filterFlag == "role") return this.users.filter((user) => user.type).sort((a, b) => {if (a.type < b.type) return -1; if (a.type > b.type) return 1; return 0;});
-            }
-         },
-
-        methods: {
-            toggleBtn() {
-                this.changeFilterFlag('search')
-                return this.isVisible = !this.isVisible
-            },
-
-            blockUser(username) {
-                this.userStore.blocked(username)
-            },
-
-            deleteUser(username){
-                this.userStore.delete(username)
-            },
-
-            toggleDropdown(isOpen) {
-                this.isDropdownOpen = isOpen;
-            },
-
-            changeFilterFlag(change){
-                this.filterFlag = change
-            }
-        },
-    }
+import{useUserStore}from '../stores/users';export default{data(){return{userStore:useUserStore(),searchUsers:"",isVisible:!1,isDropdownOpen:!1,filterFlag:"search"}},computed:{users(){return this.userStore.getUsers},filters(){if(this.filterFlag=="search")return this.users.filter((user)=>user.username.toLowerCase().startsWith(this.searchUsers.toLowerCase()))
+if(this.filterFlag=="role")return this.users.filter((user)=>user.type).sort((a,b)=>{if(a.type<b.type)return-1;if(a.type>b.type)return 1;return 0})}},methods:{toggleBtn(){this.changeFilterFlag('search')
+return this.isVisible=!this.isVisible},blockUser(username){this.userStore.blocked(username)},deleteUser(username){this.userStore.delete(username)},toggleDropdown(isOpen){this.isDropdownOpen=isOpen},changeFilterFlag(change){this.filterFlag=change}},}
 </script>
 
 <style lang="css" scoped>
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
   font-family: Lexend Deca ExtraLight;
   src: url(../assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+  font-display: swap;
 } 
 
 h1{

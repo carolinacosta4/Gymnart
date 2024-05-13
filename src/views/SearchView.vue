@@ -56,92 +56,34 @@
 </template>
 
 <script>
-import { useTeamStore } from '../stores/team';
-import { useAthleteStore } from '../stores/athlete';
-import { useUserStore } from '../stores/users';
-
-  export default {
-    data() {
-      return {
-        teamStore: useTeamStore(),
-        athleteStore: useAthleteStore(),
-        userStore: useUserStore(),
-        search: "",
-        lastTeamsArray: [],
-        lastAthletesArray: []
-      }
-    },
-
-    computed: {
-      athletesFilter(){
-        return this.athletes.filter((athlete) => {
-          let fullName = athlete.name.toLowerCase()
-          const [firstName, lastName] = fullName.split(' ')
-          return(firstName.startsWith(this.search.toLowerCase()) || lastName.startsWith(this.search.toLowerCase()) || athlete.teamName.toLowerCase().startsWith(this.search.toLowerCase()))
-        })
-      },
-
-      teamsFilter(){
-        return this.teams.filter((team) => this.athletesFilter.some((athlete) => athlete.teamName === team.name))
-      },
-
-      athletes() {
-        return this.athleteStore.getAthletes
-      },
-
-      teams() {
-        return this.teamStore.getTeams
-      },
-
-      user(){
-        return this.userStore.getUserLogged
-      },
-
-      lastTeams(){
-        this.lastSeenTeams()
-        return this.lastTeamsArray
-      },
-
-      lastAthletes(){
-        this.lastSeenAthletes()
-        return this.lastAthletesArray
-      }
-    },
-
-    methods: {
-      lastSeenTeams(){
-        let userLastSeen = this.user.lastSeenTeams
-        userLastSeen.forEach(element => {
-          let team = this.teams.find((team) => team.acronym == element)
-          this.lastTeamsArray.push(team)
-        });
-      },
-
-      lastSeenAthletes(){
-        let userLastSeen = this.user.lastSeenAthletes
-        userLastSeen.forEach(element => {
-          let athlete = this.athletes.find((athlete) => athlete.id == element)
-          this.lastAthletesArray.push(athlete)
-        });
-      },
-    },
-  }
+import{useTeamStore}from '../stores/team';import{useAthleteStore}from '../stores/athlete';import{useUserStore}from '../stores/users';export default{data(){return{teamStore:useTeamStore(),athleteStore:useAthleteStore(),userStore:useUserStore(),search:"",lastTeamsArray:[],lastAthletesArray:[]}},computed:{athletesFilter(){return this.athletes.filter((athlete)=>{let fullName=athlete.name.toLowerCase()
+const[firstName,lastName]=fullName.split(' ')
+return(firstName.startsWith(this.search.toLowerCase())||lastName.startsWith(this.search.toLowerCase())||athlete.teamName.toLowerCase().startsWith(this.search.toLowerCase()))})},teamsFilter(){return this.teams.filter((team)=>this.athletesFilter.some((athlete)=>athlete.teamName===team.name))},athletes(){return this.athleteStore.getAthletes},teams(){return this.teamStore.getTeams},user(){return this.userStore.getUserLogged},lastTeams(){this.lastSeenTeams()
+return this.lastTeamsArray},lastAthletes(){this.lastSeenAthletes()
+return this.lastAthletesArray}},methods:{lastSeenTeams(){let userLastSeen=this.user.lastSeenTeams
+userLastSeen.forEach(element=>{let team=this.teams.find((team)=>team.acronym==element)
+this.lastTeamsArray.push(team)})},lastSeenAthletes(){let userLastSeen=this.user.lastSeenAthletes
+userLastSeen.forEach(element=>{let athlete=this.athletes.find((athlete)=>athlete.id==element)
+this.lastAthletesArray.push(athlete)})},},}
 </script>
 
 <style lang="css" scoped>
 @font-face {
     font-family: Lexend Deca Regular;
     src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Lexend Deca ExtraLight;
     src: url(@/assets/Lexend_Deca/LexendDeca-ExtraLight.ttf);
+    font-display: swap;
 }
 
 @font-face {
   font-family: Saphile;
   src: url(@/assets/Saphile/Saphile-Regular.otf);
+  font-display: swap;
 }
 
 h1{

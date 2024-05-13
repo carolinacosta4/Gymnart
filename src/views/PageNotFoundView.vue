@@ -12,19 +12,18 @@
     </div>
 </template>
 
-<script setup>
-</script>
-
 <style lang="css" scoped>
 
 @font-face {
     font-family: LexendDecaRegular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: Saphile;
     src: url(../assets/Saphile/Saphile-Regular.otf);
+    font-display: swap;
 }
 
 #container{

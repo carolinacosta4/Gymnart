@@ -53,70 +53,9 @@
 
 
 <script>
-import { useUserStore } from '@/stores/users';
-
-	export default{
-		data() {
-			return {
-				store: useUserStore(),
-				name: '',
-				username: '',
-				email: '',
-				password: '',
-				confirmPassword: '',
-				usernameLogin: '',
-				passwordLogin: '',
-			}
-		},
-		mounted(){
-			const signUpButton = document.getElementById('btnSignUp');
-			const logInButton = document.getElementById('logIn');
-
-			signUpButton.addEventListener('click', () => { 
-				container.classList.add("right-panel-active");
-			});
-
-			logInButton.addEventListener('click', () => {
-				container.classList.remove("right-panel-active");
-			});
-
-		},
-
-		computed: {
-			isRequired(){
-				return [
-					value => !!value || 'Required',
-				];
-				
-			},
-
-			users(){
-				return this.store.getUsers
-			},
-
-			user(){
-				return this.store.getUserLogged
-			}
-		},
-		methods: {
-    		login() {
-				try {
-					this.store.login(this.usernameLogin, this.passwordLogin)
-					this.$router.push({ name: "home" });
-				} catch (error) {
-					alert(`Error: ${error.message}`); 
-				}
-			},
-			signup(){
-				try {
-					this.store.signup(this.name, this.username, this.email, this.password, this.confirmPassword)
-					this.$router.push({ name: "home" });
-				} catch (error) {
-					alert(`Error: ${error.message}`);
-				}
-			}
-  },
-	}
+import{useUserStore}from '@/stores/users';export default{data(){return{store:useUserStore(),name:'',username:'',email:'',password:'',confirmPassword:'',usernameLogin:'',passwordLogin:'',}},mounted(){const signUpButton=document.getElementById('btnSignUp');const logInButton=document.getElementById('logIn');signUpButton.addEventListener('click',()=>{container.classList.add("right-panel-active")});logInButton.addEventListener('click',()=>{container.classList.remove("right-panel-active")})},computed:{isRequired(){return[value=>!!value||'Required',]},users(){return this.store.getUsers},user(){return this.store.getUserLogged}},methods:{login(){try{this.store.login(this.usernameLogin,this.passwordLogin)
+this.$router.push({name:"home"})}catch(error){alert(`Error: ${error.message}`)}},signup(){try{this.store.signup(this.name,this.username,this.email,this.password,this.confirmPassword)
+this.$router.push({name:"home"})}catch(error){alert(`Error: ${error.message}`)}}},}
 </script>
 
 <style lang="css" scoped>
@@ -125,21 +64,25 @@ import { useUserStore } from '@/stores/users';
 @font-face {
     font-family: LexendDecaBold;
     src: url(../assets/Lexend_Deca/LexendDeca-Bold.ttf);
+	font-display: swap;
 }
 
 @font-face {
     font-family: LexendDecaRegular;
     src: url(../assets/Lexend_Deca/LexendDeca-Regular.ttf);
+	font-display: swap;
 }
 
 @font-face {
     font-family: LexendDecaThin;
     src: url(../assets/Lexend_Deca/LexendDeca-Thin.ttf);
+	font-display: swap;
 }
 
 @font-face {
     font-family: Saphile;
     src: url(../assets/Saphile/Saphile-Regular.otf);
+	font-display: swap;
 }
 
 * {

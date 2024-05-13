@@ -86,126 +86,43 @@
   </template>
   
   <script>
-  import { useQuizzesStore } from '../stores/quizzes';
-  import { useUserStore } from '../stores/users';
-  
-  export default {
-    data() {
-      return {
-        quizzesStore: useQuizzesStore(),
-        userStore: useUserStore(),
-      };
-    },
-    methods: {
-      selQuestion(question) {
-        this.quizzesStore.curQuestion = question - 1
-      },
-      changeBtnColor(numButton) {
-        if (numButton == this.quizzesStore.curQuestion) {
-          return "btnSelQuestionsFilled d-flex justify-center align-items-center"
-        } else {
-          return "btnSelQuestions d-flex justify-center align-items-center"
-        }
-      },
-      changeDifficultyColor(difficulty) {
-        if (difficulty == "Easy") {
-          return "green medium fontSize24 marginTop19"
-        } else if (difficulty == "Medium") {
-          return "yellow medium fontSize24 marginTop19"
-        } else if (difficulty == "Hard") {
-          return "red medium fontSize24 marginTop19"
-        }
-      },
-      selOption(option) {
-        this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].questions[this.quizzesStore.curQuestion].selectedOption = option
-      },
-      optionBg(option) {
-        if (this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].questions[this.quizzesStore.curQuestion].selectedOption == option) {
-          return "bgSelOption"
-        } else {
-          return "optionHover bgUnSelOption"
-        }
-      },
-      submitAnswers(quizz) {
-        let correctAnswers = 0;
-        for (let i = 0; i < this.quizzesStore.quizzes[quizz].numQuestions; i++) {
-          if (this.quizzesStore.quizzes[quizz].questions[i].selectedOption == this.quizzesStore.quizzes[quizz].questions[i].correctAnswer) {
-            correctAnswers++;
-          }
-        }
-        this.quizzesStore.quizzes[quizz].lastScore = Math.round(correctAnswers / this.quizzesStore.quizzes[quizz].numQuestions * 100);
-  
-        if (correctAnswers >= this.quizzesStore.quizzes[quizz].passingScore) {
-          this.quizzesStore.quizzes[quizz].medalAwarded = true;
-          try{
-            this.userStore.addMedal(this.quizzesStore.quizzes[quizz].medal)
-          }catch(error){
-            console.log(error);
-          }
-        } else {
-          this.quizzesStore.quizzes[quizz].medalAwarded = false;
-        }
-        this.checkBestScore()
-        this.quizzesStore.quizzes[quizz].showOnFinish = true;
-      },
-      checkBestScore() {
-        if (this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].lastScore > this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].bestScore) {
-          this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].bestScore = this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].lastScore;
-        }
-      },
-      tryAgain(curQuizz) {
-        this.quizzesStore.quizzes[curQuizz - 1].showOnFinish = false;
-        this.resetOptions()
-        this.quizzesStore.curQuestion = 0;
-      },
-      back() {
-        this.resetOptions()
-        this.quizzesStore.curQuestion = 0;
-        this.$router.push('/quiz');
-      },
-      resetOptions() {
-        for (let i = 0; i < this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].numQuestions; i++) {
-          this.quizzesStore.quizzes[this.quizzesStore.quizz - 1].questions[i].selectedOption = "";
-        }
-      },
-      showOverlay(event) {
-        const container = event.currentTarget;
-        container.classList.add('hovered');
-      },
-  
-      hideOverlay(event) {
-        const container = event.currentTarget;
-        container.classList.remove('hovered');
-      },
-    },
-  };
-  
+  import{useQuizzesStore}from '../stores/quizzes';import{useUserStore}from '../stores/users';export default{data(){return{quizzesStore:useQuizzesStore(),userStore:useUserStore(),}},methods:{selQuestion(question){this.quizzesStore.curQuestion=question-1},changeBtnColor(numButton){if(numButton==this.quizzesStore.curQuestion){return"btnSelQuestionsFilled d-flex justify-center align-items-center"}else{return"btnSelQuestions d-flex justify-center align-items-center"}},changeDifficultyColor(difficulty){if(difficulty=="Easy"){return"green medium fontSize24 marginTop19"}else if(difficulty=="Medium"){return"yellow medium fontSize24 marginTop19"}else if(difficulty=="Hard"){return"red medium fontSize24 marginTop19"}},selOption(option){this.quizzesStore.quizzes[this.quizzesStore.quizz-1].questions[this.quizzesStore.curQuestion].selectedOption=option},optionBg(option){if(this.quizzesStore.quizzes[this.quizzesStore.quizz-1].questions[this.quizzesStore.curQuestion].selectedOption==option){return"bgSelOption"}else{return"optionHover bgUnSelOption"}},submitAnswers(quizz){let correctAnswers=0;for(let i=0;i<this.quizzesStore.quizzes[quizz].numQuestions;i++){if(this.quizzesStore.quizzes[quizz].questions[i].selectedOption==this.quizzesStore.quizzes[quizz].questions[i].correctAnswer){correctAnswers++}}
+this.quizzesStore.quizzes[quizz].lastScore=Math.round(correctAnswers/this.quizzesStore.quizzes[quizz].numQuestions*100);if(correctAnswers>=this.quizzesStore.quizzes[quizz].passingScore){this.quizzesStore.quizzes[quizz].medalAwarded=!0;try{this.userStore.addMedal(this.quizzesStore.quizzes[quizz].medal)}catch(error){console.log(error)}}else{this.quizzesStore.quizzes[quizz].medalAwarded=!1}
+this.checkBestScore()
+this.quizzesStore.quizzes[quizz].showOnFinish=!0},checkBestScore(){if(this.quizzesStore.quizzes[this.quizzesStore.quizz-1].lastScore>this.quizzesStore.quizzes[this.quizzesStore.quizz-1].bestScore){this.quizzesStore.quizzes[this.quizzesStore.quizz-1].bestScore=this.quizzesStore.quizzes[this.quizzesStore.quizz-1].lastScore}},tryAgain(curQuizz){this.quizzesStore.quizzes[curQuizz-1].showOnFinish=!1;this.resetOptions()
+this.quizzesStore.curQuestion=0},back(){this.resetOptions()
+this.quizzesStore.curQuestion=0;this.$router.push('/quiz')},resetOptions(){for(let i=0;i<this.quizzesStore.quizzes[this.quizzesStore.quizz-1].numQuestions;i++){this.quizzesStore.quizzes[this.quizzesStore.quizz-1].questions[i].selectedOption=""}},showOverlay(event){const container=event.currentTarget;container.classList.add('hovered')},hideOverlay(event){const container=event.currentTarget;container.classList.remove('hovered')},},}
   </script>
   
   <style lang="css" scoped>
   @font-face {
     font-family: Saphile;
     src: url(@/assets/Saphile/Saphile-Regular.otf);
+    font-display: swap;
   }
   
   @font-face {
     font-family: Lexend Deca Regular;
     src: url(@/assets/Lexend_Deca/LexendDeca-Regular.ttf);
+    font-display: swap;
   }
   
   @font-face {
     font-family: Lexend Deca Medium;
     src: url(@/assets/Lexend_Deca/LexendDeca-Medium.ttf);
+    font-display: swap;
   }
 
   @font-face {
     font-family: Lexend Deca Light;
     src: url(@/assets/Lexend_Deca/LexendDeca-Light.ttf);
+    font-display: swap;
   }
   
   @font-face {
     font-family: Lexend Deca Bold;
     src: url(@/assets/Lexend_Deca/LexendDeca-Bold.ttf);
+    font-display: swap;
   }
   .marginTop38 {
     margin-top: 38px;
