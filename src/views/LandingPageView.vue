@@ -14,10 +14,24 @@
       <img id="beigeWavesLeftBottom" src="../assets/backgrounds/beigeWavesLeftBottom.svg" alt="">
 
     <div id="imgsDashboard" class="beigeBG">
-      <img id="imgDashFrames1" class="shadow" src="../assets/landingPageIcons/DashboardPage.png" alt="">
-      <img id="imgDashFrames2" class="shadow" src="../assets/landingPageIcons/AthletePage.png" alt="">
+      <picture>
+        <source  type="image/webp" srcset="../assets/landingPageIcons/DashboardPage.webp 1142w, ../assets/landingPageIcons/DashboardPage-1000.webp 1000w, ../assets/landingPageIcons/DashboardPage-720.webp 720w, ../assets/landingPageIcons/DashboardPage-360.webp 360w" sizes="50w" style="width: 50vw; height: 100%" >
+        <source  type="image/jpeg" srcset="../assets/landingPageIcons/DashboardPage.jpg 1142w, ../assets/landingPageIcons/DashboardPage-1000.jpg 1000w, ../assets/landingPageIcons/DashboardPage-720.jpg 720w, ../assets/landingPageIcons/DashboardPage-360.jpg 360w" sizes="50w" style="width: 50vw; height: 100%" >
+        <img id="imgDashFrames1" class="shadow" src="../assets/landingPageIcons/DashboardPage-360.webp" sizes="50w" style="width: 50vw; height: 100%">
+      </picture>
+      
+      <picture>
+        <source  type="image/webp" srcset="../assets/landingPageIcons/AthletePage.webp 1142w, ../assets/landingPageIcons/AthletePage-1000.webp 1000w, ../assets/landingPageIcons/AthletePage-650.webp 650w, ../assets/landingPageIcons/AthletePage-325.webp 325w" sizes="30w" style="width: 30vw; height: 100%" >
+        <source  type="image/jpeg" srcset="../assets/landingPageIcons/AthletePage.jpg 1142w, ../assets/landingPageIcons/AthletePage-1000.jpg 1000w, ../assets/landingPageIcons/AthletePage-650.jpg 650w, ../assets/landingPageIcons/AthletePage-325.jpg 325w" sizes="30w" style="width: 30vw; height: 100%" >
+        <img id="imgDashFrames2" class="shadow" src="../assets/landingPageIcons/AthletePage-325.webp" sizes="30w" style="width: 30vw; height: 100%">
+      </picture>
+
       <div id="divImg3">
-        <img id="imgDashFrames3" class="shadow" src="../assets/landingPageIcons/SearchPage.png" alt="">
+        <picture>
+        <source  type="image/webp" srcset="../assets/landingPageIcons/SearchPage.webp 1142w, ../assets/landingPageIcons/SearchPage-1000.webp 1000w, ../assets/landingPageIcons/SearchPage-650.webp 650w, ../assets/landingPageIcons/SearchPage-325.webp 325w" sizes="25w" style="width: 25vw; height: 100%" >
+        <source  type="image/jpeg" srcset="../assets/landingPageIcons/SearchPage.jpg 1142w, ../assets/landingPageIcons/SearchPage-1000.jpg 1000w, ../assets/landingPageIcons/SearchPage-650.jpg 650w, ../assets/landingPageIcons/SearchPage-325.jpg 325w" sizes="25w" style="width: 25vw; height: 100%" >
+        <img id="imgDashFrames3" class="shadow" src="../assets/landingPageIcons/SearchPage-325.webp" sizes="25w" style="width: 25vw; height: 100%">
+      </picture>
         <p id="fakeDataTxt">* Fake data</p>
       </div>
       
@@ -26,7 +40,11 @@
           <p class="text blue">Why GYMNART?</p>
           <h2 class="blue h2Saphile" >We keep you updated about <br> the latest statistics and scores</h2>
         </div>
-        <img src="../assets/landingPageIcons/top3Teams.png" alt="" id="top3teams" class="shadow">
+        <picture >
+          <source type="image/webp" srcset="../assets/landingPageIcons/top3Teams.webp" style="width: 100%; height: 100%">
+          <source type="image/jpeg" srcset="../assets/landingPageIcons/top3Teams.jpg" style="width: 100%; height: 100%" >
+          <img id="top3teams" class="shadow" src="../assets/landingPageIcons/top3Teams.webp" style="width: 100%; height: 100%">
+        </picture>
       </div>
       <img src="../assets/backgrounds/redWavesRigthBottom.svg" alt="" id="redWavesRigthBottom" >
     </div>
@@ -249,7 +267,7 @@
 
 #imgDashFrames2{
   margin-top: -25em;
-  margin-left: -63em;
+  margin-left: -50em;
   border-radius: 1.5em;
   width: 30vw;
   height: 100%;
