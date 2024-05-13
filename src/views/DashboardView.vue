@@ -159,7 +159,7 @@ export default {
           }
         };
         displayEvent();
-        interval = setInterval(displayEvent, 5000);
+        interval = setInterval(displayEvent, 1000);
       } catch (error) {
         alert("ERROR: " + error.message);
       }
