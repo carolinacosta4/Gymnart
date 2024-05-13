@@ -14,7 +14,13 @@
       <img id="beigeWavesLeftBottom" src="../assets/backgrounds/beigeWavesLeftBottom.svg" alt="">
 
     <div id="imgsDashboard" class="beigeBG">
-      <img id="imgDashFrames1" class="shadow" src="../assets/landingPageIcons/DashboardPage.png" alt="">
+      <picture id="imgDashFrames1" class="shadow">
+        <source type="image/webp" srcset="../assets/landingPageIcons/DashboardPage.webp" sizes="50w" style="width: 100%; height: 100%">
+        <source type="image/jpeg" srcset="../assets/landingPageIcons/DashboardPage.png" sizes="50w" style="width: 100%; height: 100%">
+        <img src="../assets/landingPageIcons/DashboardPage.webp">
+      </picture>
+
+
       <img id="imgDashFrames2" class="shadow" src="../assets/landingPageIcons/AthletePage.png" alt="">
       <div id="divImg3">
         <img id="imgDashFrames3" class="shadow" src="../assets/landingPageIcons/SearchPage.png" alt="">
